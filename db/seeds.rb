@@ -68,3 +68,23 @@ User.create!(
    password: '999999',
    introduction: 'よろしくです'
 )
+
+Category.create!(
+  name: 'グルメ'
+)
+
+Category.create!(
+  name: '観光'
+)
+
+Category.create!(
+  name: '服装'
+)
+
+Category.create!(
+  name: 'お土産'
+)
+
+Category.create!(
+  name: 'その他'
+)

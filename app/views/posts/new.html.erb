@@ -1,0 +1,41 @@
+<div class="container">
+ 
+  <h2>投稿フォーム</h2>
+  <p>
+    旅先の感想やお出かけ前に気になることを自由に投稿してください
+    <i class="fas fa-plane-departure"></i>
+  </p>
+
+  <%= form_with model: @post do |f| %>
+    <div class="field row">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="field row">
+      <%= f.label :prefecture %><br>
+      <%= f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture'%>
+    </div>
+    <div class="field row">
+      <%= f.label :category %><br>
+      <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %> 
+        <%= category.label do %>
+          <%= category.check_box %>
+          <%= category.text %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="field row">
+      <%= f.label :body %>
+      <%= f.text_area :body, class: "form-control" %>
+    </div>
+    <div class="field row">
+      <%= f.label :image %>
+      <%= f.attachment_field :post_images_images %>
+    </div>
+    <div class="field row">
+      <%= f.label :送信 %>
+      <%= f.submit "投稿する", class: "btn btn-primary btn-block" %>
+    </div>
+  <% end %>
+
+</div>
