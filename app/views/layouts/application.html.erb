@@ -1,16 +1,76 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LOCALInfoTourism</title>
+    <title>LOCAL INFO TOURISM</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/b5fa4724ff.js" crossorigin="anonymous"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    
+    <header>
+      <div class="container">
+        <nav class="nav navbar-nav navbar-left">
+          <h1>LOCAR INFO TOURISM</h1>
+        </nav>
+
+        <nav class="nav navbar-nav navbar-right">
+          <ul>
+            <% if user_signed_in? %>
+              <span>
+                ようこそ、<%= "#" %>さん！
+              </span>
+          
+              <li>
+                <i class="fas fa-user"></i>
+                <%= link_to 'マイページ', "#" %>
+              </li>
+              <li>
+                <i class="fas fa-sign-out-alt"></i>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+              </li>
+              <li>
+                <i class="far fa-newspaper"></i>
+                <%= link_to '投稿一覧', "#" %>
+              </li>
+              <li>
+                <i class="fas fa-users"></i>
+                <%= link_to '会員一覧', "#" %>
+              </li>
+              <li>
+                <i class="far fa-bell"></i>
+                <%= link_to '通知', "#" %>
+              </li>
+              <li>
+                <i class="fas fa-search-plus"></i>
+                <%= link_to '検索', "#" %>
+              </li>
+            <% else %>
+              <li>
+                <i class="fas fa-road"></i>
+                <%= link_to 'About', "#" %>
+              </li>
+              <li>
+                <i class="fas fa-user-plus"></i>
+                <%= link_to '新規登録', new_user_registration_path %>
+              </li>
+              <li>
+                <i class="fas fa-sign-in-alt"></i>
+                <%= link_to 'ログイン', new_user_session_path %>
+              </li>
+              <li>
+                <i class="fas fa-user-graduate"></i>
+                <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
     <%= yield %>
   </body>
 </html>
