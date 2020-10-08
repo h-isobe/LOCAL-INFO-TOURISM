@@ -12,9 +12,12 @@
 
   <body>
     <header>
+    <div class="wrapper">
       <div class="container">
         <nav class="nav navbar-nav navbar-left">
-          <h1>LOCAR INFO TOURISM</h1>
+          <%= link_to root_path do %>
+            <h1>LOCAR INFO TOURISM</h1>
+          <% end %>
         </nav>
 
         <nav class="nav navbar-nav navbar-right">
@@ -34,7 +37,7 @@
               </li>
               <li>
                 <i class="far fa-newspaper"></i>
-                <%= link_to '投稿一覧', "#" %>
+                <%= link_to '投稿一覧', posts_path %>
               </li>
               <li>
                 <i class="fas fa-users"></i>
@@ -71,6 +74,13 @@
       </div>
     </header>
 
+    <div class="container">
     <%= yield %>
+    </div>
+    
+    <footer>
+      <p>Copyright © 2020-20XX LOCAR INFO TOURISM.co.,ltd</p> 
+    </footer>
+    </div>
   </body>
 </html>

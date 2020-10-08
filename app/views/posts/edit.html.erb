@@ -9,7 +9,7 @@
     <% end %>
   <% end %>
   
-  <h2 class="text-center">投稿フォーム</h2>
+  <h2 class="text-center">編集フォーム</h2>
   <div class="sub-post-text">
   <p class="text-center">
     旅先の感想やお出かけ前に気になることを自由に投稿してみましょう
@@ -44,8 +44,10 @@
       <%= f.attachment_field :post_images_images, multiple:true %>
     </div>
     <div class="field row">
-      <%= f.submit "投稿", class: "btn btn-primary btn-block" %>
+      <%= f.submit "編集", class: "btn btn-primary btn-block" %>
     </div>
   <% end %>
+
+  <%= link_to "戻る", post_path(@post) %>
 
 </div>
