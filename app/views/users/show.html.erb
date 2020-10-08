@@ -1,0 +1,76 @@
+
+
+<div class="col-xs-4">
+  <div class="box1">
+    <table style="border:none;">
+      <tr>
+        <td><%= @user.name %></td>
+      </tr>
+      <tr>
+        <td><%= @user.introduction %></td>
+      </tr>
+      <tr>
+        <td><%= attachment_image_tag @user, :profile_image_id, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %></td>
+      </tr>
+    </table>
+
+    <% if @user == current_user %>
+      <%= link_to "編集", edit_user_path(@user) %>
+    <% end %>
+  </div>
+</div>
+
+<div class="col-xs-8">
+  <% @posts.each do |post| %>
+  <div class="box1">
+   <table style="border:none;">
+      <tr>
+        <td><%= post.user.name %></td>
+      </tr>
+      <tr>
+        <td><%= attachment_image_tag post.user, :profile_image_id, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %></td>
+      </tr>
+      <tr>
+        <td>
+          <%= link_to post_path(post) do %>
+            <%= post.title %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= post.prefecture %></td>
+      </tr>
+      <tr>
+        <td>
+          <% post.categories.each do |category| %>
+            <%= category.name %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= post.body %></td>
+      </tr>
+      <tr>
+        <td>
+		      <% if post.post_images.present? %>
+            <% post.post_images.each do |image| %>
+              <%= attachment_image_tag image, :image, :fill, 100, 100 %>
+            <% end %>
+          <% end %>
+	     </td>
+      </tr>
+      <tr>
+        <td><%= l post.created_at %></td>
+      </tr>
+    </table>
+  </div>
+  <% end %>
+</div>
+
+  <div class="new-post-form">
+    <%= link_to new_post_path do %>
+      <p class="text-right">
+      <i class="fas fa-plus-circle fa-3x"></i>
+      </p>
+    <% end %>
+  </div>

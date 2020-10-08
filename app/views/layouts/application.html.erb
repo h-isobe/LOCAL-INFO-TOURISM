@@ -24,12 +24,12 @@
           <ul>
             <% if user_signed_in? %>
               <span>
-                ようこそ、<%= "#" %>さん！
+                ようこそ、<%= current_user.name %>さん！
               </span>
           
               <li>
                 <i class="fas fa-user"></i>
-                <%= link_to 'マイページ', "#" %>
+                <%= link_to 'マイページ', user_path(current_user.id) %>
               </li>
               <li>
                 <i class="fas fa-sign-out-alt"></i>
@@ -41,7 +41,7 @@
               </li>
               <li>
                 <i class="fas fa-users"></i>
-                <%= link_to '会員一覧', "#" %>
+                <%= link_to '会員一覧', users_path %>
               </li>
               <li>
                 <i class="far fa-bell"></i>
@@ -54,7 +54,7 @@
             <% else %>
               <li>
                 <i class="fas fa-road"></i>
-                <%= link_to 'About', "#" %>
+                <%= link_to 'About', home_about_path %>
               </li>
               <li>
                 <i class="fas fa-user-plus"></i>

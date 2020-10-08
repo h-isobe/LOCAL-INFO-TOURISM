@@ -1,4 +1,5 @@
-<div class="container">
+<div class="col-xs-3"></div>
+<div class="col-xs-6">
 
   <%= form_for(@post) do |f| %>
     <% if @post.errors.any? %>
@@ -9,7 +10,6 @@
     <% end %>
   <% end %>
   
-  <h2 class="text-center">編集フォーム</h2>
   <div class="sub-post-text">
   <p class="text-center">
     旅先の感想やお出かけ前に気になることを自由に投稿してみましょう
@@ -20,7 +20,7 @@
   <%= form_with model: @post do |f| %>
     <div class="field row">
       <%= f.label :タイトル %>
-      <%= f.text_field :title, class: "form-control" %>
+      <%= f.text_field :title, class: "form-control", placeholder:"タイトル" %>
     </div>
     <div class="field row">
       <%= f.label :prefecture, '都道府県' %><br>
@@ -37,7 +37,7 @@
     </div>
     <div class="field row">
       <%= f.label :投稿内容 %>
-      <%= f.text_area :body, class: "form-control" %>
+      <%= f.text_area :body, class: "form-control", placeholder:"投稿内容" %>
     </div>
     <div class="field row">
       <%= f.label :画像選択 %>(複数可能)
@@ -47,7 +47,7 @@
       <%= f.submit "編集", class: "btn btn-primary btn-block" %>
     </div>
   <% end %>
-
+  
   <%= link_to "戻る", post_path(@post) %>
 
 </div>
