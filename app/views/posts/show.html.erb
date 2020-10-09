@@ -37,7 +37,14 @@
         </td>
       </tr>
       <tr>
-        <td><%= @post.body %></td>
+        <td>
+          <%= simple_format(@post.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "")) %>
+            <% if @post.hashtags.any? %>
+              <% @post.hashtags.each do |hashtag| %>
+                <p>#<%= hashtag.hashname %></p>
+            <% end %>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <td>

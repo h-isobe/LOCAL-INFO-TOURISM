@@ -6,6 +6,8 @@ class Post < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :post_categories
   has_many :categories, through: :post_categories
+  has_many :post_hashtags
+  has_many :hashtags, through: :post_hashtags
 
   validates :title, presence: true
   validates :prefecture, presence: true
@@ -13,6 +15,18 @@ class Post < ApplicationRecord
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
+  end
+
+  after_create do
+    #1.controller側でcreateしたTweetを取得
+    post = Post.find_by(id: self.id)
+    #2.正規表現を用いて、Postのbody内から『#○○○』の文字列を検出
+    hashtags  = self.body.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    #3.mapメソッドでtags配列の要素一つ一つを取り出して、先頭の#を取り除いてDBへ保存する
+    hashtags.uniq.map do |t|
+      hashtag = Hashtag.find_or_create_by(hashname: t.downcase.delete('#'))
+      post.hashtags << hashtag
+    end
   end
 
   enum prefecture: {
