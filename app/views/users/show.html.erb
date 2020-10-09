@@ -10,10 +10,32 @@
       <tr>
         <td><%= attachment_image_tag @user, :profile_image_id, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %></td>
       </tr>
+      <tr>
+        <td>
+          <%= link_to follower_path(@user) do %>
+            <%= @user.follower.count %> フォロー
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= link_to followed_path(@user) do %>
+            <%= @user.followed.count %> フォロワー
+          <% end %>
+        </td>
+      </tr>
     </table>
 
     <% if @user == current_user %>
       <%= link_to "編集", edit_user_path(@user) %>
+    <% else %>
+      <% unless @user == current_user %>
+        <% if current_user.following(@user) %>
+          <%= link_to 'フォロー外す', unfollow_path(@user), method: :post %>
+        <% else %>
+          <%= link_to 'フォローする', follow_path(@user), method: :post %>
+        <% end %>
+      <% end %>
     <% end %>
 
   </div>

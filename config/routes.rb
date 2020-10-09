@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
   end
+
+  post 'follow/:id' => 'relationships#follow', as: 'follow' 
+  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' 
+  get 'follower/:id' => 'relationships#follower', as: 'follower'
+  get 'followed/:id' => 'relationships#followed', as: 'followed'
   
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'

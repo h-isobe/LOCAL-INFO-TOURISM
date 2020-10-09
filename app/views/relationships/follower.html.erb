@@ -1,3 +1,7 @@
+<h2>フォロー一覧</h2>
+
+<% if @users.count > 0 %>
+
 <% @users.each do |user| %>
 
   <div class="col-xs-8">
@@ -25,4 +29,9 @@
       </table>
     </div>
   </div>
+
+<% end %>
+
+<% else %>
+  <p>ユーザーはいません</p>
 <% end %>
