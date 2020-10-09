@@ -1,5 +1,6 @@
 <div class="col-xs-4"></div>
 <div class="col-xs-4">
+
   <%= form_for(@user) do |f| %>
     <% if @user.errors.any? %>
       <%= @user.errors.count %>件のエラーが発生しました
@@ -9,29 +10,30 @@
     <% end %>
   <% end %>
 
-<%= form_with model: @user do |f| %>
+  <%= form_with model: @user do |f| %>
 
-<div class="field row">
-  <%= f.label :name %>
-  <%= f.text_field :name, class: "form-control", placeholder:"名前" %>
-</div>
-<div class="field row">
-  <%= f.label :introduction %>
-  <%= f.text_area :introduction, class: "form-control" %>
-</div>
-<div class="text-center">
   <div class="field row">
-    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control", placeholder:"名前" %>
   </div>
-</div>
-<div class="field row">
-  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
-</div>
-<div class="field row">
-  <%= f.submit "編集", class: "btn btn-primary btn-block" %>
-</div>
+  <div class="field row">
+    <%= f.label :introduction %>
+    <%= f.text_area :introduction, class: "form-control" %>
+  </div>
+  <div class="text-center">
+    <div class="field row">
+      <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
+    </div>
+  </div>
+  <div class="field row">
+    <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+  </div>
+  <div class="field row">
+    <%= f.submit "編集", class: "btn btn-primary btn-block" %>
+  </div>
 
-<% end %>
+  <% end %>
 
-<%= link_to "戻る", user_path(@user) %>
+  <%= link_to "戻る", user_path(@user) %>
+
 </div>

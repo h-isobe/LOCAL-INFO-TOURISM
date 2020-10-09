@@ -1,4 +1,5 @@
-<div class="container">
+<div class="col-xs-3"></div>
+<div class="col-xs-6">
 
   <%= form_for(@post) do |f| %>
     <% if @post.errors.any? %>
@@ -9,12 +10,11 @@
     <% end %>
   <% end %>
   
-  <h2 class="text-center">投稿フォーム</h2>
   <div class="sub-post-text">
-  <p class="text-center">
-    旅先の感想やお出かけ前に気になることを自由に投稿してみましょう
-    <i class="fas fa-plane-departure"></i>
-  </p>
+    <p class="text-center">
+      旅先の感想やお出かけ前に気になることを自由に投稿してみましょう
+      <i class="fas fa-plane-departure"></i>
+    </p>
   </div>
 
   <%= form_with model: @post do |f| %>

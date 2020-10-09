@@ -2,12 +2,18 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :post_images, dependent: :destroy
   accepts_attachments_for :post_images, attachment: :image
+  has_many :favorites, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
   has_many :post_categories
   has_many :categories, through: :post_categories
 
   validates :title, presence: true
   validates :prefecture, presence: true
-  validates :body, length: { maximum: 1..500 }
+  validates :body, length: { in: 1..500 }
+
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
 
   enum prefecture: {
     "--未選択--":0,北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

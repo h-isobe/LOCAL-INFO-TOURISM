@@ -1,58 +1,74 @@
-
-  <% @posts.each do |post| %>
+<% @posts.each do |post| %>
 
   <div class="col-xs-8">
-  <div class="box1">
-  <table style="border:none;">
-  <tr>
-    <td>
-      <%= post.user.name %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-    <%= attachment_image_tag post.user, :profile_image_id, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <%= link_to post_path(post) do %>
-      <%= post.title %>
-    <% end %>
-    </td>
-  </tr>
-  <tr>
-    <td><%= post.prefecture %></td>
-  </tr>
-  <tr>
-    <td>
-      <% post.categories.each do |category| %>
-        <%= category.name %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <td><%= post.body %></td>
-  </tr>
-  <tr>
-    <td>
-		  <% if post.post_images.present? %>
-        <% post.post_images.each do |image| %>
-          <%= attachment_image_tag image, :image, :fill, 100, 100 %>
-        <% end %>
-      <% end %>
-	 </td>
-  </tr>
-  <tr>
-    <td><%= l post.created_at %></td>
-  </tr>
-  </table>
-  </div>
-    
+    <div class="box1">
+      <table style="border:none;">
+        <tr>
+          <td><%= post.user.name %></td>
+        </tr>
+        <tr>
+          <td><%= attachment_image_tag post.user, :profile_image_id, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %></td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to post_path(post) do %>
+              <%= post.title %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= post.prefecture %></td>
+        </tr>
+        <tr>
+          <td>
+            <% post.categories.each do |category| %>
+              <%= category.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= post.body %></td>
+        </tr>
+        <tr>
+          <td>
+		        <% if post.post_images.present? %>
+              <% post.post_images.each do |image| %>
+                <%= attachment_image_tag image, :image, :fill, 100, 100 %>
+              <% end %>
+            <% end %>
+	        </td>
+        </tr>
+        <tr>
+          <td><%= l post.created_at %></td>
+        </tr>
+        <tr>
+          <td>
+            <% if post.favorited_by?(current_user) %>
+              <%= link_to post_favorites_path(post), method: :delete do %>
+                <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                <%= post.favorites.count %>
+              <% end %>
+            <% else %>
+              <%= link_to post_favorites_path(post), method: :post do %>
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <%= post.favorites.count %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to post_path(post.id) do %>
+              <i class="fa fa-comment"></i>
+              <%= post.post_comments.count %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 
-  <% end %>
-
+<% end %>
 
   <div class="new-post-form">
     <%= link_to new_post_path do %>

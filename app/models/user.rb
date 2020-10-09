@@ -5,13 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :posts, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following_user, through: :follower, source: :followed
   has_many :follower_user, through: :followed, source: :follower
   
-  attachment :profile_image
   
+  attachment :profile_image
+
   validates :name, presence: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 200 }
 
