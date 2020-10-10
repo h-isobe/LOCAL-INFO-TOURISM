@@ -104,9 +104,9 @@
     </div>
     <div class="text-right">
       <% if @post.user_id == current_user.id %>
-        <%= link_to "編集", edit_post_path %>
+        <%= link_to "編集", edit_post_path(@post.id) %>
         |
-        <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に消しますか？"} %>
+        <%= link_to "削除", post_path(@post.id), method: :delete, data: {confirm: "本当に消しますか？"} %>
       <% end %>
     </div>
   </div>

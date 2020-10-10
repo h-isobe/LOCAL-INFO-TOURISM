@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' 
   get 'follower/:id' => 'relationships#follower', as: 'follower'
   get 'followed/:id' => 'relationships#followed', as: 'followed'
+  get 'search' => 'search#search'
+  get '/post/hashtag/:name' => 'posts#hashtag', as: 'hashtag'
   
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'

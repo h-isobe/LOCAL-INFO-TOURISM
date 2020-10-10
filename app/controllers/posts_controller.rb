@@ -42,7 +42,12 @@ class PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
-    redirect_to posts_path
+    redirect_to post_path
+  end
+
+  def hashtag
+    @hashtag = Hashtag.find_by(hashname: params[:hashname])
+    @posts = @hashtag.posts
   end
 
   private
