@@ -123,4 +123,59 @@ footer {
   padding: 0;
 }
 
-/*ユーザー一覧*/
+/*ランキング*/
+.box2 {
+  margin: 2em 0;
+  background: #FFF;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+}
+.box2 .box-title {
+  font-size: 1.2em;
+  background: #FFFFE0;
+  padding: 4px;
+  text-align: center;
+  color: #1E90FF;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.list_crown {
+  list-style: none;
+  padding: 15px 20px;
+  margin: 0;
+}
+
+.list_crown > li {
+  position: relative;
+  padding: 0px 0px 0px 2.5em;
+  color: #3388dd;
+  font-size: 18px;
+}
+.list_crown > li::before,
+.list_crown > li::after {
+  position: absolute;
+  left: 0px;
+  width: 0px;
+  height: 0px;
+  content: "";
+}
+.list_crown > li::before {
+  top: -1.25em;
+  border: 1em solid transparent;
+  border-bottom: 1.5em solid currentColor;
+}
+.list_crown > li::after {
+  top: 0.25em;
+  border: 0.5em solid transparent;
+  border-left: 1em solid currentColor;
+  border-right: 1em solid currentColor;
+}
+.list_crown > li:nth-of-type(1) {
+  color: #dbb400;
+}
+.list_crown > li:nth-of-type(2) {
+  color: #9fa0a0;
+}
+.list_crown > li:nth-of-type(3) {
+  color: #c47022;
+}
