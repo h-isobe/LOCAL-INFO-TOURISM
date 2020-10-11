@@ -1,15 +1,17 @@
 <div class="col-xs-3"></div>
 <div class="col-xs-6">
 
-  <%= form_for(@post) do |f| %>
-    <% if @post.errors.any? %>
-      <%= @post.errors.count %>件のエラーが発生しました
-      <% @post.errors.full_messages.each do |message| %>
-        <%= message %>
+  <div class="errors">
+    <%= form_with model: @post, local: true do |f| %>
+      <% if @post.errors.any? %>
+        <%= @post.errors.count %>件のエラーが発生しました
+        <% @post.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
-  
+  </div>
+
   <div class="sub-post-text">
     <p class="text-center">
       旅先の感想やお出かけ前に気になることを自由に投稿してみましょう
@@ -17,7 +19,7 @@
     </p>
   </div>
 
-  <%= form_with model: @post do |f| %>
+  <%= form_with model: @post, local: true do |f| %>
     <div class="field row">
       <%= f.label :タイトル %>
       <%= f.text_field :title, class: "form-control" %>

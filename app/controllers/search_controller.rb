@@ -15,19 +15,19 @@ class SearchController < ApplicationController
     if model == 'user'
       if method == 'perfect'
         User.where(name: content)
-      else
+      else 
         User.where('name LIKE ?' , '%'+content+'%' )
       end
     elsif model == 'post'
       if method == 'perfect'
         Post.where(body: content)
-      else
+      else 
         Post.where('body LIKE ?' , '%'+content+'%' )
       end
     else model == "prefecture"
       if method == 'perfect'
         Post.where(prefecture: content)
-      else
+      else 
         Post.where('prefecture LIKE ?' , '%'+content+'%' )
       end
     end

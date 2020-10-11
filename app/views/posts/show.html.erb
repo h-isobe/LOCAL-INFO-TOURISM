@@ -66,10 +66,12 @@
           <i class="far fa-calendar-alt"></i>
           <%= l @post.created_at %>
         </td>
+        <% if @post.user == current_user %>
         <td>
           <i class="far fa-eye"></i>
           <%= @post.impressionist_count %>
         </td>
+        <% end %>
       </tr>
       <tr>
         <td></td>

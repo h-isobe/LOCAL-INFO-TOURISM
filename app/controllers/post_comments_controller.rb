@@ -6,11 +6,13 @@ class PostCommentsController < ApplicationController
     comment.post_id = post.id
     comment.save
     redirect_to post_path(post)
+    flash[:notice] = "コメントしました"
   end
   
   def destroy
     PostComment.find_by(id: params[:id], post_id: params[:post_id]).destroy
     redirect_to post_path(params[:post_id])
+    flash[:notice] = "コメントを削除しました"
   end
 
   private

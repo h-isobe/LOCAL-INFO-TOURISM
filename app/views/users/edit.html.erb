@@ -1,16 +1,18 @@
 <div class="col-xs-4"></div>
 <div class="col-xs-4">
 
-  <%= form_for(@user) do |f| %>
-    <% if @user.errors.any? %>
-      <%= @user.errors.count %>件のエラーが発生しました
-      <% @user.errors.full_messages.each do |message| %>
-        <%= message %>
+  <div class="errors">
+    <%= form_with model: @user, local: true do |f| %>
+      <% if @user.errors.any? %>
+        <%= @user.errors.count %>件のエラーが発生しました
+        <% @user.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
+  </div>
 
-  <%= form_with model: @user do |f| %>
+  <%= form_with model: @user, local: true do |f| %>
 
   <div class="field row">
     <%= f.label :name %>

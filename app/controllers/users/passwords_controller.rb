@@ -31,4 +31,12 @@ class Users::PasswordsController < Devise::PasswordsController
   # def after_sending_reset_password_instructions_path_for(resource_name)
   #   super(resource_name)
   # end
+
+  before_action :check_guest, only: :create
+
+  def check_guest
+    if params[:user][:email].downcase == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーの変更・削除はできません。'
+    end
+  end
 end
