@@ -2,7 +2,10 @@
   <div class="box1">
     <table style="border:none;">
       <tr>
-        <td><%= @post.user.name %></td>
+        <td>
+          <i class="fas fa-user"></i>
+          <%= @post.user.name %>
+        </td>
       </tr>
       <tr>
         <td><%= @post.user.introduction %></td>
@@ -18,7 +21,10 @@
   <div class="box1">
     <table style="border:none;">
       <tr>
-        <td><%= @post.user.name %></td>
+        <td>
+          <i class="fas fa-user"></i>
+          <%= @post.user.name %>
+        </td>
       </tr>
       <tr>
         <td><%= attachment_image_tag @post.user, :profile_image_id, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %></td>
@@ -56,7 +62,14 @@
 	     </td>
       </tr>
       <tr>
-        <td><%= l @post.created_at %></td>
+        <td>
+          <i class="far fa-calendar-alt"></i>
+          <%= l @post.created_at %>
+        </td>
+        <td>
+          <i class="far fa-eye"></i>
+          <%= @post.impressionist_count %>
+        </td>
       </tr>
       <tr>
         <td></td>

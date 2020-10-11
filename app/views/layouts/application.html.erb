@@ -12,21 +12,20 @@
 
   <body>
     <header>
-    <div class="wrapper">
-      <div class="container">
-        <nav class="nav navbar-nav navbar-left">
-          <%= link_to root_path do %>
-            <h1>LOCAR INFO TOURISM</h1>
-          <% end %>
-        </nav>
-
-        <nav class="nav navbar-nav navbar-right">
-          <ul>
-            <% if user_signed_in? %>
+      
+        
+          <nav class="nav navbar-nav navbar-left">
+            <%= link_to root_path do %>
+              <h1 class="title">LOCAR INFO TOURISM</h1>
+            <% end %>
+          </nav>
+          <nav class="nav navbar-nav navbar-right">
+            <ul>
+              <% if user_signed_in? %>
               <span>
                 ようこそ、<%= current_user.name %>さん！
               </span>
-          
+        
               <li>
                 <i class="fas fa-user"></i>
                 <%= link_to 'マイページ', user_path(current_user.id) %>
@@ -35,6 +34,13 @@
                 <i class="fas fa-sign-out-alt"></i>
                 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
               </li>
+            </ul>
+          </nav>
+       
+            
+        
+          <nav class="nav navbar-nav navbar-center">
+            <ul>
               <li>
                 <i class="far fa-newspaper"></i>
                 <%= link_to '投稿一覧', posts_path %>
@@ -76,18 +82,18 @@
                 <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
               </li>
             <% end %>
-          </ul>
-        </nav>
-      </div>
+            </ul>
+          </nav>
+        
+      
     </header>
-
+    
     <div class="container">
-    <%= yield %>
+      <%= yield %>
     </div>
     
     <footer>
       <p>Copyright © 2020-20XX LOCAR INFO TOURISM.co.,ltd</p> 
     </footer>
-    </div>
   </body>
 </html>

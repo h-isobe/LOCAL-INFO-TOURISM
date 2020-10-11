@@ -1,0 +1,59 @@
+<div class="col-xs-3"></div>
+<div class="col-xs-6"></div>
+
+
+<div class="left-button">
+  <%= link_to "ユーザー一覧へ戻る", users_path, class: "btn btn-info" %>
+</div>
+<h4 class="rooms-title">チャットルーム</h4>
+<% @entries.each do |e| %>
+  <div class="user-name">
+  <strong>
+    <%= attachment_image_tag e.user, :profile_image_id, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+      <a class="rooms-user-link" href="/users/<%= e.user.id %>">
+        <%= e.user.name %>さん
+      </a>
+  </strong>
+  </div>
+<% end %>
+<hr>
+<div class="chats">
+  <div class="chat">
+    <% if @messages.present? %>
+    <div class="message" style="width: 400px;">
+      <% @messages.each do |m| %>
+        <div class="chat-box">
+          <div class="chat-face">
+            <%= attachment_image_tag m.user, :profile_image_id, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+          </div>
+          <div class="chat-name">
+            <%= m.user.name %>
+          </div>
+          
+          <div class="chat-content">
+            <% if m.user_id == current_user.id %>
+              <p style="text-align: right;"><%= m.content %></p>
+            <% else %>
+              <p style="text-align: left;"><%= m.content %></p>
+            <% end %>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+  <div class="posts">
+    <%= form_for @message do |f| %>
+      <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <%= f.submit "投稿",class: 'form-submit' %>
+    <% end %>
+  </div>
+</div>
+
+</div>
+
+
+
+

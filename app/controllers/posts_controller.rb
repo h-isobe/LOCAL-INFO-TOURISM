@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  impressionist :actions=> [:show]
 
   def new
     @post = Post.new
@@ -19,11 +20,13 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+    @categories = Category.all
   end
 
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
+    impressionist(@post)
   end
 
   def edit
@@ -49,6 +52,11 @@ class PostsController < ApplicationController
   def hashtag
     @hashtag = Hashtag.find_by(hashname: params[:hashname])
     @posts = @hashtag.posts
+  end
+
+  def category
+    @category = Category.find_by(name: params[:name])
+    @posts = @category.posts
   end
 
   private

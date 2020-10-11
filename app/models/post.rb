@@ -13,6 +13,8 @@ class Post < ApplicationRecord
   validates :prefecture, presence: true
   validates :body, length: { in: 1..500 }
 
+  is_impressionable
+
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end

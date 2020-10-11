@@ -21,12 +21,22 @@
    padding: 0;
    box-sizing: border-box;
    font-family: fantasy;
+   font-size: 15px;
  }
 
  /*ヘッダー*/
  header {
    background-color: #EEE8AA;
    height: 100px;
+   width: 100%;
+   .title {
+     padding-top: 10px;
+    }
+   /*ヘッダー固定*/
+   /*position:fixed;
+   top: 0;
+   z-index:9999;*/
+   
  }
 
  nav {
@@ -123,6 +133,29 @@ footer {
   padding: 0;
 }
 
+/*カテゴリー一覧*/
+.list-category {
+  border: solid 2px #FFFFEE;
+  border-radius: 5px;
+  padding: 0.5em 1em 0.5em 2.3em;
+  position: relative;
+}
+
+.list-category li {
+  line-height: 1.5;
+  padding: 0.5em 0;
+  list-style-type: none!important;
+}
+
+.list-category li:before {
+  
+  font-family: "FontAwesome";
+  content: "\f138";/*アイコンの種類*/
+  position: absolute;
+  left : 1em;/*左端からのアイコンまでの距離*/
+  color: skyblue;/*アイコン色*/
+}
+
 /*ランキング*/
 .box2 {
   margin: 2em 0;
@@ -178,4 +211,9 @@ footer {
 }
 .list_crown > li:nth-of-type(3) {
   color: #c47022;
+}
+
+/*アイコン色*/
+.fas {
+  color: #00AA00;
 }
