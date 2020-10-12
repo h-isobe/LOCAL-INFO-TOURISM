@@ -26,7 +26,7 @@
 
  /*ヘッダー*/
  header {
-   background-color: #EEE8AA;
+   background-color: #f1f8f9;
    height: 100px;
    width: 100%;
    .title {
@@ -66,12 +66,17 @@
   box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
 
+body {
+  background-color: #f9f9f9;
+  color: #003366;
+  font-family: fantasy;
+}
+
 footer{
   /*footerの装飾*/
   width: 100%;
   height: 70px;
-  background-color: olive;
-  color: #fff;
+  background-color: #f1f8f9;
   text-align: center;
   padding: 30px 0;
   position: absolute;/*←絶対位置*/
@@ -119,8 +124,8 @@ footer{
   padding: 0.5em 1em;
   margin: 2em 0;
   color: black;
-  background: #FFFFE0;/*背景色*/
-  border-top: solid 6px #EEE8AA;
+  background: #f9f9f9;/*背景色*/
+  border-top: solid 6px #EEEEEE;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
 }
 .box1 p {
@@ -130,7 +135,7 @@ footer{
 
 /*カテゴリー一覧*/
 .list-category {
-  border: solid 2px #FFFFEE;
+  border: solid 2px #EEEEEE;
   border-radius: 5px;
   padding: 0.5em 1em 0.5em 2.3em;
   position: relative;
@@ -159,10 +164,10 @@ footer{
 }
 .box2 .box-title {
   font-size: 1.2em;
-  background: #FFFFE0;
+  background: #EEEEEE;
   padding: 4px;
   text-align: center;
-  color: #1E90FF;
+  color: #003366;
   font-weight: bold;
   letter-spacing: 0.05em;
 }
@@ -176,7 +181,7 @@ footer{
 .list_crown > li {
   position: relative;
   padding: 0px 0px 0px 2.5em;
-  color: #3388dd;
+  color: #003366;
   font-size: 18px;
 }
 .list_crown > li::before,
@@ -210,10 +215,10 @@ footer{
 
 /*アイコン色*/
 .fas {
-  color: #00AA00;
+  color: #003366;
 }
 .far {
-  color: #00AA00;
+  color: #003366;
 }
 
 /*フラッシュ*/
@@ -231,4 +236,10 @@ footer{
   text-align: center;
   border-radius: 15px;
   margin-top: 5px;
+}
+
+.text {
+  background-color: #EEEEEE;
+  border-radius: 10px;
+  padding: 5px;
 }

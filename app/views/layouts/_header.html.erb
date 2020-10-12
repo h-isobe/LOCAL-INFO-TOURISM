@@ -16,26 +16,26 @@
         
               <li>
                 <i class="fas fa-user"></i>
-                <%= link_to 'マイページ', user_path(current_user.id) %>
+                <%= link_to 'マイページ', user_path(current_user.id) %> |
               </li>
               <li>
                 <i class="fas fa-sign-out-alt"></i>
-                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %> |
               </li>
               <li>
-                <i class="far fa-newspaper"></i>
-                <%= link_to '投稿一覧', posts_path %>
+                <i class="far fa-newspaper"></i> 
+                <%= link_to '投稿一覧', posts_path %> |
               </li>
               <li>
                 <i class="fas fa-users"></i>
-                <%= link_to '会員一覧', users_path %>
+                <%= link_to '会員一覧', users_path %> |
               </li>
               <li>
                 <i class="far fa-bell"></i>
-                <%= link_to '通知', "#" %>
+                <%= link_to '通知', notifications_path %> |
               </li>
               <li>
-                
+                <div class="search">
                 <% if user_signed_in? %>
                   <%= form_tag(search_path, method: :get) do %>
                     <%= text_field_tag 'search[content]' %>
@@ -44,6 +44,7 @@
                     <%= submit_tag '検索' %>
                   <% end %>
                 <% end %>
+                </div>
               </li>
             <% else %>
               <li>

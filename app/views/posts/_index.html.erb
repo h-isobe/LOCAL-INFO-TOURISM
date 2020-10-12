@@ -10,7 +10,7 @@
           </td>
         </tr>
         <tr>
-          <td><%= attachment_image_tag post.user, :profile_image_id, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %></td>
+          <td><%= attachment_image_tag post.user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %></td>
         </tr>
         <tr>
           <td>
@@ -31,9 +31,11 @@
         </tr>
         <tr>
           <td>
+            <div class="text">
             <!--4.gsub()で正規表現に合致する箇所を空欄にする-->
-            <%= simple_format(post.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "")) %>
+              <%= simple_format(post.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "")) %>
             <!--4.postにタグがあればタグを出力する-->
+            </div>
             <% if post.hashtags.any? %>
               <% post.hashtags.each do |hashtag| %>
                 <%= link_to hashtag_path(post,hashname: hashtag.hashname) do %>
@@ -71,10 +73,7 @@
                 <%= post.favorites.count %>
               <% end %>
             <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td>
+          
             <%= link_to post_path(post.id) do %>
               <i class="fa fa-comment"></i>
               <%= post.post_comments.count %>
