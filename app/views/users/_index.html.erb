@@ -1,10 +1,10 @@
-<% users.each do |user| %>
 
+<% users.each do |user| %>
   <div class="col-xs-8">
     <div class="box1">
       <table style="border:none;">
         <tr>
-          <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpg', fallback: "no_image.jpg" %></td>
+          <td><%= attachment_image_tag user, :profile_image, :fill, 200, 150, format: 'jpg', fallback: "no_image.jpg" %></td>
         </tr>
         <tr>
           <td>

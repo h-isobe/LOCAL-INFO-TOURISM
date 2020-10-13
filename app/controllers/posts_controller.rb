@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   impressionist :actions=> [:show]
 
+
   def new
     @post = Post.new
   end
@@ -52,12 +53,12 @@ class PostsController < ApplicationController
 
   def hashtag
     @hashtag = Hashtag.find_by(hashname: params[:hashname])
-    @posts = @hashtag.posts
+    @posts = @hashtag.posts.order(created_at: :desc)
   end
 
   def category
     @category = Category.find_by(name: params[:name])
-    @posts = @category.posts
+    @posts = @category.posts.order(created_at: :desc)
   end
 
   private

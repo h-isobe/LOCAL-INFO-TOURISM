@@ -1,41 +1,107 @@
+
 <header>
-      
-        <div class="row">
-          <nav class="nav navbar-nav navbar-left">
-            <%= link_to root_path do %>
+  <%= link_to root_path do %>
+    <h1 class="headline">LOCAR INFO TOURISM</h1>
+  <% end %>
+
+  <% if user_signed_in? %>
+  <nav>
+    <ul class="nav-list"></ul>
+      <li class="nav-list-item">
+        <i class="fas fa-user">
+          <%= link_to 'マイページ', user_path(current_user.id) %>
+        </i>
+      </li>
+      <li class="nav-list-item">
+        <i class="fas fa-sign-out-alt">
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        </i>
+      </li>
+      <li class="nav-list-item">
+        <i class="far fa-newspaper">
+          <%= link_to '投稿一覧', posts_path %>
+        </i> 
+      </li>
+      <li class="nav-list-item">
+        <i class="fas fa-users">
+          <%= link_to '会員一覧', users_path %>
+        </i>
+      </li>
+      <li class="nav-list-item">
+        <i class="far fa-bell">
+          <%= link_to '通知', notifications_path %>
+        </i>
+      </li>
+        <% if user_signed_in? %>
+        <li class="nav-list-item">
+                  <%= form_tag(search_path, method: :get) do %>
+                    <%= text_field_tag 'search[content]' %>
+                    <%= select_tag 'search[model]', options_for_select({"ユーザー" => "user", "投稿内容(タグも可)" => "post", "都道府県" => "prefecture"}) %>
+                    <%= select_tag 'search[method]', options_for_select({"完全一致" => "perfect", "部分一致" => "partial" }) %>
+                    <%= submit_tag '検索' %>
+                  <% end %>
+            
+        </li>
+        <% end %>
+
+      <% else %>
+        <li class="nav-list-item">
+        <i class="fas fa-road">
+                  <%= link_to 'About', home_about_path %>
+                </i>
+        </li>
+        <li class="nav-list-item">
+                <i class="fas fa-user-plus">
+                  <%= link_to '新規登録', new_user_registration_path %>
+                </i>
+        </li>
+        <li class="nav-list-item">
+                <i class="fas fa-sign-in-alt">
+                  <%= link_to 'ログイン', new_user_session_path %>
+                </i>
+        </li>
+        <li class="nav-list-item">
+                <i class="fas fa-user-graduate">
+                  <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+                </i>
+        </li>
+  </nav>
+  <% end %>
+    </header>
+
+
+            <!--<%= link_to root_path do %>
               <h1 class="title">LOCAR INFO TOURISM</h1>
             <% end %>
-          </nav>
-
-          <nav class="nav navbar-nav navbar-right">
-            <ul>
-              <% if user_signed_in? %>
-              <span>
-                ようこそ、<%= current_user.name %>さん！
-              </span>
         
-              <li>
-                <i class="fas fa-user"></i>
-                <%= link_to 'マイページ', user_path(current_user.id) %> |
-              </li>
-              <li>
-                <i class="fas fa-sign-out-alt"></i>
-                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %> |
-              </li>
-              <li>
-                <i class="far fa-newspaper"></i> 
-                <%= link_to '投稿一覧', posts_path %> |
-              </li>
-              <li>
-                <i class="fas fa-users"></i>
-                <%= link_to '会員一覧', users_path %> |
-              </li>
-              <li>
-                <i class="far fa-bell"></i>
-                <%= link_to '通知', notifications_path %> |
-              </li>
-              <li>
-                <div class="search">
+
+          
+              <% if user_signed_in? %>
+            
+                ようこそ、<%= current_user.name %>さん！
+              
+                <i class="fas fa-user">
+                  <%= link_to 'マイページ', user_path(current_user.id) %>
+                </i>
+              
+                <i class="fas fa-sign-out-alt">
+                  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+                </i>
+              
+
+                <i class="far fa-newspaper">
+                  <%= link_to '投稿一覧', posts_path %>
+                </i> 
+              
+                <i class="fas fa-users">
+                  <%= link_to '会員一覧', users_path %>
+                </i>
+              
+                <i class="far fa-bell">
+                  <%= link_to '通知', notifications_path %>
+                </i>
+              
+            
                 <% if user_signed_in? %>
                   <%= form_tag(search_path, method: :get) do %>
                     <%= text_field_tag 'search[content]' %>
@@ -44,28 +110,25 @@
                     <%= submit_tag '検索' %>
                   <% end %>
                 <% end %>
-                </div>
-              </li>
+            
+              
             <% else %>
-              <li>
-                <i class="fas fa-road"></i>
-                <%= link_to 'About', home_about_path %>
-              </li>
-              <li>
-                <i class="fas fa-user-plus"></i>
-                <%= link_to '新規登録', new_user_registration_path %>
-              </li>
-              <li>
-                <i class="fas fa-sign-in-alt"></i>
-                <%= link_to 'ログイン', new_user_session_path %>
-              </li>
-              <li>
-                <i class="fas fa-user-graduate"></i>
-                <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
-              </li>
-            <% end %>
-            </ul>
-          </nav>
-      
-      
-    </header>
+            
+                <i class="fas fa-road">
+                  <%= link_to 'About', home_about_path %>
+                </i>
+              
+                <i class="fas fa-user-plus">
+                  <%= link_to '新規登録', new_user_registration_path %>
+                </i>
+              
+                <i class="fas fa-sign-in-alt">
+                  <%= link_to 'ログイン', new_user_session_path %>
+                </i>
+              
+                <i class="fas fa-user-graduate">
+                  <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
+                </i>
+              
+            <% end %>-->
+        

@@ -16,72 +16,80 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  
- * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   font-family: fantasy;
-   font-size: 15px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: fantasy;
+  font-size: 15px;
+  color: #6c6b6b;
  }
-
- /*ヘッダー*/
- header {
-   background-color: #f1f8f9;
-   height: 100px;
-   width: 100%;
-   .title {
-     padding-top: 10px;
-    }
-   /*ヘッダー固定*/
-   position:fixed;
-   top: 0;
-   left: 0;
-   z-index:9999;
- }
-
- nav {
-   line-height: 100px;
-   li {
-     float: left;
-     list-style: none;
-     padding-left: 10px;
-   }
- }
-
- .navbar-right {
-   span {
-     float: left;
-   }
- }
-
-/*ヘッダーと重なり阻止*/
-.content {
-  padding-top: 100px;
+ 
+a {
+  text-decoration: none;
+  color:olivedrab;
+  font-weight:bold;
+}
+a:hover {/*マウスが上に乗っている状態*/
+  color:#33CC00;
+  text-decoration:underline;
 }
 
-.wrapper{
-  min-height: 100vh;
-  position: relative;/*←相対位置*/
-  padding-bottom: 120px;/*←footerの高さ*/
-  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+/*ヘッター*/
+header {
+  width: 100%;
+  padding: 15px 0;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #FFFFBB;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
 }
 
+header .headline {
+  font-size: 32px;
+}
+
+
+
+.nav-list {
+  text-align: center;
+  padding: 10px 0;
+  margin: 0 auto;
+}
+.nav-list-item {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+
+
+/*フッター*/
+footer {
+  width: 100%;
+  height: 70px;
+  text-align: center;
+  line-height: 70px;
+  background-color: olive;
+}
+.footer-text {
+  color: #fff;
+}
+
+
+
+
+
+
+ 
 body {
   background-color: #f9f9f9;
-  color: #003366;
+  color: olive;
   font-family: fantasy;
 }
 
-footer{
-  /*footerの装飾*/
-  width: 100%;
-  height: 70px;
-  background-color: #f1f8f9;
-  text-align: center;
-  padding: 30px 0;
-  position: absolute;/*←絶対位置*/
-  bottom: 0; /*下に固定*/
-}
 
  /*投稿フォーム*/
  .field {
@@ -242,4 +250,94 @@ footer{
   background-color: #EEEEEE;
   border-radius: 10px;
   padding: 5px;
+}
+
+/**/
+.main-visual {
+  width: 100%; /* 横幅いっぱい */
+  height: 600px; /* 高さ300px */
+  
+  
+  background-size: cover;
+  background-position: center;
+}
+main {
+  width: 100%; /* 横幅いっぱい */
+  height: 900px; /* 高さ1400px（多めに設定） */
+  
+}
+
+
+
+/*トップページ*/
+
+
+.portfolio {
+  background-color: #ECEFF1;
+  height: 900px;
+}
+.portfolio-box {
+  width: 920px;
+  margin: 0 auto;
+}
+.portfolio-title {
+  font-size: 32px;
+  color: #000000;
+  text-align: center;
+  padding-top: 90px;
+}
+.portfolio-title::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  margin: 8px auto 0 auto;
+  background-color: #003366;
+}
+.portfolio-text {
+  font-size: 16px;
+  color: #000000;
+  text-align: center;
+  margin: 30px 0;
+}
+.portfolio-image-box {
+  display: flex;
+  flex-wrap: wrap;
+  width: 920px;
+  padding-bottom: 90px;
+}
+.image-box {
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  width: 300px;
+}
+.image-box:nth-child(1) {
+  background-image: url(富士山.jpg);
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.image-box:nth-child(2) {
+  background-image: url(神社.jpg);
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.image-box:nth-child(3) {
+  background-image: url(鉄人.jpg);
+  margin-bottom: 10px;
+}
+.image-box:nth-child(4) {
+  background-image: url(日本最南端の駅.jpg);
+  margin-right: 10px;
+}
+.image-box:nth-child(5) {
+  background-image: url(カフェ.jpg);
+  margin-right: 10px;
+}
+.image-box:nth-child(6) {
+  background-image: url(肉寿司.jpg);
+}
+
+.about-link {
+  text-align: right;
 }

@@ -4,7 +4,9 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    #@user = @users.where(id: current_user.id)
     @all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+    @categories = Category.all
   end
 
   def show

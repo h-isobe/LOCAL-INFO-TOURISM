@@ -1,3 +1,5 @@
+<div class="container">
+
 <div class="col-xs-3"></div>
 <div class="col-xs-6"></div>
 
@@ -10,7 +12,7 @@
 <% @entries.each do |e| %>
   <div class="user-name">
   <strong>
-    <%= attachment_image_tag e.user, :profile_image_id, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+    <%= attachment_image_tag e.user, :profile_image, :fill, 40, 40, format: 'jpg', fallback: "no_image.jpg" %>
       <a class="rooms-user-link" href="/users/<%= e.user.id %>">
         <%= e.user.name %>さん
       </a>
@@ -25,7 +27,7 @@
       <% @messages.each do |m| %>
         <div class="chat-box">
           <div class="chat-face">
-            <%= attachment_image_tag m.user, :profile_image_id, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %>
+            <%= attachment_image_tag m.user, :profile_image, :fill, 40, 40, format: 'jpg', fallback: "no_image.jpg" %>
           </div>
           <div class="chat-name">
             <%= m.user.name %>
@@ -51,6 +53,8 @@
       <%= f.submit "投稿",class: 'form-submit' %>
     <% end %>
   </div>
+</div>
+
 </div>
 
 </div>

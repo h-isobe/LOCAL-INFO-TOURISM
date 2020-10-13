@@ -1,4 +1,46 @@
-<h1>Home#top</h1>
-<p>Find me in app/views/home/top.html.erb</p>
+<div class="main-visual">
+  <div class="theTarget">
+      <div style="background-image: url(神社.jpg)"></div>
+      <div style="background-image: url(鉄人.jpg)"></div>
+      <div style="background-image: url(肉寿司.jpg)"></div>
+      <div style="background-image: url(富士山.jpg)"></div>
+      <div style="background-image: url(摩耶山.jpg)"></div>
+    </div>
+</div>
 
-<!--<%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>-->
+
+
+
+<main>
+
+    <div class="portfolio">
+      <div class="portfolio-box">
+        <div class="portfolio-title">
+          <h1>What? LOCAL INFO TOURISM <i class="far fa-hand-point-down fa-xs"></i></h1>
+        </div>
+        <div class="portfolio-text">
+          <p>観光客と地元民をつなぐ交流系の地域ローカル情報サイトです。</p>
+          <p>地元や旅行先のおすすめスポットや美味しかったグルメ情報をアピールしましょう！</p>
+          <p>旅行前に現地の情報が欲しい？質問してみましょう。誰かが反応してくれるかも？</p>
+        </div>
+        <div class="about-link">
+          <%= link_to home_about_path do %>
+            <p>
+              <i class="fas fa-angle-double-right">
+                使い方を詳しく見る？
+              </i>
+            </p>
+          <% end %>
+        </div>
+        <div class="portfolio-image-box">
+          <div class="image-box"></div>
+          <div class="image-box"></div>
+          <div class="image-box"></div>
+          <div class="image-box"></div>
+          <div class="image-box"></div>
+          <div class="image-box"></div>
+        </div>
+      </div>
+    </div>
+
+  </main>

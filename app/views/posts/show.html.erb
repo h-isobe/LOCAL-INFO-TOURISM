@@ -1,19 +1,47 @@
+<div class="container">
+
 <div class="col-xs-4">
   <div class="box1">
     <table style="border:none;">
       <tr>
+        
+        <td><%= attachment_image_tag @post.user, :profile_image, :fill, 320, 250, format: 'jpg', fallback: "no_image.jpg" %></td>
+        
+      </tr>
+      <tr>
         <td>
+          <%= link_to user_path(@post.user) do %>
           <i class="fas fa-user"></i>
           <%= @post.user.name %>
+          <% end %>
         </td>
       </tr>
-      <tr>
         <td><%= @post.user.introduction %></td>
-      </tr>
       <tr>
-        <td><%= attachment_image_tag @post.user, :profile_image, :fill, 320, 250, format: 'jpg', fallback: "no_image.jpg" %></td>
+        <td>
+          <%= link_to follower_path(@post.user) do %>
+            <%= @post.user.follower.count %> フォロー
+          <% end %>
+        
+          <%= link_to followed_path(@post.user) do %>
+            <%= @post.user.followed.count %> フォロワー
+          <% end %>
+        </td>
       </tr>
     </table>
+
+    <% if @post.user == current_user %>
+      <%= link_to "編集", edit_user_path(@post.user) %>
+    <% else %>
+      <% unless @post.user == current_user %>
+        <% if current_user.following(@post.user) %>
+          <%= link_to 'フォロー外す', unfollow_path(@post.user), method: :post %>
+        <% else %>
+          <%= link_to 'フォローする', follow_path(@post.user), method: :post %>
+        <% end %>
+      <% end %>
+    <% end %>
+    
   </div>
 </div>
 
@@ -21,13 +49,13 @@
   <div class="box1">
     <table style="border:none;">
       <tr>
+        <td><%= attachment_image_tag @post.user, :profile_image, :fill, 100,100, format: 'jpg', fallback: "no_image.jpg" %></td>
+      </tr>
+      <tr>
         <td>
           <i class="fas fa-user"></i>
           <%= @post.user.name %>
         </td>
-      </tr>
-      <tr>
-        <td><%= attachment_image_tag @post.user, :profile_image, :fill, 100,100, format: 'jpg', fallback: "no_image.jpg" %></td>
       </tr>
       <tr>
         <td><%= @post.title %></td>
@@ -46,12 +74,14 @@
         <td>
           <div class="text">
           <%= simple_format(@post.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "")) %>
-          </div>
             <% if @post.hashtags.any? %>
               <% @post.hashtags.each do |hashtag| %>
-                <p>#<%= hashtag.hashname %></p>
+                <%= link_to hashtag_path(@post,hashname: hashtag.hashname) do %>
+                  <p>#<%= hashtag.hashname %></p>
+                <% end %>
             <% end %>
           <% end %>
+          </div>
         </td>
       </tr>
       <tr>
@@ -72,13 +102,20 @@
             <i class="fa fa-comment"></i>
             <%= @post.post_comments.count %>
           <% end %>
+
+          <% if @post.user == current_user %>
+        
+          <i class="far fa-eye"></i>
+          <%= @post.impressionist_count %>
+        
+        <% end %>
         </td>
       </tr>
       <tr>
         <td>
 		      <% if @post.post_images.present? %>
             <% @post.post_images.each do |image| %>
-              <%= attachment_image_tag image, :image, :fill, 100, 100 %>
+              <%= attachment_image_tag image, :image, :fill, 700, 400 %>
             <% end %>
           <% end %>
 	     </td>
@@ -88,13 +125,8 @@
           <i class="far fa-calendar-alt"></i>
           <%= l @post.created_at %>
         </td>
-        <% if @post.user == current_user %>
-        <td>
-          <i class="far fa-eye"></i>
-          <%= @post.impressionist_count %>
-        </td>
-        <% end %>
       </tr>
+        
       <tr>
         <td>
           <% @post.post_comments.each do |post_comment| %>
@@ -112,15 +144,15 @@
       </tr>
     </table>
 
-    <div class="text-left">
-      <%= link_to "一覧へ戻る", posts_path %>
-    </div>
     <div class="text-right">
       <% if @post.user_id == current_user.id %>
         <%= link_to "編集", edit_post_path(@post.id) %>
         |
         <%= link_to "削除", post_path(@post.id), method: :delete, data: {confirm: "本当に消しますか？"} %>
       <% end %>
+    </div>
+    <div class="text-left">
+      <%= link_to "一覧へ戻る", posts_path %>
     </div>
   </div>
   
@@ -139,4 +171,6 @@
       <i class="fas fa-plus-circle fa-3x"></i>
     </p>
   <% end %>
+</div>
+
 </div>

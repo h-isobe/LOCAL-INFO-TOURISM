@@ -1,6 +1,13 @@
+<div class="container">
 <div class="col-xs-4">
   <div class="box1">
     <table style="border:none;">
+      <tr>
+        <td><%= attachment_image_tag @user, :profile_image, :fill, 320, 250, format: 'jpg', fallback: "no_image.jpg" %></td>
+      </tr>
+      <tr>
+        <td><%= @user.introduction %></td>
+      </tr>
       <tr>
         <td>
           <i class="fas fa-user"></i>
@@ -8,20 +15,11 @@
         </td>
       </tr>
       <tr>
-        <td><%= @user.introduction %></td>
-      </tr>
-      <tr>
-        <td><%= attachment_image_tag @user, :profile_image, :fill, 320, 250, format: 'jpg', fallback: "no_image.jpg" %></td>
-      </tr>
-      <tr>
         <td>
           <%= link_to follower_path(@user) do %>
             <%= @user.follower.count %> フォロー
           <% end %>
-        </td>
-      
-      
-        <td>
+        
           <%= link_to followed_path(@user) do %>
             <%= @user.followed.count %> フォロワー
           <% end %>
@@ -65,13 +63,13 @@
   <div class="box1">
    <table style="border:none;">
       <tr>
+        <td><%= attachment_image_tag post.user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %></td>
+      </tr>
+      <tr>
         <td>
           <i class="fas fa-user"></i>
           <%= post.user.name %>
         </td>
-      </tr>
-      <tr>
-        <td><%= attachment_image_tag post.user, :profile_image, :fill, 40, 40, format: 'jpg', fallback: "no_image.jpg" %></td>
       </tr>
       <tr>
         <td>
@@ -92,19 +90,23 @@
       </tr>
       <tr>
         <td>
+          <div class="text">
           <%= simple_format(post.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "")) %>
             <% if post.hashtags.any? %>
               <% post.hashtags.each do |hashtag| %>
-                <p>#<%= hashtag.hashname %></p>
+                <%= link_to hashtag_path(post,hashname: hashtag.hashname) do %>
+                  <p>#<%= hashtag.hashname %></p>
+                <% end %>
             <% end %>
           <% end %>
+          </div>
         </td>
       </tr>
       <tr>
         <td>
 		      <% if post.post_images.present? %>
             <% post.post_images.each do |image| %>
-              <%= attachment_image_tag image, :image, :fill, 100, 100 %>
+              <%= attachment_image_tag image, :image, :fill, 700, 400 %>
             <% end %>
           <% end %>
 	     </td>
@@ -114,10 +116,7 @@
           <i class="far fa-calendar-alt"></i>
           <%= l post.created_at %>
         </td>
-        <td>
-          <i class="far fa-eye"></i>
-          <%= post.impressionist_count %>
-        </td>
+        
       </tr>
       <tr>
         <td>
@@ -132,14 +131,16 @@
                 <%= post.favorites.count %>
               <% end %>
             <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>
+
           <%= link_to post_path(post.id) do %>
             <i class="fa fa-comment"></i>
             <%= post.post_comments.count %>
           <% end %>
+
+        
+          <i class="far fa-eye"></i>
+          <%= post.impressionist_count %>
+        
         </td>
       </tr>
     </table>
@@ -153,4 +154,5 @@
       <i class="fas fa-plus-circle fa-3x"></i>
     </p>
   <% end %>
+</div>
 </div>
