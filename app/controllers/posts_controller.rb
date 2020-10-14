@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.page(params[:page]).reverse_order
     @all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
     @categories = Category.all
   end
@@ -70,12 +70,12 @@ class PostsController < ApplicationController
 
   def hashtag
     @hashtag = Hashtag.find_by(hashname: params[:hashname])
-    @posts = @hashtag.posts.order(created_at: :desc)
+    @posts = @hashtag.posts.page(params[:page]).reverse_order
   end
 
   def category
     @category = Category.find_by(name: params[:name])
-    @posts = @category.posts.order(created_at: :desc)
+    @posts = @category.posts.page(params[:page]).reverse_order
     @categories = Category.all
   end
 

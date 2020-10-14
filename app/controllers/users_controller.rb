@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, {only: [:edit]}
 
   def index
-    @users = User.all
+    @users = User.page(params[:page]).reverse_order
     #@user = @users.where(id: current_user.id)
     @all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
     @categories = Category.all
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
         @entry = Entry.new
       end
     end
-    @posts = @user.posts.order(created_at: :desc)
+    @posts = @user.posts.page(params[:page]).reverse_order
   end
 
   def edit
