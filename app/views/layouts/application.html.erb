@@ -8,28 +8,22 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/b5fa4724ff.js" crossorigin="anonymous"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="skippr.scss">
-    <link rel="stylesheet" href="application.scss">
+    <link rel="stylesheet" href="skippr.css">
+    <link rel="stylesheets" href="css/style.scss">
   </head>
 
   <body>
 
     <%= render partial: 'layouts/header' %>
     
-    
-      <div class="flash">
-      <%= render partial: 'layouts/flash' %>
+      <div class="flash-content">
+        <%= render partial: 'layouts/flash' %>
       </div>
         
-        
-        <%= yield %>
+      <%= yield %>
       
+      <%= render partial: 'layouts/footer' %>
     
-
-    <%= render partial: 'layouts/footer' %>
-    
-    </div>
-
     <script src="javascripts/jquery.min.js"></script>
     <script src="javascripts/skippr.min.js"></script>
     <script src="javascripts/script.js"></script>

@@ -1,20 +1,21 @@
 <div class="container">
-<div class="col-xs-4">
-  <div class="box2">
-    <div class="box-title">人気投稿ランキング</div>
-    <ul class="list_crown">
-      <% @all_ranks.each.with_index(1) do |rank, i| %>
-       <li>
-          <%= link_to post_path(rank) do %>
-            第<%= i %>位<br>
-            <%= rank.title %>
+  <div class="col-xs-4">
+    <div class="box2">
+      <div class="box-title">Ranking</div>
+        <ul class="list_crown">
+          <% @all_ranks.each.with_index(1) do |rank, i| %>
+            <li>
+              <%= link_to post_path(rank) do %>
+                第<%= i %>位<br>
+                <%= rank.title %>
+              <% end %>
+            </li>
           <% end %>
-        </li>
-      <% end %>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 
-<%= render 'users/index' , users: @users %>
+  <%= render 'users/index' , users: @users %>
 
 </div>

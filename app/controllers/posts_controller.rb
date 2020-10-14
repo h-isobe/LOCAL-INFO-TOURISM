@@ -28,6 +28,23 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     impressionist(@post)
+    @currentUserEntry=Entry.where(user_id: current_user.id)
+    @userEntry=Entry.where(user_id: @post.user.id)
+    unless @post.user.id == current_user.id
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id then #ルームが作成済みかどうかの条件分岐
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
+      if @isRoom
+      else
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
 
   def edit
@@ -59,6 +76,7 @@ class PostsController < ApplicationController
   def category
     @category = Category.find_by(name: params[:name])
     @posts = @category.posts.order(created_at: :desc)
+    @categories = Category.all
   end
 
   private

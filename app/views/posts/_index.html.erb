@@ -1,4 +1,3 @@
-
 <div class="col-xs-8">
   <% posts.each do |post| %>
     <div class="box1">
@@ -26,13 +25,9 @@
             <%= post.prefecture %></td>
           </td>
         </tr>
-        </tr>
-        </tr>
-        <tr>
-        </tr>
         <tr>
           <td>
-            目的：
+            カテゴリー：
             <% post.categories.each do |category| %>
               <%= category.name %>
             <% end %>
@@ -46,9 +41,11 @@
             <!--4.postにタグがあればタグを出力する-->
             <% if post.hashtags.any? %>
               <% post.hashtags.each do |hashtag| %>
-                <%= link_to hashtag_path(post,hashname: hashtag.hashname) do %>
-                  <p>#<%= hashtag.hashname %></p>
-                <% end %>
+                <span>
+                  <%= link_to hashtag_path(post,hashname: hashtag.hashname) do %>
+                    #<%= hashtag.hashname %>
+                  <% end %>
+                </span>
               <% end %>
             <% end %>
             </div>

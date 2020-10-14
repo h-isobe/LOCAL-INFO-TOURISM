@@ -1,58 +1,59 @@
 <div class="container">
-<div class="col-xs-3"></div>
-<div class="col-xs-6">
 
-  <div class="errors">
+  <div class="col-xs-3"></div>
+  <div class="col-xs-6">
+
+    <div class="errors">
+      <%= form_with model: @post, local: true do |f| %>
+        <% if @post.errors.any? %>
+          <%= @post.errors.count %>件のエラーが発生しました
+          <% @post.errors.full_messages.each do |message| %>
+            <%= message %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  
+    <div class="sub-post-text">
+      <p class="text-center">
+        旅先の感想やお出かけ前に気になることを自由に投稿してみましょう
+        <i class="fas fa-plane-departure"></i>
+      </p>
+    </div>
+
     <%= form_with model: @post, local: true do |f| %>
-      <% if @post.errors.any? %>
-        <%= @post.errors.count %>件のエラーが発生しました
-        <% @post.errors.full_messages.each do |message| %>
-          <%= message %>
+      <div class="field row">
+        <%= f.label :タイトル %>
+        <%= f.text_field :title, class: "form-control", placeholder:"タイトル" %>
+      </div>
+      <div class="field row">
+        <%= f.label :prefecture, '都道府県' %><br>
+        <%= f.select :prefecture, Post.prefectures.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture'%>
+      </div>
+      <div class="field row">
+        <%= f.label :category, 'カテゴリー' %><br>
+        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %> 
+          <%= category.label do %>
+            <%= category.check_box %>
+            <%= category.text %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
+      <div class="field row">
+        <%= f.label :投稿内容 %>
+        <%= f.text_area :body, class: "form-control", placeholder:"投稿内容" %>
+      </div>
+      <div class="field row">
+        <%= f.label :画像選択 %>(複数可能)
+        <%= f.attachment_field :post_images_images, multiple:true %>
+      </div>
+      <div class="field row">
+        <%= f.submit "編集", class: "btn btn-primary btn-block" %>
+      </div>
     <% end %>
-  </div>
   
-  <div class="sub-post-text">
-    <p class="text-center">
-      旅先の感想やお出かけ前に気になることを自由に投稿してみましょう
-      <i class="fas fa-plane-departure"></i>
-    </p>
+    <%= link_to "戻る", post_path(@post) %>
+
   </div>
-
-  <%= form_with model: @post, local: true do |f| %>
-    <div class="field row">
-      <%= f.label :タイトル %>
-      <%= f.text_field :title, class: "form-control", placeholder:"タイトル" %>
-    </div>
-    <div class="field row">
-      <%= f.label :prefecture, '都道府県' %><br>
-      <%= f.select :prefecture, Post.prefectures.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture'%>
-    </div>
-    <div class="field row">
-      <%= f.label :category, 'カテゴリー' %><br>
-      <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %> 
-        <%= category.label do %>
-          <%= category.check_box %>
-          <%= category.text %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="field row">
-      <%= f.label :投稿内容 %>
-      <%= f.text_area :body, class: "form-control", placeholder:"投稿内容" %>
-    </div>
-    <div class="field row">
-      <%= f.label :画像選択 %>(複数可能)
-      <%= f.attachment_field :post_images_images, multiple:true %>
-    </div>
-    <div class="field row">
-      <%= f.submit "編集", class: "btn btn-primary btn-block" %>
-    </div>
-  <% end %>
-  
-  <%= link_to "戻る", post_path(@post) %>
-
-</div>
 
 </div>

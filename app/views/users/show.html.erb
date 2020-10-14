@@ -1,126 +1,126 @@
 <div class="container">
-<div class="col-xs-4">
-  <div class="box1">
-    <table style="border:none;">
-      <tr>
-        <td><%= attachment_image_tag @user, :profile_image, :fill, 320, 250, format: 'jpg', fallback: "no_image.jpg" %></td>
-      </tr>
-      <tr>
-        <td><%= @user.introduction %></td>
-      </tr>
-      <tr>
-        <td>
-          <i class="fas fa-user"></i>
-          <%= @user.name %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= link_to follower_path(@user) do %>
-            <%= @user.follower.count %> フォロー
-          <% end %>
-        
-          <%= link_to followed_path(@user) do %>
-            <%= @user.followed.count %> フォロワー
-          <% end %>
-        </td>
-      </tr>
-    </table>
+  <div class="col-xs-4">
+    <div class="box1">
+      <table style="border:none;">
+        <tr>
+          <td><%= attachment_image_tag @user, :profile_image, :fill, 320, 250, format: 'jpg', fallback: "no_image.jpg" %></td>
+        </tr>
+        <tr>
+          <td>
+            <i class="fas fa-user">
+              <%= @user.name %>
+            </i>
+          </td>
+        </tr>
+        <tr>
+          <td><%= @user.introduction %></td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to follower_path(@user) do %>
+              <%= @user.follower.count %> フォロー
+            <% end %>
+            <%= link_to followed_path(@user) do %>
+              <%= @user.followed.count %> フォロワー
+            <% end %>
+          </td>
+        </tr>
+      </table>
 
-    <% if @user == current_user %>
-      <%= link_to "編集", edit_user_path(@user) %>
-    <% else %>
-      <% unless @user == current_user %>
-        <% if current_user.following(@user) %>
-          <%= link_to 'フォロー外す', unfollow_path(@user), method: :post %>
-        <% else %>
-          <%= link_to 'フォローする', follow_path(@user), method: :post %>
-        <% end %>
-      <% end %>
-    <% end %>
-
-    <!--チャット-->
-    <% unless @user.id == current_user.id %>
-      
-      <% if @isRoom == true %>
-        <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-info">チャットへ</a>
+      <% if @user == current_user %>
+        <%= link_to "編集", edit_user_path(@user) %>
       <% else %>
-        <%= form_for @room do |f| %>
-          <%= fields_for @entry do |e| %>
-            <%= e.hidden_field :user_id, value: @user.id %>
+        <% unless @user == current_user %>
+          <% if current_user.following(@user) %>
+            <%= link_to 'フォロー外す', unfollow_path(@user), method: :post, class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to 'フォローする', follow_path(@user), method: :post, class: "btn btn-primary" %>
           <% end %>
-          <%= f.submit "チャットを始める", class:"btn btn-info user-show-chat"%>
         <% end %>
       <% end %>
-      
-    <% end %>
 
+      <!--チャット-->
+      <% unless @user.id == current_user.id %>
+        <% if @isRoom == true %>
+          <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-info">チャットへ</a>
+        <% else %>
+          <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, value: @user.id %>
+            <% end %>
+            <%= f.submit "チャットを始める", class:"btn btn-info user-show-chat"%>
+          <% end %>
+        <% end %>      
+      <% end %>
+    </div>
   </div>
-</div>
 
-<div class="col-xs-8">
-  <% @posts.each do |post| %>
-  <div class="box1">
-   <table style="border:none;">
-      <tr>
-        <td><%= attachment_image_tag post.user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %></td>
-      </tr>
-      <tr>
-        <td>
-          <i class="fas fa-user"></i>
-          <%= post.user.name %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= link_to post_path(post) do %>
-            <%= post.title %>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td><%= post.prefecture %></td>
-      </tr>
-      <tr>
-        <td>
-          <% post.categories.each do |category| %>
-            <%= category.name %>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="text">
-          <%= simple_format(post.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "")) %>
-            <% if post.hashtags.any? %>
-              <% post.hashtags.each do |hashtag| %>
-                <%= link_to hashtag_path(post,hashname: hashtag.hashname) do %>
-                  <p>#<%= hashtag.hashname %></p>
+  <div class="col-xs-8">
+    <% @posts.each do |post| %>
+    <div class="box1">
+      <table style="border:none;">
+        <tr>
+          <td><%= attachment_image_tag post.user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %></td>
+        </tr>
+        <tr>
+          <td>
+            <i class="fas fa-user">
+              <%= post.user.name %>
+            </i>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to post_path(post) do %>
+              <%= post.title %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= post.prefecture %></td>
+        </tr>
+        <tr>
+          <td>
+            <% post.categories.each do |category| %>
+              <%= category.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="text">
+              <%= simple_format(post.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "")) %>
+              <% if post.hashtags.any? %>
+                <% post.hashtags.each do |hashtag| %>
+                  <span>
+                    <%= link_to hashtag_path(post,hashname: hashtag.hashname) do %>
+                      #<%= hashtag.hashname %>
+                    <% end %>
+                  </span>
                 <% end %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+		        <% if post.post_images.present? %>
+              <% post.post_images.each do |image| %>
+                <%= attachment_image_tag image, :image, :fill, 700, 400 %>
+              <% end %>
             <% end %>
-          <% end %>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-		      <% if post.post_images.present? %>
-            <% post.post_images.each do |image| %>
-              <%= attachment_image_tag image, :image, :fill, 700, 400 %>
-            <% end %>
-          <% end %>
-	     </td>
-      </tr>
-      <tr>
-        <td>
-          <i class="far fa-calendar-alt"></i>
-          <%= l post.created_at %>
-        </td>
-        
-      </tr>
-      <tr>
-        <td>
-          <% if post.favorited_by?(current_user) %>
+	        </td>
+        </tr>
+        <tr>
+          <td>
+            <i class="far fa-calendar-alt">
+              <%= l post.created_at %>
+            </i>
+          </td>  
+        </tr>
+        <tr>
+          <td>
+            <% if post.favorited_by?(current_user) %>
               <%= link_to post_favorites_path(post), method: :delete do %>
                 <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
                 <%= post.favorites.count %>
@@ -132,27 +132,25 @@
               <% end %>
             <% end %>
 
-          <%= link_to post_path(post.id) do %>
-            <i class="fa fa-comment"></i>
-            <%= post.post_comments.count %>
-          <% end %>
+            <%= link_to post_path(post.id) do %>
+              <i class="fa fa-comment"></i>
+              <%= post.post_comments.count %>
+            <% end %>
 
-        
-          <i class="far fa-eye"></i>
-          <%= post.impressionist_count %>
-        
-        </td>
-      </tr>
-    </table>
+            <i class="far fa-eye"></i>
+            <%= post.impressionist_count %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
 
-<div class="new-post-form">
-  <%= link_to new_post_path do %>
-    <p class="text-right">
-      <i class="fas fa-plus-circle fa-3x"></i>
-    </p>
-  <% end %>
-</div>
+  <div class="new-post-form">
+    <%= link_to new_post_path do %>
+      <p class="text-right">
+        <i class="fas fa-plus-circle fa-3x"></i>
+      </p>
+    <% end %>
+  </div>
 </div>

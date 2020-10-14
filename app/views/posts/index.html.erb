@@ -1,42 +1,42 @@
 <div class="container">
 
-<div class="col-xs-4">
-  <div class="box2">
-    <div class="box-title">カテゴリー一覧</div>
-    <ul class="list-category">
-      <% @categories.each do |category| %>
-        <li>
-          <%= link_to category_path(@post, name: category.name) do %>
-            <%= category.name %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+  <div class="col-xs-4">
+    <div class="box2">
+      <div class="box-title">Category</div>
+      <ul class="list-category">
+        <% @categories.each do |category| %>
+          <li>
+            <%= link_to category_path(@post, name: category.name) do %>
+              <%= category.name %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 
-  <div class="box2">
-    <div class="box-title">人気投稿ランキング</div>
-    <ul class="list_crown">
-      <% @all_ranks.each.with_index(1) do |rank, i| %>
-       <li>
-          <%= link_to post_path(rank) do %>
-            第<%= i %>位<br>
-            <%= rank.title %>
-          <% end %>
-        </li>
-      <% end %>
+    <div class="box2">
+      <div class="box-title">Ranking</div>
+      <ul class="list_crown">
+        <% @all_ranks.each.with_index(1) do |rank, i| %>
+         <li>
+            <%= link_to post_path(rank) do %>
+              第<%= i %>位<br>
+              <%= rank.title %>
+            <% end %>
+          </li>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
-<%= render 'posts/index' , posts: @posts %>
+  <%= render 'posts/index' , posts: @posts %>
 
-<div class="new-post-form">
-  <%= link_to new_post_path do %>
-    <p class="text-right">
-    <i class="fas fa-plus-circle fa-3x"></i>
-    </p>
-  <% end %>
-</div>
+  <div class="new-post-form">
+    <%= link_to new_post_path do %>
+      <p class="text-right">
+      <i class="fas fa-plus-circle fa-3x"></i>
+      </p>
+    <% end %>
+  </div>
 
 </div>

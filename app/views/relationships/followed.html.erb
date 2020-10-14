@@ -1,36 +1,79 @@
-<h2>フォロワー一覧</h2>
+<h2 class="text-center">フォロワー一覧</h2>
 
-<% if @users.count > 0 %>
-<% @users.each do |user| %>
-
-  <div class="col-xs-8">
+<div class="container">
+  <div class="col-xs-4">
     <div class="box1">
       <table style="border:none;">
         <tr>
-          <td><%= attachment_image_tag user, :profile_image_id, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %></td>
+          <td><%= attachment_image_tag @user, :profile_image, :fill, 320, 250, format: 'jpg', fallback: "no_image.jpg" %></td>
+        </tr>
+        <tr>
+          <td><%= @user.introduction %></td>
         </tr>
         <tr>
           <td>
-            <%= link_to user_path(user) do %>
-            <%= user.name %>
-            <% end %>
+            <i class="fas fa-user">
+              <%= @user.name %>
+            </i>
           </td>
         </tr>
         <tr>
-          <td><%= user.introduction %></td>
-        </tr>
-        <tr>
-          <td><%= user.follower.count %>フォロー</td>
-        </tr>
-        <tr>
-          <td><%= user.followed.count %>フォロワー</td>
+          <td>
+            <%= link_to follower_path(@user) do %>
+              <%= @user.follower.count %> フォロー
+            <% end %>
+            <%= link_to followed_path(@user) do %>
+              <%= @user.followed.count %> フォロワー
+            <% end %>
+          </td>
         </tr>
       </table>
+
+      <% if @user == current_user %>
+        <%= link_to "編集", edit_user_path(@user) %>
+      <% else %>
+        <% unless @user == current_user %>
+          <% if current_user.following(@user) %>
+            <%= link_to 'フォロー外す', unfollow_path(@user), method: :post %>
+          <% else %>
+            <%= link_to 'フォローする', follow_path(@user), method: :post %>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 
-<% end %>
+  <% if @users.count > 0 %>
+    <% @users.each do |user| %>
 
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+    <div class="col-xs-8">
+      <div class="box1">
+        <table style="border:none;">
+          <tr>
+            <td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %></td>
+          </tr>
+          <tr>
+            <td>
+              <%= link_to user_path(user) do %>
+                <%= user.name %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td><%= user.introduction %></td>
+          </tr>
+          <tr>
+            <td><%= user.follower.count %>フォロー</td>
+            <td><%= user.followed.count %>フォロワー</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <% end %>
+
+  <% else %>
+    <p>ユーザーはいません</p>
+  <% end %>
+
+</div>

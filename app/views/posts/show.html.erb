@@ -1,176 +1,185 @@
 <div class="container">
 
-<div class="col-xs-4">
-  <div class="box1">
-    <table style="border:none;">
-      <tr>
-        
-        <td><%= attachment_image_tag @post.user, :profile_image, :fill, 320, 250, format: 'jpg', fallback: "no_image.jpg" %></td>
-        
-      </tr>
-      <tr>
-        <td>
-          <%= link_to user_path(@post.user) do %>
-          <i class="fas fa-user"></i>
-          <%= @post.user.name %>
-          <% end %>
-        </td>
-      </tr>
-        <td><%= @post.user.introduction %></td>
-      <tr>
-        <td>
-          <%= link_to follower_path(@post.user) do %>
-            <%= @post.user.follower.count %> フォロー
-          <% end %>
-        
-          <%= link_to followed_path(@post.user) do %>
-            <%= @post.user.followed.count %> フォロワー
-          <% end %>
-        </td>
-      </tr>
-    </table>
-
-    <% if @post.user == current_user %>
-      <%= link_to "編集", edit_user_path(@post.user) %>
-    <% else %>
-      <% unless @post.user == current_user %>
-        <% if current_user.following(@post.user) %>
-          <%= link_to 'フォロー外す', unfollow_path(@post.user), method: :post %>
-        <% else %>
-          <%= link_to 'フォローする', follow_path(@post.user), method: :post %>
-        <% end %>
-      <% end %>
-    <% end %>
-    
-  </div>
-</div>
-
-<div class="col-xs-8">
-  <div class="box1">
-    <table style="border:none;">
-      <tr>
-        <td><%= attachment_image_tag @post.user, :profile_image, :fill, 100,100, format: 'jpg', fallback: "no_image.jpg" %></td>
-      </tr>
-      <tr>
-        <td>
-          <i class="fas fa-user"></i>
-          <%= @post.user.name %>
-        </td>
-      </tr>
-      <tr>
-        <td><%= @post.title %></td>
-      </tr>
-      <tr>
-        <td><%= @post.prefecture %></td>
-      </tr>
-      <tr>
-        <td>
-          <% @post.categories.each do |category| %>
-            <%= category.name %>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="text">
-          <%= simple_format(@post.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "")) %>
-            <% if @post.hashtags.any? %>
-              <% @post.hashtags.each do |hashtag| %>
-                <%= link_to hashtag_path(@post,hashname: hashtag.hashname) do %>
-                  <p>#<%= hashtag.hashname %></p>
-                <% end %>
+  <div class="col-xs-4">
+    <div class="box1">
+      <table style="border:none;">
+        <tr>
+          <td><%= attachment_image_tag @post.user, :profile_image, :fill, 320, 250, format: 'jpg', fallback: "no_image.jpg" %></td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to user_path(@post.user) do %>
+            <i class="fas fa-user"></i>
+            <%= @post.user.name %>
             <% end %>
-          <% end %>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <% if @post.favorited_by?(current_user) %>
-            <%= link_to post_favorites_path(@post), method: :delete do %>
-              <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-              <%= @post.favorites.count %>
+          </td>
+        </tr>
+          <td><%= @post.user.introduction %></td>
+        <tr>
+          <td>
+            <%= link_to follower_path(@post.user) do %>
+              <%= @post.user.follower.count %> フォロー
             <% end %>
+            <%= link_to followed_path(@post.user) do %>
+              <%= @post.user.followed.count %> フォロワー
+            <% end %>
+          </td>
+        </tr>
+      </table>
+
+      <% if @post.user == current_user %>
+        <%= link_to "編集", edit_user_path(@post.user) %>
+      <% else %>
+        <% unless @post.user == current_user %>
+          <% if current_user.following(@post.user) %>
+            <%= link_to 'フォロー外す', unfollow_path(@post.user), method: :post, class: "btn btn-primary" %>
           <% else %>
-            <%= link_to post_favorites_path(@post), method: :post do %>
-              <i class="fa fa-heart-o" aria-hidden="true"></i>
-              <%= @post.favorites.count %>
-            <% end %>
+            <%= link_to 'フォローする', follow_path(@post.user), method: :post, class: "btn btn-primary" %>
           <% end %>
-
-          <%= link_to post_path(@post.id) do %>
-            <i class="fa fa-comment"></i>
-            <%= @post.post_comments.count %>
-          <% end %>
-
-          <% if @post.user == current_user %>
-        
-          <i class="far fa-eye"></i>
-          <%= @post.impressionist_count %>
-        
         <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-		      <% if @post.post_images.present? %>
-            <% @post.post_images.each do |image| %>
-              <%= attachment_image_tag image, :image, :fill, 700, 400 %>
-            <% end %>
-          <% end %>
-	     </td>
-      </tr>
-      <tr>
-        <td>
-          <i class="far fa-calendar-alt"></i>
-          <%= l @post.created_at %>
-        </td>
-      </tr>
-        
-      <tr>
-        <td>
-          <% @post.post_comments.each do |post_comment| %>
-            <%= attachment_image_tag post_comment.user, :profile_image, :fill, 40, 40, format: 'jpg', fallback: "no_image.jpg" %>
-            <%= post_comment.user.name %><br>
-            <div class="text">
-              <%= post_comment.comment %><br>
-            </div>
-            <%= l post_comment.created_at %>
-            <% if post_comment.user == current_user %>
-            <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger pull-right" %>
-            <% end %>
-          <% end %>
-        </td>
-      </tr>
-    </table>
-
-    <div class="text-right">
-      <% if @post.user_id == current_user.id %>
-        <%= link_to "編集", edit_post_path(@post.id) %>
-        |
-        <%= link_to "削除", post_path(@post.id), method: :delete, data: {confirm: "本当に消しますか？"} %>
       <% end %>
-    </div>
-    <div class="text-left">
-      <%= link_to "一覧へ戻る", posts_path %>
+
+      <% unless @post.user.id == current_user.id %>
+        <% if @isRoom == true %>
+          <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-info">チャットへ</a>
+        <% else %>
+          <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, value: @user.id %>
+            <% end %>
+            <%= f.submit "チャットを始める", class:"btn btn-info user-show-chat"%>
+          <% end %>
+        <% end %>      
+      <% end %>
+    
     </div>
   </div>
+
+  <div class="col-xs-8">
+    <div class="box1">
+      <table style="border:none;">
+        <tr>
+          <td><%= attachment_image_tag @post.user, :profile_image, :fill, 100,100, format: 'jpg', fallback: "no_image.jpg" %></td>
+        </tr>
+        <tr>
+          <td>
+            <i class="fas fa-user"></i>
+            <%= @post.user.name %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= @post.title %></td>
+        </tr>
+        <tr>
+          <td><%= @post.prefecture %></td>
+        </tr>
+        <tr>
+          <td>
+            <% @post.categories.each do |category| %>
+              <%= category.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="text">
+              <%= simple_format(@post.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "")) %>
+              <% if @post.hashtags.any? %>
+                <% @post.hashtags.each do |hashtag| %>
+                  <span>
+                    <%= link_to hashtag_path(@post,hashname: hashtag.hashname) do %>
+                      #<%= hashtag.hashname %>
+                    <% end %>
+                  </span>
+                <% end %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <% if @post.favorited_by?(current_user) %>
+              <%= link_to post_favorites_path(@post), method: :delete do %>
+                <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                <%= @post.favorites.count %>
+              <% end %>
+            <% else %>
+              <%= link_to post_favorites_path(@post), method: :post do %>
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <%= @post.favorites.count %>
+              <% end %>
+            <% end %>
+
+            <%= link_to post_path(@post.id) do %>
+              <i class="fa fa-comment"></i>
+              <%= @post.post_comments.count %>
+            <% end %>
+
+            <% if @post.user == current_user %>
+              <i class="far fa-eye"></i>
+              <%= @post.impressionist_count %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+		        <% if @post.post_images.present? %>
+              <% @post.post_images.each do |image| %>
+                <%= attachment_image_tag image, :image, :fill, 700, 400 %>
+              <% end %>
+            <% end %>
+	        </td>
+        </tr>
+        <tr>
+          <td>
+            <i class="far fa-calendar-alt"></i>
+            <%= l @post.created_at %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <% @post.post_comments.each do |post_comment| %>
+              <%= attachment_image_tag post_comment.user, :profile_image, :fill, 40, 40, format: 'jpg', fallback: "no_image.jpg" %>
+              <%= post_comment.user.name %><br>
+              <div class="text">
+                <%= post_comment.comment %><br>
+              </div>
+              <%= l post_comment.created_at %>
+              <% if post_comment.user == current_user %>
+                <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger pull-right" %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+
+      <div class="text-right">
+        <% if @post.user_id == current_user.id %>
+          <%= link_to "編集", edit_post_path(@post.id) %>
+          |
+          <%= link_to "削除", post_path(@post.id), method: :delete, data: {confirm: "本当に消しますか？"} %>
+        <% end %>
+      </div>
+      <div class="text-left">
+        <%= link_to "一覧へ戻る", posts_path %>
+      </div>
+    </div>
   
   <!--コメント入力欄-->
-  <%= form_with model: [@post, @post_comment] do |f| %>
-    <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
-    <%= f.submit "送信", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-  <% end %>
+    <%= form_with model: [@post, @post_comment] do |f| %>
+      <%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+      <%= f.submit "送信", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+    <% end %>
 
-</div>
+  </div>
 
 
-<div class="new-post-form">
-  <%= link_to new_post_path do %>
-    <p class="text-right">
-      <i class="fas fa-plus-circle fa-3x"></i>
-    </p>
-  <% end %>
-</div>
+  <div class="new-post-form">
+    <%= link_to new_post_path do %>
+      <p class="text-right">
+        <i class="fas fa-plus-circle fa-3x"></i>
+      </p>
+    <% end %>
+  </div>
 
 </div>

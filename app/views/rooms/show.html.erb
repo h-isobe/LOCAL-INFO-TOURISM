@@ -1,52 +1,50 @@
 <div class="container">
 
-<div class="col-xs-3"></div>
-<div class="col-xs-6"></div>
-
-<div class="chat-room">
-  <h2 class="text-center">〜チャットルーム〜</h2>
-</div>
-
-<%= link_to "ユーザー一覧へ戻る", users_path, class: "btn btn-info" %>
-
-<% @entries.each do |e| %>
-  <div class="user-name">
-  <strong>
-    <%= attachment_image_tag e.user, :profile_image, :fill, 40, 40, format: 'jpg', fallback: "no_image.jpg" %>
-      <a class="rooms-user-link" href="/users/<%= e.user.id %>">
-        <%= e.user.name %>さん
-      </a>
-  </strong>
+  <div class="chat-room">
+    <h2 class="text-center">〜チャットルーム〜</h2>
   </div>
-<% end %>
-<hr>
-<div class="chats">
-  <div class="chat">
-    <% if @messages.present? %>
-    <div class="message" style="width: 400px;">
-      <% @messages.each do |m| %>
-        <div class="chat-box">
-          <div class="chat-face">
-            <%= attachment_image_tag m.user, :profile_image, :fill, 40, 40, format: 'jpg', fallback: "no_image.jpg" %>
-          </div>
-          <div class="chat-name">
-            <%= m.user.name %>
-          </div>
-          
-          <div class="chat-content">
-            <% if m.user_id == current_user.id %>
-              <p style="text-right;"><%= m.content %></p>
-            <% else %>
-              <p style="text-left;"><%= m.content %></p>
-            <% end %>
-          </div>
 
-        </div>
-      <% end %>
-    </div>
+  <p>
+    <%= link_to "ユーザー一覧へ戻る", users_path, class: "btn btn-info" %>
+  </p>
+
+  <% @entries.each do |e| %>
+    <strong>
+      <%= attachment_image_tag e.user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %>
+      <div class="user-name">
+        <a class="rooms-user-link" href="/users/<%= e.user.id %>">
+          <%= e.user.name %>さん
+        </a>
+      </div>
+    </strong>
+  <% end %>
+  <hr>
+  <div class="chats">
+    <div class="chat">
+      <% if @messages.present? %>
+      <div class="message" style="width: 400px;">
+        <% @messages.each do |m| %>
+          <div class="chat-box">
+            <div class="chat-face">
+              <%= attachment_image_tag m.user, :profile_image, :fill, 60, 60, format: 'jpg', fallback: "no_image.jpg" %>
+            </div>
+            <div class="chat-name">
+              <%= m.user.name %>
+            </div>
+            <div class="chat-content">
+              <% if m.user_id == current_user.id %>
+                <p style="text-right;" class="text"><%= m.content %></p>
+              <% else %>
+                <p style="text-left;" class="text"><%= m.content %></p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
-  <div class="posts">
+
+  <div class="posts-chat">
     <%= form_for @message do |f| %>
       <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
       <%= f.hidden_field :room_id, value: @room.id %>
@@ -57,7 +55,9 @@
 
 </div>
 
-</div>
+
+
+
 
 
 

@@ -37,6 +37,7 @@ a:hover {/*マウスが上に乗っている状態*/
 
 /*ヘッター*/
 header {
+  height: 130px;
   width: 100%;
   padding: 15px 0;
   margin: 0 auto;
@@ -51,7 +52,9 @@ header .headline {
   font-size: 32px;
 }
 
-
+.flash-content {
+  padding-top: 130px;
+}
 
 .nav-list {
   text-align: center;
@@ -63,8 +66,6 @@ header .headline {
   display: inline-block;
   margin: 0 20px;
 }
-
-
 
 /*フッター*/
 footer {
@@ -78,18 +79,11 @@ footer {
   color: #fff;
 }
 
-
-
-
-
-
- 
 body {
   background-color: #f9f9f9;
   color: olive;
   font-family: fantasy;
 }
-
 
  /*投稿フォーム*/
  .field {
@@ -247,17 +241,17 @@ body {
 }
 
 .text {
+  width: 700px;
   background-color: #EEEEEE;
   border-radius: 10px;
   padding: 5px;
 }
 
-/**/
+/*トップページ*/
 .main-visual {
   width: 100%; /* 横幅いっぱい */
-  height: 600px; /* 高さ300px */
-  
-  
+  height: 636px; /* 高さ300px */
+  background-image: url(摩耶山.jpg);
   background-size: cover;
   background-position: center;
 }
@@ -266,11 +260,6 @@ main {
   height: 900px; /* 高さ1400px（多めに設定） */
   
 }
-
-
-
-/*トップページ*/
-
 
 .portfolio {
   background-color: #ECEFF1;
@@ -341,3 +330,5 @@ main {
 .about-link {
   text-align: right;
 }
+
+/*アバウトページ*/
