@@ -28,16 +28,24 @@
       </li>
       <li class="nav-list-item">
         <i class="far fa-bell">
-          <%= link_to '通知', notifications_path %>
+          <%= link_to '通知一覧', notifications_path %>
         </i>
       </li>
       <li class="nav-list-item">
         <%= form_tag(search_path, method: :get) do %>
-          <%= text_field_tag 'search[content]' %>
-          <%= select_tag 'search[model]', options_for_select({"ユーザー" => "user", "投稿内容(タグも可)" => "post", "都道府県" => "prefecture"}) %>
+          <%= text_field_tag 'search[content]', "", placeholder: "search" %>
+          <%= select_tag 'search[model]', options_for_select({"ユーザー" => "user", "投稿内容(タグも可)" => "post"}) %>
           <%= select_tag 'search[method]', options_for_select({"完全一致" => "perfect", "部分一致" => "partial" }) %>
           <%= submit_tag '検索' %>
+          <i class="fas fa-search"></i>
         <% end %>    
+      </li>
+      <li class="nav-list-item">
+        <div class="new-post-form">
+          <%= link_to new_post_path do %>
+            <i class="fas fa-plus-circle fa-3x"></i>
+          <% end %>
+        </div>
       </li>
     <% else %>
       <li class="nav-list-item">

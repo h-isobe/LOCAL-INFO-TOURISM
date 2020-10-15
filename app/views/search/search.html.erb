@@ -2,13 +2,10 @@
 
   <% if @model == 'user' %>
     <h3 class="text-center">Users search for '<%= @content %>' </h3>
-    <%= render 'users/index' , users: @records %>
+    <%= render 'users/index' , users: @users %>
   <% elsif @model == 'post' %>
     <h3 class="text-center">Posts search for '<%= @content %>' </h3>
-    <%= render 'posts/index' , posts: @records %>
-  <% else %>
-    <h3 class="text-center">Prefectures search for '<%= @content %>' </h3>
-    <%= render 'posts/index' , posts: @records %>
+    <%= render 'posts/index' , posts: @posts %>
   <% end %> 
 
 </div>

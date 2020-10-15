@@ -1,41 +1,54 @@
 <div class="col-xs-8">
   <% posts.each do |post| %>
     <div class="box1">
-      <table style="border:none;">
+      <table style="border:none; ">
         <tr>
           <td>
-            <%= attachment_image_tag post.user, :profile_image, :fill, 150, 100, format: 'jpg', fallback: "no_image.jpg" %>
-          </td>
+            <div class="post-list">
+              <%= attachment_image_tag post.user, :profile_image, :fill, 150, 100, format: 'jpg', fallback: "no_image.jpg" %>
+            </div>
+          </td>    
         <tr>
         <tr>
-          <td>投稿者：
-            <i class="fas fa-user"></i>
-            <%= post.user.name %>
-          </td>
+          <td>
+            <div class="post-list">
+              投稿者：
+              <i class="fas fa-user"></i>
+              <%= post.user.name %>
+            </div>
+          </td>      
         </tr>
         <tr>
-          <td>タイトル：
-            <%= link_to post_path(post) do %>
+          <td>
+            <div class="post-list">
+              タイトル：
+              <%= link_to post_path(post) do %>
               <%= post.title %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td>場所：
-            <%= post.prefecture %></td>
-          </td>
+              <% end %>
+            </div>
+          </td>        
         </tr>
         <tr>
           <td>
-            カテゴリー：
-            <% post.categories.each do |category| %>
-              <%= category.name %>
-            <% end %>
-          </td>
+            <div class="post-list">
+              場所：
+              <%= post.prefecture %></td>
+            </div>
+          </td>    
         </tr>
         <tr>
           <td>
-            <div class="text">
+            <div class="post-list">
+              カテゴリー：
+              <% post.categories.each do |category| %>
+                <%= category.name %>
+              <% end %>
+            </div>
+          </td>        
+        </tr>
+        <tr>
+          <td>
+            <div class="post-text">
             <!--4.gsub()で正規表現に合致する箇所を空欄にする-->
               <%= simple_format(post.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "")) %>
             <!--4.postにタグがあればタグを出力する-->
@@ -53,38 +66,44 @@
         </tr>
         <tr>
           <td>
-		        <% if post.post_images.present? %>
-              <% post.post_images.each do |image| %>
-                <%= attachment_image_tag image, :image, :fill, 700, 400 %>
+            <div class="post-image">
+		          <% if post.post_images.present? %>
+                <% post.post_images.each do |image| %>
+                  <%= attachment_image_tag image, :image, :fill, 348, 300 %>
+                <% end %>
               <% end %>
-            <% end %>
+            </div>
 	        </td>
         </tr>
         <tr>
           <td>
-            <i class="far fa-calendar-alt"></i>
-            <%= l post.created_at %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <% if post.favorited_by?(current_user) %>
-              <%= link_to post_favorites_path(post), method: :delete do %>
-                <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-                <%= post.favorites.count %>
+            <span class="favorite-count">
+              <% if post.favorited_by?(current_user) %>
+                <%= link_to post_favorites_path(post), method: :delete do %>
+                  <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                  <%= post.favorites.count %>
+                <% end %>
+              <% else %>
+                <%= link_to post_favorites_path(post), method: :post do %>
+                  <i class="fa fa-heart-o" aria-hidden="true"></i>
+                  <%= post.favorites.count %>
+                <% end %>
               <% end %>
-            <% else %>
-              <%= link_to post_favorites_path(post), method: :post do %>
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-                <%= post.favorites.count %>
+            </span>
+           
+            <span class="comment-count">
+              <%= link_to post_path(post.id) do %>
+                <i class="fa fa-comment"></i>
+                <%= post.post_comments.count %>
               <% end %>
-            <% end %>
-          
-            <%= link_to post_path(post.id) do %>
-              <i class="fa fa-comment"></i>
-              <%= post.post_comments.count %>
-            <% end %>
+            </span>
+
+            <span class="date">
+              <i class="far fa-calendar-alt"></i>
+              <%= l post.created_at %>
+            </span>
           </td>
+            
         </tr>
       </table>
     </div>

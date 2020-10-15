@@ -1,17 +1,23 @@
 <div class="container">
 
-<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+  <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
 
-  <h3 class="text-center">〜通知〜</h3>
-
-  <p>
-    <%= link_to "通知削除", notification_path(@notifications), method: :delete ,class: "fas fa-trash" %>
-  </p>
+  <h3 class="text-center">〜通知一覧〜</h3>
+  
+  <div class="col-xs-12">
+  <h5>
+    <i class="fa fa-trash-alt" aria-hidden="true">
+    <%= link_to "通知削除", notification_path(@notifications), method: :delete ,class: "btn btn-danger" %>
+    </i>
+  </h5>
+  
   
   <% if notifications.exists? %>
     <%= render notifications %>
   <% else %>
     <p>通知はありません</p>
   <% end %>
+  </div>
+  
 
 </div>

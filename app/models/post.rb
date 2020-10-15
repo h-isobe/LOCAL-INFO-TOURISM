@@ -14,6 +14,8 @@ class Post < ApplicationRecord
   validates :prefecture, presence: true
   validates :body, length: { in: 1..500 }
 
+  #scope :hokkaido, -> { where(prefecture: 1) }
+
   is_impressionable
 
   def favorited_by?(user)

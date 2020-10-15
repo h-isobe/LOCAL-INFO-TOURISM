@@ -20,6 +20,7 @@
             <%= link_to follower_path(@post.user) do %>
               <%= @post.user.follower.count %> フォロー
             <% end %>
+            |
             <%= link_to followed_path(@post.user) do %>
               <%= @post.user.followed.count %> フォロワー
             <% end %>
@@ -45,7 +46,7 @@
         <% else %>
           <%= form_for @room do |f| %>
             <%= fields_for @entry do |e| %>
-              <%= e.hidden_field :user_id, value: @user.id %>
+              <%= e.hidden_field :user, value: @user %>
             <% end %>
             <%= f.submit "チャットを始める", class:"btn btn-info user-show-chat"%>
           <% end %>
@@ -59,30 +60,46 @@
     <div class="box1">
       <table style="border:none;">
         <tr>
-          <td><%= attachment_image_tag @post.user, :profile_image, :fill, 100,100, format: 'jpg', fallback: "no_image.jpg" %></td>
-        </tr>
-        <tr>
           <td>
-            <i class="fas fa-user"></i>
-            <%= @post.user.name %>
-          </td>
-        </tr>
-        <tr>
-          <td><%= @post.title %></td>
-        </tr>
-        <tr>
-          <td><%= @post.prefecture %></td>
-        </tr>
-        <tr>
-          <td>
-            <% @post.categories.each do |category| %>
-              <%= category.name %>
-            <% end %>
+            <div class="post-list">
+              <%= attachment_image_tag @post.user, :profile_image, :fill, 100,100, format: 'jpg', fallback: "no_image.jpg" %>
+            </div>  
           </td>
         </tr>
         <tr>
           <td>
-            <div class="text">
+            <div class="post-list">
+              <i class="fas fa-user"></i>
+              <%= @post.user.name %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="post-list">
+              <%= @post.title %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="post-list">
+              <%= @post.prefecture %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="post-list">
+              <% @post.categories.each do |category| %>
+                <%= category.name %>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="post-text">
               <%= simple_format(@post.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "")) %>
               <% if @post.hashtags.any? %>
                 <% @post.hashtags.each do |hashtag| %>
@@ -98,49 +115,62 @@
         </tr>
         <tr>
           <td>
-            <% if @post.favorited_by?(current_user) %>
-              <%= link_to post_favorites_path(@post), method: :delete do %>
-                <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-                <%= @post.favorites.count %>
+		        <div class="post-image">
+		          <% if @post.post_images.present? %>
+                <% @post.post_images.each do |image| %>
+                  <%= attachment_image_tag image, :image, :fill, 348, 300 %>
+                <% end %>
               <% end %>
-            <% else %>
-              <%= link_to post_favorites_path(@post), method: :post do %>
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-                <%= @post.favorites.count %>
-              <% end %>
-            <% end %>
-
-            <%= link_to post_path(@post.id) do %>
-              <i class="fa fa-comment"></i>
-              <%= @post.post_comments.count %>
-            <% end %>
-
-            <% if @post.user == current_user %>
-              <i class="far fa-eye"></i>
-              <%= @post.impressionist_count %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-		        <% if @post.post_images.present? %>
-              <% @post.post_images.each do |image| %>
-                <%= attachment_image_tag image, :image, :fill, 700, 400 %>
-              <% end %>
-            <% end %>
+            </div>
 	        </td>
         </tr>
         <tr>
           <td>
-            <i class="far fa-calendar-alt"></i>
-            <%= l @post.created_at %>
+            <span class="favorite-count">
+              <% if @post.favorited_by?(current_user) %>
+                <%= link_to post_favorites_path(@post), method: :delete do %>
+                  <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                  <%= @post.favorites.count %>
+                <% end %>
+              <% else %>
+                <%= link_to post_favorites_path(@post), method: :post do %>
+                  <i class="fa fa-heart-o" aria-hidden="true"></i>
+                  <%= @post.favorites.count %>
+                <% end %>
+              <% end %>
+            </span>
+           
+            <span class="comment-count">
+              <%= link_to post_path(@post.id) do %>
+                <i class="fa fa-comment"></i>
+                <%= @post.post_comments.count %>
+              <% end %>
+            </span>
+            
+            <span class="look-count">
+              <% if @post.user == current_user %>
+                <i class="far fa-eye"></i>
+                <%= @post.impressionist_count %>
+              <% end %>
+            </span>
+
+            <span class="date">
+              <i class="far fa-calendar-alt"></i>
+              <%= l @post.created_at %>
+            </span>
           </td>
         </tr>
         <tr>
           <td>
             <% @post.post_comments.each do |post_comment| %>
-              <%= attachment_image_tag post_comment.user, :profile_image, :fill, 40, 40, format: 'jpg', fallback: "no_image.jpg" %>
-              <%= post_comment.user.name %><br>
+              <div class="comment-image">
+              <%= attachment_image_tag post_comment.user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %>
+              </div>
+              <div class="comment-user">
+                <%= link_to user_path(post_comment.user) do %>
+                  <%= post_comment.user.name %>
+                <% end %>
+              </div>
               <div class="text">
                 <%= post_comment.comment %><br>
               </div>
@@ -171,15 +201,6 @@
       <%= f.submit "送信", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
     <% end %>
 
-  </div>
-
-
-  <div class="new-post-form">
-    <%= link_to new_post_path do %>
-      <p class="text-right">
-        <i class="fas fa-plus-circle fa-3x"></i>
-      </p>
-    <% end %>
   </div>
 
 </div>

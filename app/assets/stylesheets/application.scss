@@ -23,8 +23,7 @@
   font-family: fantasy;
   font-size: 15px;
   color: #6c6b6b;
- }
- 
+}
 a {
   text-decoration: none;
   color:olivedrab;
@@ -47,18 +46,15 @@ header {
   top: 0;
   z-index: 9999;
 }
-
 header .headline {
   font-size: 32px;
 }
-
 .flash-content {
   padding-top: 130px;
 }
-
 .nav-list {
   text-align: center;
-  padding: 10px 0;
+  
   margin: 0 auto;
 }
 .nav-list-item {
@@ -66,7 +62,6 @@ header .headline {
   display: inline-block;
   margin: 0 20px;
 }
-
 /*フッター*/
 footer {
   width: 100%;
@@ -78,7 +73,6 @@ footer {
 .footer-text {
   color: #fff;
 }
-
 body {
   background-color: #f9f9f9;
   color: olive;
@@ -89,7 +83,6 @@ body {
  .field {
    margin-bottom: 20px;
  }
-
  .sub-post-text {
   position: relative;
   margin: 2em 0 2em 40px;
@@ -134,6 +127,25 @@ body {
   margin: 0; 
   padding: 0;
 }
+.post-list {
+  margin: 5px auto;
+}
+.post-text {
+  width: 700px;
+  background-color: #EEEEEE;
+  border-radius: 10px;
+  padding: 5px;
+}
+.post-image {
+  margin: 0 0 30px 0;
+}
+.comment-count {
+  margin: 0 10px 0 10px;
+}
+.date {
+  float: right;
+  margin: 0 0 20px 0;
+}
 
 /*カテゴリー一覧*/
 .list-category {
@@ -142,13 +154,11 @@ body {
   padding: 0.5em 1em 0.5em 2.3em;
   position: relative;
 }
-
 .list-category li {
   line-height: 1.5;
   padding: 0.5em 0;
   list-style-type: none!important;
 }
-
 .list-category li:before {
   
   font-family: "FontAwesome";
@@ -173,13 +183,11 @@ body {
   font-weight: bold;
   letter-spacing: 0.05em;
 }
-
 .list_crown {
   list-style: none;
   padding: 15px 20px;
   margin: 0;
 }
-
 .list_crown > li {
   position: relative;
   padding: 0px 0px 0px 2.5em;
@@ -240,13 +248,6 @@ body {
   margin-top: 5px;
 }
 
-.text {
-  width: 700px;
-  background-color: #EEEEEE;
-  border-radius: 10px;
-  padding: 5px;
-}
-
 /*トップページ*/
 .main-visual {
   width: 100%; /* 横幅いっぱい */
@@ -260,22 +261,21 @@ main {
   height: 900px; /* 高さ1400px（多めに設定） */
   
 }
-
-.portfolio {
+.description {
   background-color: #ECEFF1;
   height: 900px;
 }
-.portfolio-box {
+.description-box {
   width: 920px;
   margin: 0 auto;
 }
-.portfolio-title {
+.description-title {
   font-size: 32px;
   color: #000000;
   text-align: center;
   padding-top: 90px;
 }
-.portfolio-title::after {
+.description-title::after {
   content: "";
   display: block;
   width: 70px;
@@ -283,13 +283,13 @@ main {
   margin: 8px auto 0 auto;
   background-color: #003366;
 }
-.portfolio-text {
+.description-text {
   font-size: 16px;
   color: #000000;
   text-align: center;
   margin: 30px 0;
 }
-.portfolio-image-box {
+.description-image-box {
   display: flex;
   flex-wrap: wrap;
   width: 920px;
@@ -326,9 +326,57 @@ main {
 .image-box:nth-child(6) {
   background-image: url(肉寿司.jpg);
 }
-
 .about-link {
   text-align: right;
 }
 
 /*アバウトページ*/
+.about-box {
+  padding-top: 30px;
+  padding-left: 420px;
+}
+.about-list {
+  max-width: 600px;
+}
+.about-list-box {
+  display: flex;
+  align-items: center;
+}
+.about-list-box .photo,
+.about-list-box .txt {
+  width: 50%;
+  box-sizing: border-box;
+}
+.about-list-box:nth-child(odd) {
+  flex-direction: row-reverse;
+} 
+.about-list-box:nth-child(odd) .txt {
+  padding-right: 10px;
+}
+.about-list-box:nth-child(even) .txt {
+  padding-left: 10px;
+}
+
+/*ページネーション*/
+.pagination {
+  padding-left: 350px;;
+}
+.pagination>li>a {          
+  border: none;
+  color: #696969; 
+}
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #003366;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
+}
+
+.notification-box {
+  border-top: 1px solid olive;
+  border-bottom: 1px solid olive;
+}
+

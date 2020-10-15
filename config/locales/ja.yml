@@ -2,6 +2,7 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
+ja:
   activerecord:
     errors:
       messages:
@@ -207,3 +208,12 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
+ja:
+  views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."
