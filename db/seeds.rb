@@ -78,6 +78,10 @@ Category.create!(
 )
 
 Category.create!(
+   name: 'レジャー'
+)
+
+Category.create!(
   name: '服装'
 )
 
@@ -88,3 +92,4 @@ Category.create!(
 Category.create!(
   name: 'その他'
 )
+

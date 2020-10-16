@@ -7,10 +7,15 @@ class SearchController < ApplicationController
     @method = params["search"]["method"]
     @records = search_for
     #binding.pry
-    if @records == 
-      @posts = @records.page(params[:page])
-    else @records == 'user'
+    #if @records == 
+     #@posts = @records.page(params[:page])
+    #else @records == 'user'
+      #@users = @records.page(params[:page])
+    #end
+    if @model == 'user'
       @users = @records.page(params[:page])
+    else @model == 'post'
+      @posts = @records.page(params[:page])
     end
   end   
   

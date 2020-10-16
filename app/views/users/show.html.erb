@@ -151,18 +151,10 @@
         <tr>
           <td>
             <span class="favorite-count">
-            <% if post.favorited_by?(current_user) %>
-              <%= link_to post_favorites_path(post), method: :delete do %>
-                <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-                <%= post.favorites.count %>
-              <% end %>
-            <% else %>
-              <%= link_to post_favorites_path(post), method: :post do %>
-                <i class="fa fa-heart-o" aria-hidden="true"></i>
-                <%= post.favorites.count %>
-              <% end %>
-            <% end %>
-            </span>
+              <span class="post_<%= post.id %>">
+                <%= render 'favorites/favorite', post: post %>
+              </span>
+	          </span>
 
             <span class="comment-count">
             <%= link_to post_path(post.id) do %>

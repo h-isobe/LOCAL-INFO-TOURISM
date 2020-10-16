@@ -11,7 +11,6 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
- *= require_tree ../../../app/assets/stylesheets/.
  *= require_self
  */
  @import "bootstrap-sprockets";
@@ -133,10 +132,6 @@ h4 {
   border-top: solid 6px #EEEEEE;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
 }
-.box1 p {
-  margin: 0; 
-  padding: 0;
-}
 .post-list {
   margin: 5px auto;
 }
@@ -231,6 +226,12 @@ h4 {
 }
 .list_crown > li:nth-of-type(3) {
   color: #c47022;
+}
+.list_crown > li:nth-of-type(4) {
+  color: #FFFFBB;
+}
+.list_crown > li:nth-of-type(5) {
+  color: #FFFFBB;
 }
 
 /*アイコン色*/
@@ -433,36 +434,8 @@ main {
   border-bottom: 1px solid olive;
 }
 
-#page_top{
-  width: 50px;
-  height: 50px;
+#back {
   position: fixed;
   right: 20px;
   bottom: 20px;
-  background: #003366;
-  opacity: 0.6;
-  border-radius: 50%;
-}
-#page_top a{
-  position: relative;
-  display: block;
-  width: 50px;
-  height: 50px;
-  text-decoration: none;
-}
-#page_top a::before{
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  content: '\f102';
-  font-size: 25px;
-  color: #fff;
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  top: -5px;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin: auto;
-  text-align: center;
 }
