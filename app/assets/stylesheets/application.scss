@@ -22,7 +22,6 @@
   box-sizing: border-box;
   font-family: fantasy;
   font-size: 15px;
-  color: #6c6b6b;
 }
 a {
   text-decoration: none;
@@ -75,7 +74,7 @@ footer {
 }
 body {
   background-color: #f9f9f9;
-  color: olive;
+  color: #6c6b6b;
   font-family: fantasy;
 }
 
@@ -113,6 +112,16 @@ body {
   padding: 0;
 }
 
+/*プロフィール*/
+h3 {
+  text-decoration: underline;
+}
+h4 {
+  text-decoration: underline;
+}
+.follow-list {
+  margin: 20px 0 10px 0;
+}
 
 /*投稿一覧*/
 .box1 {
@@ -261,21 +270,21 @@ main {
   height: 900px; /* 高さ1400px（多めに設定） */
   
 }
-.description {
+.top-description {
   background-color: #ECEFF1;
   height: 900px;
 }
-.description-box {
+.top-description-box {
   width: 920px;
   margin: 0 auto;
 }
-.description-title {
+.top-description-title {
   font-size: 32px;
   color: #000000;
   text-align: center;
   padding-top: 90px;
 }
-.description-title::after {
+.top-description-title::after {
   content: "";
   display: block;
   width: 70px;
@@ -283,13 +292,13 @@ main {
   margin: 8px auto 0 auto;
   background-color: #003366;
 }
-.description-text {
-  font-size: 16px;
+.top-description-text {
+  font-size: 18px;
   color: #000000;
   text-align: center;
   margin: 30px 0;
 }
-.description-image-box {
+.top-description-image-box {
   display: flex;
   flex-wrap: wrap;
   width: 920px;
@@ -300,31 +309,44 @@ main {
   background-position: center;
   height: 250px;
   width: 300px;
+  border: 2px solid #CD853F;
 }
 .image-box:nth-child(1) {
   background-image: url(富士山.jpg);
   margin-right: 10px;
   margin-bottom: 10px;
+  display: inline-block;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
 }
 .image-box:nth-child(2) {
   background-image: url(神社.jpg);
   margin-right: 10px;
   margin-bottom: 10px;
+  display: inline-block;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
 }
 .image-box:nth-child(3) {
   background-image: url(鉄人.jpg);
   margin-bottom: 10px;
+  display: inline-block;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
 }
 .image-box:nth-child(4) {
   background-image: url(日本最南端の駅.jpg);
   margin-right: 10px;
+  display: inline-block;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
 }
 .image-box:nth-child(5) {
   background-image: url(カフェ.jpg);
   margin-right: 10px;
+  display: inline-block;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
 }
 .image-box:nth-child(6) {
   background-image: url(肉寿司.jpg);
+  display: inline-block;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
 }
 .about-link {
   text-align: right;
@@ -332,29 +354,59 @@ main {
 
 /*アバウトページ*/
 .about-box {
-  padding-top: 30px;
-  padding-left: 420px;
+  padding-top: 20px;
 }
-.about-list {
-  max-width: 600px;
+.about-description {
+  text-align: center;
 }
-.about-list-box {
-  display: flex;
-  align-items: center;
+.about-image1 {
+  background-image: url(肉寿司.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  width: 350px;
+  display: inline-block;
+  transform: rotate(5deg);
+  border: 2px solid #CD853F;
 }
-.about-list-box .photo,
-.about-list-box .txt {
-  width: 50%;
-  box-sizing: border-box;
+.about-image2 {
+  background-image: url(神社.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  width: 300px;
+  display: inline-block;
+  transform: rotate(-5deg);
+  border: 2px solid #CD853F;
 }
-.about-list-box:nth-child(odd) {
-  flex-direction: row-reverse;
-} 
-.about-list-box:nth-child(odd) .txt {
-  padding-right: 10px;
+.about-image3 {
+  background-image: url(鉄人.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  width: 300px;
+  display: inline-block;
+  transform: rotate(5deg);
+  border: 2px solid #CD853F;
 }
-.about-list-box:nth-child(even) .txt {
-  padding-left: 10px;
+.about-image4 {
+  background-image: url(富士山.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  width: 300px;
+  display: inline-block;
+  transform: rotate(-5deg);
+  border: 2px solid #CD853F;
+}
+.about-text {
+  font-size: 20px;
+}
+.about-text-box {
+  margin: 30px auto;
+}
+.entrance {
+  margin: 50px auto;
 }
 
 /*ページネーション*/
@@ -379,4 +431,3 @@ main {
   border-top: 1px solid olive;
   border-bottom: 1px solid olive;
 }
-

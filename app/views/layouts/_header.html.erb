@@ -7,7 +7,7 @@
   <nav>
     <ul class="nav-list"></ul>
       <li class="nav-list-item">
-        <i class="fas fa-user">
+        <i class="fas fa-home">
           <%= link_to 'マイページ', user_path(current_user.id) %>
         </i>
       </li>
@@ -27,7 +27,7 @@
         </i>
       </li>
       <li class="nav-list-item">
-        <i class="far fa-bell">
+        <i class="fas fa-bell">
           <%= link_to '通知一覧', notifications_path %>
         </i>
       </li>
@@ -37,7 +37,6 @@
           <%= select_tag 'search[model]', options_for_select({"ユーザー" => "user", "投稿内容(タグも可)" => "post"}) %>
           <%= select_tag 'search[method]', options_for_select({"完全一致" => "perfect", "部分一致" => "partial" }) %>
           <%= submit_tag '検索' %>
-          <i class="fas fa-search"></i>
         <% end %>    
       </li>
       <li class="nav-list-item">

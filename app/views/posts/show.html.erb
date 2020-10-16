@@ -1,29 +1,43 @@
 <div class="container">
-
+  <div class="row">
   <div class="col-xs-4">
     <div class="box1">
+      <div class="profile">
+        <div class="profile-head">
+          <h3>PROFILE</h3>
+        </div>
       <table style="border:none;">
         <tr>
           <td><%= attachment_image_tag @post.user, :profile_image, :fill, 320, 250, format: 'jpg', fallback: "no_image.jpg" %></td>
         </tr>
         <tr>
           <td>
+            <div class="profile-name">
+              <h4>Name</h4>
             <%= link_to user_path(@post.user) do %>
-            <i class="fas fa-user"></i>
-            <%= @post.user.name %>
-            <% end %>
+              <i class="fas fa-user"></i>
+              <%= @post.user.name %>
+              <% end %>
+            </div>
           </td>
         </tr>
-          <td><%= @post.user.introduction %></td>
+          <td>
+            <div class="profile-introduction">
+              <h4>Introduction</h4>
+              <%= @post.user.introduction %>
+            </div>
+          </td>
         <tr>
           <td>
-            <%= link_to follower_path(@post.user) do %>
-              <%= @post.user.follower.count %> フォロー
-            <% end %>
-            |
-            <%= link_to followed_path(@post.user) do %>
-              <%= @post.user.followed.count %> フォロワー
-            <% end %>
+            <div class="follow-list">
+              <%= link_to follower_path(@post.user) do %>
+                <%= @post.user.follower.count %> フォロー
+              <% end %>
+              |
+              <%= link_to followed_path(@post.user) do %>
+                <%= @post.user.followed.count %> フォロワー
+              <% end %>
+            </div>
           </td>
         </tr>
       </table>
@@ -42,7 +56,7 @@
 
       <% unless @post.user.id == current_user.id %>
         <% if @isRoom == true %>
-          <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-info">チャットへ</a>
+          <span class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-info">チャットへ</a></span>
         <% else %>
           <%= form_for @room do |f| %>
             <%= fields_for @entry do |e| %>
@@ -52,12 +66,17 @@
           <% end %>
         <% end %>      
       <% end %>
-    
+      
+      </div>
     </div>
   </div>
 
   <div class="col-xs-8">
     <div class="box1">
+      <div class="post">
+        <div class="post-head">
+          <h3>POST</h3>
+        </div>
       <table style="border:none;">
         <tr>
           <td>
@@ -193,6 +212,7 @@
       <div class="text-left">
         <%= link_to "一覧へ戻る", posts_path %>
       </div>
+      </div>
     </div>
   
   <!--コメント入力欄-->
@@ -202,5 +222,5 @@
     <% end %>
 
   </div>
-
+</div>
 </div>
