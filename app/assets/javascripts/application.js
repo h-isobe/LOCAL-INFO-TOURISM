@@ -13,6 +13,49 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require jquery_ujs
 //= require rails-ujs
 //= require bootstrap-sprockets
+//= require_tree ../../../app/assets/javascripts/.
 //= require_tree .
+
+$(".theTarget").skippr({
+  // スライドショーの変化（"fade" or "slide"）
+  transition : 'fade',
+  // 変化にかかる時間（ミリ秒）
+  speed : 1000,
+  // easingの種類
+  easing : 'easeOutQuart',
+  // ナビゲーションの形（"block" or "bubble"）
+  navType : 'block',
+  // 子要素の種類（"div" or "img"）
+  childrenElementType : 'div',
+  // ナビゲーション矢印の表示（trueで表示）
+  arrows : true,
+  // スライドショーの自動再生（falseで自動再生なし）
+  autoPlay : false,
+  // 自動再生時のスライド切替間隔（ミリ秒）
+  autoPlayDuration : 5000,
+  // キーボードの矢印キーによるスライド送りの設定（trueで有効）
+  keyboardOnAlways : true,
+  // 1枚目のスライド表示時に戻る矢印を表示するかどうか [false]:矢印を隠さない [true]:矢印を隠す
+  hidePrevious : false
+});
+
+jQuery(function() {
+  var pagetop = $('#page_top');   
+  pagetop.hide();
+  $(window).scroll(function () {
+      if ($(this).scrollTop() > 100) {  //100pxスクロールしたら表示
+          pagetop.fadeIn();
+      } else {
+          pagetop.fadeOut();
+      }
+  });
+  pagetop.click(function () {
+      $('body,html').animate({
+          scrollTop: 0
+      }, 500); //0.5秒かけてトップへ移動
+      return false;
+  });
+});

@@ -9,7 +9,8 @@
     <script src="https://kit.fontawesome.com/b5fa4724ff.js" crossorigin="anonymous"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="skippr.css">
-    <link rel="stylesheets" href="css/style.scss">
+    <link rel="stylesheet" href="application.scss">
+
   </head>
 
   <body>
@@ -22,8 +23,14 @@
         
       <%= yield %>
       
+      <span id="page_top">
+        <a href="#"></a>
+      </span>
+
       <%= render partial: 'layouts/footer' %>
-
-
+  
+    <script src="javascripts/jquery.min.js"></script>
+  <script src="javascripts/skippr.min.js"></script>
+  <script src="javascripts/application.js"></script>
   </body>
 </html>
