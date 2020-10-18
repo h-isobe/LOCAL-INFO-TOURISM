@@ -72,6 +72,7 @@ footer {
 .footer-text {
   color: #fff;
 }
+/*body*/
 body {
   background-color: #f9f9f9;
   color: #6c6b6b;
@@ -112,6 +113,7 @@ body {
   padding: 0;
 }
 
+
 /*プロフィール*/
 h3 {
   text-decoration: underline;
@@ -119,8 +121,17 @@ h3 {
 h4 {
   text-decoration: underline;
 }
+.profile-introduction {
+  margin: 20px auto;
+}
 .follow-list {
   margin: 20px 0 10px 0;
+}
+.follower {
+  margin-left: 10px;
+}
+.chat-room {
+  float: right;
 }
 
 /*投稿一覧*/
@@ -136,7 +147,7 @@ h4 {
   margin: 5px auto;
 }
 .post-text {
-  width: 700px;
+  
   background-color: #EEEEEE;
   border-radius: 10px;
   padding: 5px;

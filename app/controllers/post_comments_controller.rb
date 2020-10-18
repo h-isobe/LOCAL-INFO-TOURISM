@@ -5,16 +5,20 @@ class PostCommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = current_user.post_comments.new(post_comment_params)
     @comment.post_id = @post.id
-    @comment.save
-    @post = @comment.post
-    @post.create_notification_post_comment!(current_user, @comment.id)
-    redirect_to post_path(@post)
-    flash[:notice] = "コメントしました"
+    unless @comment.save
+      @post = @comment.post
+      @post.create_notification_post_comment!(current_user, @comment.id)
+      
+      
+    else
+      flash[:notice] = "コメントしました"
+    end
   end
+  
   
   def destroy
     PostComment.find_by(id: params[:id], post_id: params[:post_id]).destroy
-    redirect_to post_path(params[:post_id])
+    @post = Post.find(params[:post_id])
     flash[:notice] = "コメントを削除しました"
   end
 

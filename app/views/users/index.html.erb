@@ -5,15 +5,16 @@
 
         <div class="box2">
           <div class="box-title">Category</div>
-          <ul class="list-category">
-            <% @categories.each do |category| %>
-              <li>
-                <%= link_to category_path(@post, name: category.name) do %>
-                  <%= category.name %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
+            <ul class="list-category">
+              <% @categories.each do |category| %>
+                <li>
+                  <%= link_to category_path(@post, name: category.name) do %>
+                    <%= category.name %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          
         </div>
 
         <div class="box2">
@@ -28,14 +29,63 @@
                 </li>
               <% end %>
             </ul>
-          </div>
+          
         </div>
+        
       </div>
 
       <div class="col-xs-8">
 
-        <%= render 'users/index' , users: @users %>
+        <%#= render 'users/index' , users: @users %>
+        <% @users.each do |user| %>
+    
+      <div class="box1">
+        <div class="profile-head">
+          <h3>PROFILE</h3>
+        </div>
+        
+        <div class="row">
+          
+          <div class="profile-box">
 
+            <div class="col-xs-4">
+              <div class="box-user">
+                <%= attachment_image_tag user, :profile_image, :fill, 200, 150, format: 'jpg', fallback: "no_image.jpg" %>
+              </div>
+            </div>
+        
+            <div class="col-xs-8">
+              <div class="row">
+                <div class="profile-name">
+                  <%= link_to user_path(user) do %>
+                    <i class="fas fa-user"></i>
+                    <%= user.name %>
+                  <% end %>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="profile-introduction">
+                  <%= user.introduction %>
+                </div>
+              </div>
+
+              <div class="row">
+                <span class="follow">
+                  <%= user.follower.count %>フォロー
+                </span>
+                <span class="follower">
+                  <%= user.followed.count %>フォロワー
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  <% end %>
+  <%= paginate @users %>
       </div>
 
     </div>

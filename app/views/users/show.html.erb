@@ -30,15 +30,16 @@
         </tr>
         <tr>
           <td>
-            <div class="follow-list">
+            <span class="follow">
               <%= link_to follower_path(@user) do %>
                 <%= @user.follower.count %> フォロー
               <% end %>
-              |
+            </div>
+            <span class="follower">
               <%= link_to followed_path(@user) do %>
                 <%= @user.followed.count %> フォロワー
               <% end %>
-            </div>
+            </span>
           </td>
         </tr>
       </table>
@@ -56,6 +57,7 @@
       <% end %>
 
       <!--チャット-->
+      <span class="chat-room">
       <% unless @user.id == current_user.id %>
         <% if @isRoom == true %>
           <span class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-info">チャットへ</a></span>
@@ -68,6 +70,7 @@
           <% end %>
         <% end %>      
       <% end %>
+      </span>
       </div>
     </div>
   </div>
@@ -79,50 +82,41 @@
         <div class="post-head">
           <h3>POST</h3>
         </div>
-      <table style="border:none;">
-        <tr>
-          <td>
+          <div class="row">
+            <div class="col-xs-3">
             <div class="post-list">
-              <%= attachment_image_tag post.user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %>
+              <%= attachment_image_tag post.user, :profile_image, :fill, 150, 100, format: 'jpg', fallback: "no_image.jpg" %>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
+            </div>
+            <div class="col-xs-9">
             <div class="post-list">
+              投稿者：
               <i class="fas fa-user">
                 <%= post.user.name %>
               </i>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
+          
             <div class="post-list">
+              タイトル：
               <%= link_to post_path(post) do %>
                 <%= post.title %>
               <% end %>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
+          
             <div class="post-list">
+              場所：
               <%= post.prefecture %>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
+          
             <div class="post-list">
+              カテゴリー：
               <% post.categories.each do |category| %>
                 <%= category.name %>
               <% end %>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
+            </div>
+          </div>
+
             <div class="post-text">
               <%= simple_format(post.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "")) %>
               <% if post.hashtags.any? %>
@@ -135,21 +129,16 @@
                 <% end %>
               <% end %>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
+          
             <div class="post-image">
 		          <% if post.post_images.present? %>
                 <% post.post_images.each do |image| %>
-                  <%= attachment_image_tag image, :image, :fill, 348, 300 %>
+                  <%= attachment_image_tag image, :image, :fill, 357, 300 %>
                 <% end %>
               <% end %>
-	          </td>
+	          
           </div>
-        </tr>
-        <tr>
-          <td>
+        
             <span class="favorite-count">
               <span class="post_<%= post.id %>">
                 <%= render 'favorites/favorite', post: post %>
@@ -164,8 +153,10 @@
             </span>
 
             <span class="look-count">
+            <% if post.user == current_user %>
             <i class="far fa-eye"></i>
             <%= post.impressionist_count %>
+            <% end %>
             </span>
 
             <span class="date">
@@ -173,9 +164,7 @@
                 <%= l post.created_at %>
               </i>
             </span>
-          </td>
-        </tr>
-      </table>
+          
       </div>
     </div>
     <% end %>

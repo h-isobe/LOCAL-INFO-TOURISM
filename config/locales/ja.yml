@@ -1,7 +1,4 @@
-ja:
-  time:
-    formats:
-      default: "%Y/%m/%d %H:%M"
+
 ja:
   activerecord:
     errors:
@@ -208,8 +205,6 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-
-ja:
   views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>
