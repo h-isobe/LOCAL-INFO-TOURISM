@@ -1,0 +1,17 @@
+<% post.post_comments.each do |post_comment| %>
+  <div class="comment-image">
+    <%= attachment_image_tag post_comment.user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %>
+  </div>
+  <div class="comment-user">
+    <%= link_to user_path(post_comment.user) do %>
+      <%= post_comment.user.name %>
+    <% end %>
+  </div>
+  <div class="post-text">
+    <%= post_comment.comment %><br>
+  </div>
+  <%= l post_comment.created_at %>
+  <% if post_comment.user == current_user %>
+    <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger pull-right" %>
+  <% end %>
+<% end %>

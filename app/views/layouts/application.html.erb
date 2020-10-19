@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LOCAL INFO TOURISM</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/b5fa4724ff.js" crossorigin="anonymous"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="skippr.css">
+    <link rel="stylesheet" href="application.scss">
+
+  </head>
+
+  <body>
+
+    <%= render partial: 'layouts/header' %>
+    
+      <div class="flash-content">
+        <%= render partial: 'layouts/flash' %>
+      </div>
+        
+      <%= yield %>
+      
+      <span id="back">
+      <a href="#">
+        <i class="fas fa-angle-double-up fa-2x"></i>
+      </a>
+    </span>
+
+      <%= render partial: 'layouts/footer' %>
+  
+    <script src="javascripts/jquery.min.js"></script>
+  <script src="javascripts/skippr.min.js"></script>
+  <script src="javascripts/application.js"></script>
+  </body>
+</html>

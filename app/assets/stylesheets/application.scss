@@ -1,0 +1,452 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: fantasy;
+  font-size: 15px;
+}
+a {
+  text-decoration: none;
+  color:olivedrab;
+  font-weight:bold;
+}
+a:hover {/*マウスが上に乗っている状態*/
+  color:#33CC00;
+  text-decoration:underline;
+}
+
+/*ヘッター*/
+header {
+  height: 130px;
+  width: 100%;
+  padding: 15px 0;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #FFFFBB;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+}
+header .headline {
+  font-size: 32px;
+}
+.flash-content {
+  padding-top: 130px;
+}
+.nav-list {
+  text-align: center;
+  
+  margin: 0 auto;
+}
+.nav-list-item {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+/*フッター*/
+footer {
+  width: 100%;
+  height: 70px;
+  text-align: center;
+  line-height: 70px;
+  background-color: olive;
+}
+.footer-text {
+  color: #fff;
+}
+/*body*/
+body {
+  background-color: #f9f9f9;
+  color: #6c6b6b;
+  font-family: fantasy;
+}
+
+ /*投稿フォーム*/
+ .field {
+   margin-bottom: 20px;
+ }
+ .sub-post-text {
+  position: relative;
+  margin: 2em 0 2em 40px;
+  padding: 8px 15px;
+  background: #fff0c6;
+  border-radius: 30px;
+}
+.sub-post-text:before {
+  font-family: FontAwesome;
+  content: "\f111";
+  position: absolute;
+  font-size: 15px;
+  left: -40px;
+  bottom: 0;
+  color: #fff0c6;
+}
+.sub-post-text:after{
+  font-family: FontAwesome;
+  content: "\f111";
+  position: absolute;
+  font-size: 23px;
+  left: -23px;
+  bottom: 0;
+  color: #fff0c6;
+}
+.sub-post-text p {
+  margin: 0; 
+  padding: 0;
+}
+
+
+/*プロフィール*/
+h3 {
+  text-decoration: underline;
+}
+h4 {
+  text-decoration: underline;
+}
+.profile-introduction {
+  margin: 20px auto;
+}
+.follow-list {
+  margin: 20px 0 10px 0;
+}
+.follower {
+  margin-left: 10px;
+}
+.chat-room {
+  float: right;
+}
+
+/*投稿一覧*/
+.box1 {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: black;
+  background: #f9f9f9;/*背景色*/
+  border-top: solid 6px #EEEEEE;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+}
+.post-list {
+  margin: 5px auto;
+}
+.post-text {
+  
+  background-color: #EEEEEE;
+  border-radius: 10px;
+  padding: 5px;
+}
+.post-image {
+  margin: 0 0 30px 0;
+}
+.comment-count {
+  margin: 0 10px 0 10px;
+}
+.date {
+  float: right;
+  margin: 0 0 20px 0;
+}
+
+/*カテゴリー一覧*/
+.list-category {
+  border: solid 2px #EEEEEE;
+  border-radius: 5px;
+  padding: 0.5em 1em 0.5em 2.3em;
+  position: relative;
+}
+.list-category li {
+  line-height: 1.5;
+  padding: 0.5em 0;
+  list-style-type: none!important;
+}
+.list-category li:before {
+  
+  font-family: "FontAwesome";
+  content: "\f138";/*アイコンの種類*/
+  position: absolute;
+  left : 1em;/*左端からのアイコンまでの距離*/
+  color: skyblue;/*アイコン色*/
+}
+
+/*ランキング*/
+.box2 {
+  margin: 2em 0;
+  background: #FFF;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+}
+.box2 .box-title {
+  font-size: 1.2em;
+  background: #EEEEEE;
+  padding: 4px;
+  text-align: center;
+  color: #003366;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+.list_crown {
+  list-style: none;
+  padding: 15px 20px;
+  margin: 0;
+}
+.list_crown > li {
+  position: relative;
+  padding: 0px 0px 0px 2.5em;
+  color: #003366;
+  font-size: 18px;
+}
+.list_crown > li::before,
+.list_crown > li::after {
+  position: absolute;
+  left: 0px;
+  width: 0px;
+  height: 0px;
+  content: "";
+}
+.list_crown > li::before {
+  top: -1.25em;
+  border: 1em solid transparent;
+  border-bottom: 1.5em solid currentColor;
+}
+.list_crown > li::after {
+  top: 0.25em;
+  border: 0.5em solid transparent;
+  border-left: 1em solid currentColor;
+  border-right: 1em solid currentColor;
+}
+.list_crown > li:nth-of-type(1) {
+  color: #dbb400;
+}
+.list_crown > li:nth-of-type(2) {
+  color: #9fa0a0;
+}
+.list_crown > li:nth-of-type(3) {
+  color: #c47022;
+}
+.list_crown > li:nth-of-type(4) {
+  color: #FFFFBB;
+}
+.list_crown > li:nth-of-type(5) {
+  color: #FFFFBB;
+}
+
+/*アイコン色*/
+.fas {
+  color: #003366;
+}
+.far {
+  color: #003366;
+}
+
+/*フラッシュ*/
+.alert {
+  color: white;
+  background-color: skyblue;
+  text-align: center;
+  border-radius: 15px;
+}
+
+/*エラーメッセージ*/
+.errors {
+  color: white;
+  background-color: red;
+  text-align: center;
+  border-radius: 15px;
+  margin-top: 5px;
+}
+
+/*トップページ*/
+.main-visual {
+  width: 100%; /* 横幅いっぱい */
+  height: 636px; /* 高さ300px */
+  /*background-image: url(摩耶山.jpg);*/
+  background-size: cover;
+  background-position: center;
+}
+main {
+  width: 100%; /* 横幅いっぱい */
+  height: 900px; /* 高さ1400px（多めに設定） */
+  
+}
+.top-description {
+  background-color: #ECEFF1;
+  height: 900px;
+}
+.top-description-box {
+  width: 920px;
+  margin: 0 auto;
+}
+.top-description-title {
+  font-size: 32px;
+  color: #000000;
+  text-align: center;
+  padding-top: 90px;
+}
+.top-description-title::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  margin: 8px auto 0 auto;
+  background-color: #003366;
+}
+.top-description-text {
+  font-size: 18px;
+  color: #000000;
+  text-align: center;
+  margin: 30px 0;
+}
+.top-description-image-box {
+  display: flex;
+  flex-wrap: wrap;
+  width: 920px;
+  padding-bottom: 90px;
+}
+.image-box {
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  width: 300px;
+  border: 2px solid #CD853F;
+}
+.image-box:nth-child(1) {
+  background-image: image-url("hujisan.jpg");
+  margin-right: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+}
+.image-box:nth-child(2) {
+  background-image: image-url("jinja.jpg");
+  margin-right: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+}
+.image-box:nth-child(3) {
+  background-image: image-url("tetujin.jpg");
+  margin-bottom: 10px;
+  display: inline-block;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+}
+.image-box:nth-child(4) {
+  background-image: image-url("eki.jpg");
+  margin-right: 10px;
+  display: inline-block;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+}
+.image-box:nth-child(5) {
+  background-image: image-url("cafe.jpg");
+  margin-right: 10px;
+  display: inline-block;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+}
+.image-box:nth-child(6) {
+  background-image: image-url("sushi.jpg");
+  display: inline-block;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+}
+.about-link {
+  text-align: right;
+}
+
+/*アバウトページ*/
+.about-box {
+  padding-top: 20px;
+}
+.about-description {
+  text-align: center;
+}
+.about-image1 {
+  background-image: image-url("sushi.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  width: 350px;
+  display: inline-block;
+  transform: rotate(5deg);
+  border: 2px solid #CD853F;
+}
+.about-image2 {
+  background-image: image-url("jinja.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  width: 300px;
+  display: inline-block;
+  transform: rotate(-5deg);
+  border: 2px solid #CD853F;
+}
+.about-image3 {
+  background-image: image-url("tetujin.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  width: 300px;
+  display: inline-block;
+  transform: rotate(5deg);
+  border: 2px solid #CD853F;
+}
+.about-image4 {
+  background-image: image-url("hujisan.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  width: 300px;
+  display: inline-block;
+  transform: rotate(-5deg);
+  border: 2px solid #CD853F;
+}
+.about-text {
+  font-size: 20px;
+}
+.about-text-box {
+  margin: 30px auto;
+}
+.entrance {
+  margin: 50px auto;
+}
+
+/*ページネーション*/
+.pagination {
+  padding-left: 350px;;
+}
+.pagination>li>a {          
+  border: none;
+  color: #696969; 
+}
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {     
+  background: #003366;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    /*角を丸くする*/
+}
+
+.notification-box {
+  border-top: 1px solid olive;
+  border-bottom: 1px solid olive;
+}
+
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
