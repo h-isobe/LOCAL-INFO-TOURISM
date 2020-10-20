@@ -10,12 +10,13 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require_skippr
  *= require_tree .
  *= require_self
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
- 
+
 * {
   margin: 0;
   padding: 0;
@@ -303,6 +304,7 @@ h4 {
   background-color: skyblue;
   text-align: center;
   border-radius: 15px;
+  margin-bottom: 0;
 }
 
 /*エラーメッセージ*/
@@ -318,7 +320,6 @@ h4 {
 .main-visual {
   width: 100%; /* 横幅いっぱい */
   height: 636px; /* 高さ300px */
-  /*background-image: url(摩耶山.jpg);*/
   background-size: cover;
   background-position: center;
 }
@@ -493,4 +494,5 @@ main {
   position: fixed;
   right: 20px;
   bottom: 20px;
+  z-index: 9999;
 }

@@ -79,6 +79,10 @@ class PostsController < ApplicationController
     @categories = Category.all
   end
 
+  def japan_map
+    
+  end
+
   private
 
   def post_params

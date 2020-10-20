@@ -8,10 +8,6 @@ class PostCommentsController < ApplicationController
     unless @comment.save
       @post = @comment.post
       @post.create_notification_post_comment!(current_user, @comment.id)
-      
-      
-    else
-      flash[:notice] = "コメントしました"
     end
   end
   
@@ -19,7 +15,6 @@ class PostCommentsController < ApplicationController
   def destroy
     PostComment.find_by(id: params[:id], post_id: params[:post_id]).destroy
     @post = Post.find(params[:post_id])
-    flash[:notice] = "コメントを削除しました"
   end
 
   private

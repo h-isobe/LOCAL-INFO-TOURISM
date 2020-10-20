@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'search' => 'search#search'
   get '/post/hashtag/:name' => 'posts#hashtag', as: 'hashtag'
   get '/post/category/:name' => 'posts#category', as: 'category'
+  get 'post/japan_map' => 'posts#japan_map', as: 'map'
   
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'

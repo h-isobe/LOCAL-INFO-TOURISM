@@ -27,6 +27,9 @@
         </i>
       </li>
       <li class="nav-list-item">
+        <% if unchecked_notifications.any? %>
+          <i class="fa fa-circle" style="color: gold;"></i>
+        <% end %>
         <i class="fas fa-bell">
           <%= link_to '通知一覧', notifications_path %>
         </i>
