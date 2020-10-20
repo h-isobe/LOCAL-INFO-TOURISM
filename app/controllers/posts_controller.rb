@@ -78,10 +78,7 @@ class PostsController < ApplicationController
     @posts = @category.posts.page(params[:page]).reverse_order
     @categories = Category.all
   end
-
-  def japan_map
-    
-  end
+  
 
   private
 
