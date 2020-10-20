@@ -28,7 +28,7 @@ a {
   color:olivedrab;
   font-weight:bold;
 }
-a:hover {/*マウスが上に乗っている状態*/
+a:hover {
   color:#33CC00;
   text-decoration: none;
 }
@@ -61,6 +61,14 @@ header .headline {
   display: inline-block;
   margin: 0 20px;
 }
+
+.wrapper{
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 120px;
+  box-sizing: border-box;
+}
+
 /*フッター*/
 footer {
   width: 100%;
@@ -68,10 +76,13 @@ footer {
   text-align: center;
   line-height: 70px;
   background-color: olive;
+  position: absolute;
+  bottom: 0;
 }
 .footer-text {
   color: #fff;
 }
+
 /*body*/
 body {
   background-color: #f9f9f9;
@@ -112,7 +123,7 @@ body {
   margin: 0; 
   padding: 0;
 }
-
+/*ツールチップ*/
 .cp_tooltip {
 	position: relative;
 	display: inline-block;
@@ -124,7 +135,6 @@ body {
 	top: -5px;
 	left: 105%;
 	visibility: hidden;
-	/*width: auto;*/
 	white-space: nowrap;
 	padding: 0.3em 0.5em;
 	transition: opacity 1s;
@@ -147,8 +157,6 @@ body {
 	visibility: visible;
 	opacity: 1;
 }
-
-
 
 /*プロフィール*/
 h3 {
