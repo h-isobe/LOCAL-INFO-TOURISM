@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   resources :users, only: [:index, :show, :edit, :update]
-  resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+  resources :posts do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
   end
@@ -20,10 +20,10 @@ Rails.application.routes.draw do
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' 
   get 'follower/:id' => 'relationships#follower', as: 'follower'
   get 'followed/:id' => 'relationships#followed', as: 'followed'
+  get 'user/:id/favorites' => 'users#favorites', as: 'favorites'
   get 'search' => 'search#search'
   get '/post/hashtag/:name' => 'posts#hashtag', as: 'hashtag'
   get '/post/category/:name' => 'posts#category', as: 'category'
-  get 'post/japan_map' => 'posts#japan_map', as: 'map'
   
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'

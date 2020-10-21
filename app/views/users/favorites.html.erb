@@ -1,6 +1,13 @@
+<!--いいね一覧-->
+<div class="container">
+  <div class="row">
 
-  <% posts.each do |post| %>
-    <div class="box1">
+    <h2 class="text-center">〜いいね一覧〜</h2>
+
+<% @favorites.each do |favorite| %>
+  <% post = Post.find_by(id: favorite.post_id) %>
+  
+  <div class="box1">
       <div class="post">
         <div class="post-head">
           <h3>POST</h3>
@@ -84,7 +91,9 @@
         
       </div>
     </div>
-  <% end %>
 
-  <%= paginate @posts %>
 
+<% end %>
+
+  </div>
+</div>

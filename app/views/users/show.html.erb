@@ -40,6 +40,11 @@
                 <%= @user.followed.count %> フォロワー
               <% end %>
             </span>
+            <span class="user_favorites">
+              <% if @user.id == current_user.id %>
+                <%= link_to "いいね一覧", favorites_path(@user) %>
+              <% end %>
+            </span>
           </td>
         </tr>
       </table>
@@ -71,7 +76,7 @@
         <% end %>      
       <% end %>
       </span>
-      
+
       </div>
     </div>
   </div>

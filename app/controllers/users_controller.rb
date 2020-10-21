@@ -45,6 +45,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    @favorites = Favorite.where(user_id: @user.id)
+  end
+
   private
 
   def user_params
