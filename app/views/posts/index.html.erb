@@ -10,7 +10,7 @@
           <ul class="list-category">
             <% @categories.each do |category| %>
               <li>
-                <%= link_to category_path(@post, name: category.name) do %>
+                <%= link_to category_path(@posts, name: category.name) do %>
                   <%= category.name %>
                 <% end %>
               </li>
@@ -35,14 +35,14 @@
         </div>
 
 
-        <!--<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-        <%#= javascript_include_tag 'jquery.japan-map.min.js' %>
-        <div id="map-container"></div>-->
+        <%= link_to '都道府県検索', map_path %>
+        
 
       </div>
 
       <div class="col-xs-8">
         <%= render 'posts/index' , posts: @posts %>
+        <%= paginate @posts %>
       </div>
 
       

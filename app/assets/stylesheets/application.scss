@@ -68,6 +68,7 @@ header .headline {
   position: relative;
   padding-bottom: 120px;
   box-sizing: border-box;
+  background-color: #ECEFF1;
 }
 
 /*フッター*/
@@ -169,11 +170,20 @@ h4 {
 .profile-introduction {
   margin: 20px auto;
 }
-.follow-list {
-  margin: 20px 0 10px 0;
+.follow {
+  background-color: #FFFFBB;
+  padding: 3px;
+  border-radius: 30px;
 }
 .follower {
-  margin: 0 60px 0 10px;
+  margin: 0 40px 0 10px;
+  background-color: #FFFFBB;
+  padding: 3px;
+  border-radius: 30px;
+}
+.user_favorites {
+  background-color: #FFFFBB;
+  border-radius: 30px;
 }
 .chat-room {
   float: right;
@@ -360,7 +370,6 @@ main {
   display: flex;
   flex-wrap: wrap;
   width: 920px;
-  padding-bottom: 90px;
 }
 .image-box {
   background-size: cover;

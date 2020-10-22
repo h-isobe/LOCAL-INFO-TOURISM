@@ -34,7 +34,7 @@
               <%= link_to follower_path(@user) do %>
                 <%= @user.follower.count %> フォロー
               <% end %>
-            </div>
+            </span>
             <span class="follower">
               <%= link_to followed_path(@user) do %>
                 <%= @user.followed.count %> フォロワー
@@ -65,7 +65,11 @@
       <span class="chat-room">
       <% unless @user.id == current_user.id %>
         <% if @isRoom == true %>
-          <span class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-info">チャットへ</a></span>
+          <span class="user-show-room">
+            <a href="/rooms/<%= @roomId %>" class="btn btn-info">
+              <i class="fas fa-envelope fa-lg"></i>
+            </a>
+          </span>
         <% else %>
           <%= form_for @room do |f| %>
             <%= fields_for @entry do |e| %>

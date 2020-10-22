@@ -71,12 +71,21 @@ class PostsController < ApplicationController
   def hashtag
     @hashtag = Hashtag.find_by(hashname: params[:hashname])
     @posts = @hashtag.posts.page(params[:page]).reverse_order
+    @hashtags = Hashtag.all
   end
 
   def category
     @category = Category.find_by(name: params[:name])
     @posts = @category.posts.page(params[:page]).reverse_order
     @categories = Category.all
+  end
+
+  def prefecture
+    @prefecture_posts = Post.where(prefecture: params[:prefecture])
+  end
+
+  def map
+    
   end
   
 

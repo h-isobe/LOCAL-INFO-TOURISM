@@ -1,9 +1,25 @@
 <div class="container"> 
   <div class="row">
-  
     <h2 class="text-center">ハッシュタグ "<%= @hashtag.hashname %>" の投稿一覧</h2>
 
-    <%= render 'posts/index' , posts: @posts %>
+    <div class="col-xs-4">
+
+      <div class="box2">
+        <div class="box-title">
+          hashtag
+        </div>
+        <ul class="list-hashtag">
+          <% @hashtags.each do |hashtag| %>
+            <%= hashtag.hashname %>
+          <% end %>
+        </ul>
+      </div>
+    
+    </div>
+
+    <div class="col-xs-8">
+      <%= render 'posts/index' , posts: @posts %>
+    </div>
     
   </div>
 </div>
