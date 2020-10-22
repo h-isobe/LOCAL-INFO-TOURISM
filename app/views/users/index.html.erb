@@ -18,18 +18,29 @@
         </div>
 
         <div class="box2">
-          <div class="box-title">Ranking</div>
-            <ul class="list_crown">
-              <% @all_ranks.each.with_index(1) do |rank, i| %>
-                <li>
-                  <%= link_to post_path(rank) do %>
-                    第<%= i %>位<br>
-                    <%= rank.title %>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          
+          <div class="box-title">
+            Ranking
+          </div>
+          <ul class="list_crown">
+            <% @all_ranks.each.with_index(1) do |rank, i| %>
+              <li>
+                <%= link_to post_path(rank) do %>
+                  第<%= i %>位<br>
+                  <%= rank.title %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>      
+        </div>
+
+        <div class="box2">
+          <div class="box-title">
+            Prefecture
+          </div>
+          <div class="prefecture-link">
+            <%= link_to '日本地図検索', map_path %>
+            <div class="image-japanmap"></div>
+          </div>
         </div>
         
       </div>

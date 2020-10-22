@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   has_many :post_categories, dependent: :destroy
   has_many :categories, through: :post_categories
   has_many :post_hashtags, dependent: :destroy
-  has_many :hashtags, through: :post_hashtags
+  has_many :hashtags, through: :post_hashtags, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
   validates :title, presence: true

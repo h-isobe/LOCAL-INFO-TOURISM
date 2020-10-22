@@ -63,14 +63,6 @@ header .headline {
   margin: 0 20px;
 }
 
-.wrapper{
-  min-height: 100vh;
-  position: relative;
-  padding-bottom: 120px;
-  box-sizing: border-box;
-  background-color: #ECEFF1;
-}
-
 /*フッター*/
 footer {
   width: 100%;
@@ -90,6 +82,13 @@ body {
   background-color: #f9f9f9;
   color: #6c6b6b;
   font-family: fantasy;
+}
+.wrapper{
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 120px;
+  box-sizing: border-box;
+  background-color: #ECEFF1;
 }
 
  /*投稿フォーム*/
@@ -194,9 +193,9 @@ h4 {
   padding: 0.5em 1em;
   margin: 2em 0;
   color: black;
-  background: #f9f9f9;/*背景色*/
+  background: #f9f9f9;
   border-top: solid 6px #EEEEEE;
-  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
 }
 .post-list {
   margin: 5px auto;
@@ -328,14 +327,14 @@ h4 {
 
 /*トップページ*/
 .main-visual {
-  width: 100%; /* 横幅いっぱい */
-  height: 636px; /* 高さ300px */
+  width: 100%;
+  height: 636px;
   background-size: cover;
   background-position: center;
 }
 main {
-  width: 100%; /* 横幅いっぱい */
-  height: 900px; /* 高さ1400px（多めに設定） */
+  width: 100%;
+  height: 900px;
   
 }
 .top-description {
@@ -486,22 +485,37 @@ main {
 }
 /* 表示しているページ番号のデザイン */
 .pagination>.active>a {     
-  background: #003366;     /*背景の色を変える*/
-  border-radius: 15px;     /*角を丸くする*/
+  background: #003366; 
+  border-radius: 15px;    
 }
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {        
-  border-radius: 15px;    /*角を丸くする*/
+  border-radius: 15px;
 }
 
+/*通知*/
 .notification-box {
   border-top: 1px solid olive;
   border-bottom: 1px solid olive;
 }
 
+/*トップへ戻る*/
 #back {
   position: fixed;
   right: 20px;
   bottom: 20px;
   z-index: 9999;
+}
+
+/*JapanMap*/
+.prefecture-link {
+  text-align: center;
+  margin: 5px 0;
+  height: 300px;
+  background-image: image-url("japanmap.jpg");
+  background-size: cover;
+  background-position: center;
+}
+#map-container {
+  margin-left: 80px;
 }
