@@ -1,6 +1,9 @@
 <div class="container">
   <div class="row">
-    <h2 class="text-center">〜チャットルーム〜</h2>
+    <div class="col-xs-2"></div>
+    <div class="col-xs-8">
+
+    <h2 class="text-center page-title">〜チャットルーム〜</h2>
     
     <p>
       <%= link_to "ユーザー一覧へ戻る", users_path, class: "btn btn-info" %>
@@ -49,6 +52,8 @@
         <%= f.hidden_field :room_id, value: @room.id %>
         <%= f.submit "投稿",class: 'form-submit' %>
       <% end %>
+    </div>
+
     </div>
   </div>
 
