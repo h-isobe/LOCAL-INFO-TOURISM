@@ -43,7 +43,7 @@
                 </span>
                 <span class="user_favorites">
                   <% if @post.user.id == current_user.id %>
-                    <%= link_to "いいね一覧", favorites_path(@post.user) %>
+                    <%= link_to "行ってみたい一覧", favorites_path(@post.user) %>
                   <% end %>
                 </span>
               </td>

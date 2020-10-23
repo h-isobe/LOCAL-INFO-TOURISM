@@ -28,7 +28,7 @@ $(document).on('turbolinks:load', function() {
     event.preventDefault();
   });
 
-  // トップスライド
+  // top slide
   $(".theTarget").skippr({
     // スライドショーの変化（"fade" or "slide"）
     transition : 'fade',
