@@ -66,11 +66,11 @@ class Post < ApplicationRecord
   end
 
   after_create do
-    #1.controller側でcreateしたTweetを取得
+    #1.controller側でcreateしたPostを取得
     post = Post.find_by(id: self.id)
     #2.正規表現を用いて、Postのbody内から『#○○○』の文字列を検出
     hashtags  = self.body.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
-    #3.mapメソッドでtags配列の要素一つ一つを取り出して、先頭の#を取り除いてDBへ保存する
+    #3.mapメソッドでhashtags配列の要素一つ一つを取り出して、先頭の#を取り除いてDBへ保存する
     hashtags.uniq.map do |t|
       hashtag = Hashtag.find_or_create_by(hashname: t.downcase.delete('#'))
       post.hashtags << hashtag
@@ -82,7 +82,7 @@ class Post < ApplicationRecord
     post.hashtags.clear
     #2.正規表現を用いて、Postのbody内から『#○○○』の文字列を検出
     hashtags  = self.body.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
-    #3.mapメソッドでtags配列の要素一つ一つを取り出して、先頭の#を取り除いてDBへ保存する
+    #3.mapメソッドでhashtags配列の要素一つ一つを取り出して、先頭の#を取り除いてDBへ保存する
     hashtags.uniq.map do |t|
       hashtag = Hashtag.find_or_create_by(hashname: t.downcase.delete('#'))
       post.hashtags << hashtag

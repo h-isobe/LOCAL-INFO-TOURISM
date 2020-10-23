@@ -4,47 +4,47 @@
 
     <h2 class="text-center">〜行ってみたい一覧〜</h2>
 
-<% @favorites.each do |favorite| %>
-  <% post = Post.find_by(id: favorite.post_id) %>
+    <% @favorites.each do |favorite| %>
+      <% post = Post.find_by(id: favorite.post_id) %>
   
-  <div class="box1">
-      <div class="post">
-        <div class="post-head">
-          <h3>POST</h3>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-3">
-            <div class="post-list">
-              <%= attachment_image_tag post.user, :profile_image, :fill, 150, 100, format: 'jpg', fallback: "no_image.jpg" %>
-            </div>
+      <div class="box1">
+        <div class="post">
+          <div class="post-head">
+            <h3>POST</h3>
           </div>
+
+          <div class="row">
+            <div class="col-xs-3">
+              <div class="post-list">
+                <%= attachment_image_tag post.user, :profile_image, :fill, 150, 100, format: 'jpg', fallback: "no_image.jpg" %>
+              </div>
+            </div>
             
-          <div class="col-xs-9">
-            <div class="post-list">
-              投稿者：
-              <i class="fas fa-user"></i>
-              <%= post.user.name %>
-            </div>
+            <div class="col-xs-9">
+              <div class="post-list">
+                投稿者：
+                <i class="fas fa-user"></i>
+                <%= post.user.name %>
+              </div>
           
-            <div class="post-list">
-              タイトル：
-              <%= link_to post_path(post), data: {"turbolinks" => false} do %>
-              <%= post.title %>
-              <% end %>
-            </div>
+              <div class="post-list">
+                タイトル：
+                <%= link_to post_path(post), data: {"turbolinks" => false} do %>
+                  <%= post.title %>
+                <% end %>
+              </div>
           
-            <div class="post-list">
-              場所：
-              <%= post.prefecture %></td>
-            </div>
+              <div class="post-list">
+                場所：
+                <%= post.prefecture %></td>
+              </div>
           
-            <div class="post-list">
-              カテゴリー：
-              <% post.categories.each do |category| %>
-                <%= category.name %>
-              <% end %>
-            </div>
+              <div class="post-list">
+                カテゴリー：
+                <% post.categories.each do |category| %>
+                  <%= category.name %>
+                <% end %>
+              </div>
             </div>
           </div>
        
@@ -89,11 +89,10 @@
             <%= l post.created_at %>
           </span>
         
+        </div>
       </div>
-    </div>
 
-
-<% end %>
+    <% end %>
 
   </div>
 </div>
