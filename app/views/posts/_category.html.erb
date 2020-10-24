@@ -1,0 +1,12 @@
+<div class="box2">
+  <div class="box-title">カテゴリー一覧</div>
+  <ul class="list-category">
+    <% categories.each do |category| %>
+      <li>
+        <%= link_to category_path(@post, name: category.name) do %>
+          <%= category.name %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,49 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
+    
       <div class="col-xs-4">
 
-        <div class="box2">
-          <div class="box-title">
-            Category
-          </div>
-          <ul class="list-category">
-            <% @categories.each do |category| %>
-              <li>
-                <%= link_to category_path(@post, name: category.name) do %>
-                  <%= category.name %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
+        <%= render 'posts/category',  categories: @categories %>
 
-        <div class="box2">
-          <div class="box-title">
-            <i class="fas fa-bookmark" aria-hidden="true" style="color: blue;"></i>
-            Ranking
-          </div>
-          <ul class="list_crown">
-            <% @all_ranks.each.with_index(1) do |rank, i| %>
-              <li>
-                <%= link_to post_path(rank) do %>
-                  第<%= i %>位<br>
-                  <%= rank.title %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>      
-        </div>
+        <%= render 'posts/all_ranks',  all_ranks: @all_ranks %>
 
-        <div class="box2">
-          <div class="box-title">
-            Prefecture
-          </div>
-          <div class="prefecture-link">
-            <%= link_to '日本地図検索', map_path %>
-            <div class="image-japanmap"></div>
-          </div>
-        </div>
+        <%= render partial: 'posts/prefecture_link' %>
         
       </div>
 

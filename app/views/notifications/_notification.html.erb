@@ -23,7 +23,7 @@
         <strong><%= notification.post.user.name + 'さんの投稿' %>にコメントしました</strong>
       <% end %>
     <% end %>
-    <p class="text">
+    <p class="notification-text">
       <%= PostComment.find_by(id: notification.post_comment_id)&.comment %>
     </p>
   <% end %>

@@ -259,10 +259,10 @@ h4 {
 }
 .list-category li:before {
   font-family: "FontAwesome";
-  content: "\f138";/*アイコンの種類*/
+  content: "\f138";
   position: absolute;
-  left : 1em;/*左端からのアイコンまでの距離*/
-  color: skyblue;/*アイコン色*/
+  left : 1em;
+  color: skyblue;
 }
 
 /*ランキング*/
@@ -518,7 +518,7 @@ main {
   padding: 0.5em 1em;
   margin: 2em 0;
   color: #2c2c2f;
-  background: #FFFFBB;/*背景色*/
+  background: #FFFFBB;
 }
 .about-steps p {
   margin: 0; 
@@ -567,6 +567,9 @@ main {
 .notification-box {
   border-top: 1px solid olive;
   border-bottom: 1px solid olive;
+}
+.notification-text {
+  margin: 20px 0;
 }
 
 /*トップへ戻る*/

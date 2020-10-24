@@ -1,0 +1,30 @@
+<%= form_with model: form, local: true do |f| %>
+      <div class="field row">
+        <%= f.label :タイトル %>
+        <%= f.text_field :title, class: "form-control", placeholder:"タイトル" %>
+      </div>
+      <div class="field row">
+        <%= f.label :prefecture, '都道府県' %><br>
+        <%= f.select :prefecture, Post.prefectures.keys, {prompt: '選択してください'}, class: 'signup_input signup_input--prefecture error-form--prefecture'%>
+      </div>
+      <div class="field row">
+        <%= f.label :category, 'カテゴリー' %><br>
+        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category| %> 
+          <%= category.label do %>
+            <%= category.check_box %>
+            <%= category.text %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="field row">
+        <%= f.label :投稿内容 %>
+        <%= f.text_area :body, class: "form-control", placeholder:"投稿内容" %>
+      </div>
+      <div class="field row">
+        <%= f.label :画像選択 %>(複数可能)
+        <%= f.attachment_field :post_images_images, multiple:true %>
+      </div>
+      <div class="field row">
+        <%= f.submit "編集", class: "btn btn-primary btn-block" %>
+      </div>
+    <% end %>
