@@ -32,22 +32,36 @@
             </tr>
             <tr>
               <td>
-                <span class="follow">
-                  <%= link_to follower_path(@user) do %>
+                <span class="user-follow">
+                  <%= link_to follower_path(@user), class: "btn btn-success" do %>
                     <%= @user.follower.count %> フォロー
                   <% end %>
                 </span>
-                <span class="follower">
-                  <%= link_to followed_path(@user) do %>
+                <span class="user-follower">
+                  <%= link_to followed_path(@user), class: "btn btn-success" do %>
                     <%= @user.followed.count %> フォロワー
                   <% end %>
                 </span>
               </td>
             </tr>
+            <tr>
+              <td>
+                <div class="my-list">
+                  <span class="user-favorites">
+                    <%= link_to "いいね一覧", favorite_path(@user), class: "btn btn-success" %>
+                  </span>
+                  <span class="user-bookmarks">
+                    <% if @user.id == current_user.id %>
+                      <%= link_to "行ってみたい一覧", bookmark_path(@user), class: "btn btn-success" %>
+                    <% end %>
+                  </span>
+                </div>
+              </td>
+            </tr>
           </table>
 
           <% if @user == current_user %>
-            <%= link_to "編集", edit_user_path(@user) %>
+            <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary" %>
           <% else %>
             <% unless @user == current_user %>
               <% if current_user.following(@user) %>

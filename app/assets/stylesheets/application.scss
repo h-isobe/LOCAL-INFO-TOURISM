@@ -169,45 +169,54 @@ h4 {
 .profile-introduction {
   margin: 20px auto;
 }
-.follow {
-  background-color: #FFFFBB;
-  padding: 3px;
-  border-radius: 30px;
-}
-.follower {
-  margin: 0 0 0 40px;
-  background-color: #FFFFBB;
-  padding: 3px;
-  border-radius: 30px;
-}
-.user-favorites {
-  background-color: #FFFFBB;
-  border-radius: 30px;
+.user-follower {
+  margin: 0 0 0 30px;
 }
 .user-bookmarks {
-  background-color: #FFFFBB;
-  margin: 0 0 0 45px;
+  margin: 0 0 0 30px;
 }
 .chat-room {
   float: right;
 }
+.my-list {
+  margin: 20px 0;
+}
 
 /*会員一覧*/
+.follow {
+  color: #FFF;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  border-radius: 4px;
+  padding: 6px 12px;
+}
+.follower {
+  margin: 0 0 0 30px;
+  color: #FFF;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  border-radius: 4px;
+  padding: 6px 12px;
+}
 .post-count {
-  margin: 0 40px 0 40px;
-  background-color: #FFFFBB;
-  border-radius: 30px;
-  padding: 3px;
+  margin: 0 30px 0 30px;
+  color: #FFF;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  border-radius: 4px;
+  padding: 6px 12px;
 }
 .post-favorite {
-  background-color: #FFFFBB;
-  border-radius: 30px;
-  padding: 3px;
+  color: #FFF;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  border-radius: 4px;
+  padding: 6px 12px;
 }
 
 /*投稿一覧*/
 .box1 {
-  padding: 0.5em 1em;
+  padding: 1em 1em;
   margin: 2em 0;
   color: black;
   background: #f9f9f9;

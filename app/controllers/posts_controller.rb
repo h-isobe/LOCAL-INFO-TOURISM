@@ -82,7 +82,7 @@ class PostsController < ApplicationController
 
   def prefecture
     @prefecture_posts = Post.where(prefecture: params[:prefecture])
-    @all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(5).pluck(:post_id))
+    @all_ranks = Post.find(Bookmark.group(:post_id).order('count(post_id) desc').limit(5).pluck(:post_id))
     @categories = Category.all
   end
 

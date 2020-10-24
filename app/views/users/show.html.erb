@@ -30,13 +30,13 @@
             </tr>
             <tr>
               <td>
-                <span class="follow">
-                  <%= link_to follower_path(@user) do %>
+                <span class="user-follow">
+                  <%= link_to follower_path(@user), class: "btn btn-success" do %>
                     <%= @user.follower.count %> フォロー
                   <% end %>
                 </span>
-                <span class="follower">
-                  <%= link_to followed_path(@user) do %>
+                <span class="user-follower">
+                  <%= link_to followed_path(@user), class: "btn btn-success" do %>
                     <%= @user.followed.count %> フォロワー
                   <% end %>
                 </span>
@@ -44,14 +44,16 @@
             </tr>
             <tr>
               <td>
-                <span class="user-favorites">
-                  <%= link_to "いいね一覧", favorite_path(@user) %>
-                </span>
-                <span class="user-bookmarks">
-                  <% if @user.id == current_user.id %>
-                    <%= link_to "行ってみたい一覧", bookmark_path(@user) %>
-                  <% end %>
-                </span>
+                <div class="my-list">
+                  <span class="user-favorites">
+                    <%= link_to "いいね一覧", favorite_path(@user), class: "btn btn-success" %>
+                  </span>
+                  <span class="user-bookmarks">
+                    <% if @user.id == current_user.id %>
+                      <%= link_to "行ってみたい一覧", bookmark_path(@user), class: "btn btn-success" %>
+                    <% end %>
+                  </span>
+                </div>
               </td>
             </tr>
           </table>
