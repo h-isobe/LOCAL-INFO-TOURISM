@@ -175,17 +175,34 @@ h4 {
   border-radius: 30px;
 }
 .follower {
-  margin: 0 10px 0 10px;
+  margin: 0 0 0 40px;
   background-color: #FFFFBB;
   padding: 3px;
   border-radius: 30px;
 }
-.user_favorites {
+.user-favorites {
   background-color: #FFFFBB;
   border-radius: 30px;
 }
+.user-bookmarks {
+  background-color: #FFFFBB;
+  margin: 0 0 0 45px;
+}
 .chat-room {
   float: right;
+}
+
+/*会員一覧*/
+.post-count {
+  margin: 0 40px 0 40px;
+  background-color: #FFFFBB;
+  border-radius: 30px;
+  padding: 3px;
+}
+.post-favorite {
+  background-color: #FFFFBB;
+  border-radius: 30px;
+  padding: 3px;
 }
 
 /*投稿一覧*/
@@ -208,8 +225,11 @@ h4 {
 .post-image {
   margin: 0 0 30px 0;
 }
+.bookmark-count {
+  margin: 0 20px 0 20px;
+}
 .comment-count {
-  margin: 0 10px 0 10px;
+  margin-right: 20px;
 }
 .date {
   float: right;

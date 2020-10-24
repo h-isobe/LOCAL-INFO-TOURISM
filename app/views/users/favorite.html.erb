@@ -1,0 +1,107 @@
+<!--いいね一覧-->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-8">
+    
+      <h2 class="text-center page-title">〜いいね一覧〜</h2>
+
+      <% @favorites.each do |favorite| %>
+        <% post = Post.find_by(id: favorite.post_id) %>
+  
+        <div class="box1">
+          <div class="post">
+            <div class="post-head">
+              <h3>POST</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-3">
+                <div class="post-list">
+                  <%= attachment_image_tag post.user, :profile_image, :fill, 150, 100, format: 'jpg', fallback: "no_image.jpg" %>
+                </div>
+              </div>
+            
+              <div class="col-xs-9">
+                <div class="post-list">
+                  投稿者：
+                  <i class="fas fa-user"></i>
+                  <%= post.user.name %>
+                </div>
+          
+                <div class="post-list">
+                  タイトル：
+                  <%= link_to post_path(post), data: {"turbolinks" => false} do %>
+                    <%= post.title %>
+                  <% end %>
+                </div>
+          
+                <div class="post-list">
+                  場所：
+                  <%= post.prefecture %></td>
+                </div>
+          
+                <div class="post-list">
+                  カテゴリー：
+                  <% post.categories.each do |category| %>
+                    <%= category.name %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+       
+            <div class="post-text">
+              <!--4.gsub()で正規表現に合致する箇所を空欄にする-->
+              <%= simple_format(post.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "")) %>
+              <!--4.postにタグがあればタグを出力する-->
+              <% if post.hashtags.any? %>
+                <% post.hashtags.each do |hashtag| %>
+                  <span>
+                    <%= link_to hashtag_path(post,hashname: hashtag.hashname) do %>
+                      #<%= hashtag.hashname %>
+                    <% end %>
+                  </span>
+                <% end %>
+              <% end %>
+            </div>
+          
+            <div class="post-image">
+		          <% if post.post_images.present? %>
+                <% post.post_images.each do |image| %>
+                  <%= attachment_image_tag image, :image, :fill, 348, 300 %>
+                <% end %>
+              <% end %>
+            </div>
+        
+            <span class="favorite-count">
+              <span class="post_<%= post.id %>">
+                <%= render 'favorites/favorite', post: post %>
+              </span>
+	          </span>
+
+            <span class="bookmark-count">
+              <span class="bookmark_<%= post.id %>">
+                <%= render 'bookmarks/bookmark', post: post %>
+              </span>
+            </span>
+           
+            <span class="comment-count">
+              <%= link_to post_path(post.id) do %>
+                <i class="fa fa-comment"></i>
+                <%= post.post_comments.count %>
+              <% end %>
+            </span>
+
+            <span class="date">
+              <i class="far fa-calendar-alt"></i>
+              <%= l post.created_at %>
+            </span>
+        
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+
+  </div>
+</div>

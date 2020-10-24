@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'bookmarks/create'
+  get 'bookmarks/destroy'
   root 'home#top'
   get 'home/about'
   devise_for :users, controllers: {
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
   resources :posts do
     resource :favorites, only: [:create, :destroy]
+    resource :bookmarks, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
   end
   resources :messages, only: [:create]
@@ -20,7 +23,8 @@ Rails.application.routes.draw do
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' 
   get 'follower/:id' => 'relationships#follower', as: 'follower'
   get 'followed/:id' => 'relationships#followed', as: 'followed'
-  get 'user/:id/favorites' => 'users#favorites', as: 'favorites'
+  get 'user/:id/favorite' => 'users#favorite', as: 'favorite'
+  get 'user/:id/bookmark' => 'users#bookmark', as: 'bookmark'
   get 'search' => 'search#search'
   get '/post/hashtag/:name' => 'posts#hashtag', as: 'hashtag'
   get '/post/category/:name' => 'posts#category', as: 'category'

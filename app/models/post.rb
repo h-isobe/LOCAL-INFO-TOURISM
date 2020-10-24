@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_many :post_images, dependent: :destroy
   accepts_attachments_for :post_images, attachment: :image
   has_many :favorites, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :post_categories, dependent: :destroy
   has_many :categories, through: :post_categories
@@ -20,6 +21,10 @@ class Post < ApplicationRecord
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
+  end
+
+  def bookmark_by?(user)
+    bookmarks.where(user_id: user.id).exists?
   end
 
   def create_notification_favorite!(current_user)

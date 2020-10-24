@@ -36,7 +36,7 @@
                   <%= link_to follower_path(@user) do %>
                     <%= @user.follower.count %> フォロー
                   <% end %>
-                </div>
+                </span>
                 <span class="follower">
                   <%= link_to followed_path(@user) do %>
                     <%= @user.followed.count %> フォロワー
@@ -115,6 +115,12 @@
                     </span>
                     <span class="follower">
                       <%= user.followed.count %>フォロワー
+                    </span>
+                    <span class="post-count">
+                      <%= user.posts.count %> 投稿
+                    </span>
+                    <span class="post-favorite">
+                      <%= user.favorites.count %> いいね
                     </span>
                   </div>
 

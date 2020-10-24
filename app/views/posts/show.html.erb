@@ -41,9 +41,16 @@
                     <%= @post.user.followed.count %> フォロワー
                   <% end %>
                 </span>
-                <span class="user_favorites">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="user-favorites">
+                  <%= link_to "いいね一覧", favorite_path(@post.user) %>
+                </span>
+                <span class="user-bookmarks">
                   <% if @post.user.id == current_user.id %>
-                    <%= link_to "行ってみたい一覧", favorites_path(@post.user) %>
+                    <%= link_to "行ってみたい一覧", bookmark_path(@post.user) %>
                   <% end %>
                 </span>
               </td>
@@ -150,6 +157,12 @@
               <%= render 'favorites/favorite', post: @post %>
             </span>
 	        </span>
+
+          <span class="bookmark-count">
+            <span class="bookmark_<%= @post.id %>">
+              <%= render 'bookmarks/bookmark', post: @post %>
+            </span>
+          </span>
            
           <span class="comment-count">
             <%= link_to post_path(@post.id) do %>

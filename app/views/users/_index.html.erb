@@ -30,10 +30,16 @@
 
           <div class="row">
             <span class="follow">
-              <%= user.follower.count %>フォロー
+              <%= user.follower.count %> フォロー
             </span>
             <span class="follower">
-              <%= user.followed.count %>フォロワー
+              <%= user.followed.count %> フォロワー
+            </span>
+            <span class="post-count">
+              <%= user.posts.count %> 投稿
+            </span>
+            <span class="post-favorite">
+              <%= user.favorites.count %> いいね
             </span>
           </div>
 

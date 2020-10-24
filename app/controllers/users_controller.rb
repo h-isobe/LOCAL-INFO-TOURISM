@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def index
     @users = User.page(params[:page]).reverse_order
     #@user = @users.where(id: current_user.id)
-    @all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(5).pluck(:post_id))
+    @all_ranks = Post.find(Bookmark.group(:post_id).order('count(post_id) desc').limit(5).pluck(:post_id))
     @categories = Category.all
   end
 
@@ -45,9 +45,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def favorites
+  def favorite
     @user = User.find(params[:id])
     @favorites = Favorite.where(user_id: @user.id)
+  end
+
+  def bookmark
+    @user = User.find(params[:id])
+    @bookmarks = Bookmark.where(user_id: @user.id)
   end
 
   private
