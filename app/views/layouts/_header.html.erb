@@ -1,36 +1,36 @@
 <header>
   <%= link_to root_path do %>
-    <h1 class="headline">LOCAR INFO TOURISM</h1>
+    <h1 class="headline btn_design">LOCAR INFO TOURISM</h1>
   <% end %>
 
   <% if user_signed_in? %>
   <nav>
     <ul class="nav-list"></ul>
       <li class="nav-list-item">
-        <i class="fas fa-home">
+        <i class="fas fa-home btn_design">
           <%= link_to 'マイページ', user_path(current_user.id) %>
         </i>
       </li>
       <li class="nav-list-item">
-        <i class="fas fa-sign-out-alt">
+        <i class="fas fa-sign-out-alt btn_design">
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
         </i>
       </li>
       <li class="nav-list-item">
-        <i class="far fa-newspaper">
+        <i class="far fa-newspaper btn_design">
           <%= link_to '投稿一覧', posts_path %>
         </i> 
       </li>
       <li class="nav-list-item">
-        <i class="fas fa-users">
+        <i class="fas fa-users btn_design">
           <%= link_to '会員一覧', users_path %>
         </i>
       </li>
       <li class="nav-list-item">
         <% if unchecked_notifications.any? %>
-          <i class="fa fa-circle" style="color: gold;"></i>
+          <i class="fa fa-circle btn_design" style="color: gold;"></i>
         <% end %>
-        <i class="fas fa-bell">
+        <i class="fas fa-bell btn_design">
           <%= link_to '通知一覧', notifications_path %>
         </i>
       </li>
@@ -42,7 +42,7 @@
         <% end %>    
       </li>
       <li class="nav-list-item">
-        <div class="new-post-form cp_tooltip">
+        <div class="new-post-form cp_tooltip btn_design">
           <%= link_to new_post_path do %>
             <i class="fas fa-plus-circle fa-3x"></i>
             <span class="cp_tooltiptext">投稿する</span>
@@ -51,22 +51,22 @@
       </li>
     <% else %>
       <li class="nav-list-item">
-        <i class="fas fa-road">
+        <i class="fas fa-road btn_design">
           <%= link_to 'About', home_about_path %>
         </i>
       </li>
       <li class="nav-list-item">
-        <i class="fas fa-user-plus">
+        <i class="fas fa-user-plus btn_design">
           <%= link_to '新規登録', new_user_registration_path %>
         </i>
       </li>
       <li class="nav-list-item">
-        <i class="fas fa-sign-in-alt">
+        <i class="fas fa-sign-in-alt btn_design">
           <%= link_to 'ログイン', new_user_session_path %>
         </i>
       </li>
       <li class="nav-list-item">
-        <i class="fas fa-user-graduate">
+        <i class="fas fa-user-graduate btn_design">
           <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
         </i>
       </li>

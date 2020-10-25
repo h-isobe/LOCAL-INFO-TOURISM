@@ -592,3 +592,20 @@ main {
 #map-container {
   margin-left: 80px;
 }
+
+/* ヘッダーマウスオーバー時 */
+.btn_design {
+  font-size: 18px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-weight: bold;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  transition: 0.2s;
+}
+.btn_design:hover{
+  transform: translateY(-5px);
+  cursor: pointer;
+}
