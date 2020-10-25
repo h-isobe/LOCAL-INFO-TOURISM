@@ -10,7 +10,9 @@
         <div class="row">
           <div class="col-xs-3">
             <div class="post-list">
-              <%= attachment_image_tag post.user, :profile_image, :fill, 150, 100, format: 'jpg', fallback: "no_image.jpg" %>
+              <div class="user-image">
+                <%= attachment_image_tag post.user, :profile_image, :fill, 200, 200, format: 'jpg', fallback: "no_image.jpg" %>
+              </div>
             </div>
           </div>
             
@@ -79,7 +81,7 @@
            
         <span class="comment-count">
           <%= link_to post_path(post.id) do %>
-            <i class="fa fa-comment"></i>
+            <i class="fa fa-comment btn_design"></i>
             <%= post.post_comments.count %>
           <% end %>
         </span>

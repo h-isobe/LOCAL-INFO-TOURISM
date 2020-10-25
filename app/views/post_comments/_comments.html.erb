@@ -1,6 +1,8 @@
 <% post.post_comments.each do |post_comment| %>
   <div class="comment-image">
-    <%= attachment_image_tag post_comment.user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %>
+    <div class="user-image">
+      <%= attachment_image_tag post_comment.user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %>
+    </div>
   </div>
   <div class="comment-user">
     <%= link_to user_path(post_comment.user) do %>

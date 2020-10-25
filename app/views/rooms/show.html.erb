@@ -10,7 +10,9 @@
     </p>
 
     <% @entries.each do |e| %>
-      <%= attachment_image_tag e.user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %>
+      <div class="user-image">
+      <%= attachment_image_tag e.user, :profile_image, :fill, 180, 180, format: 'jpg', fallback: "no_image.jpg" %>
+      </div>
         <strong>
           <div class="user-name">
             <a class="rooms-user-link" href="/users/<%= e.user.id %>">
@@ -20,14 +22,14 @@
       </strong>
     <% end %>
     <hr>
-    <div class="chats">
+    <div class="chats", style="margin-top: 50px;">
       <div class="chat">
         <% if @messages.present? %>
         <div class="message" style="width: 400px;">
           <% @messages.each do |m| %>
             <div class="chat-box">
               <div class="chat-face">
-                <%= attachment_image_tag m.user, :profile_image, :fill, 60, 60, format: 'jpg', fallback: "no_image.jpg" %>
+                <%= attachment_image_tag m.user, :profile_image, :fill, 100, 60, format: 'jpg', fallback: "no_image.jpg" %>
               </div>
               <div class="chat-name">
                 <%= m.user.name %>

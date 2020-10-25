@@ -5,7 +5,6 @@
 
     <%= render 'posts/errors', obj: @post %>
     
-  
     <div class="sub-post-text">
       <p class="text-center">
         旅先の感想やお出かけ前に気になることを自由に投稿してみましょう
@@ -13,7 +12,7 @@
       </p>
     </div>
 
-    <%= render 'posts/edit_form', form: @post %>
+    <%= render 'posts/form', form: @post %>
     
     <%= link_to "戻る", post_path(@post), class: "btn btn-success" %>
 
