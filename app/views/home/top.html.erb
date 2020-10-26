@@ -1,18 +1,19 @@
 <div class="main-visual">
   <!--画像スライド-->
   <div class="theTarget">
-    <div style="background-image: url(/assets/kouyou.jpg)"></div>
-    <div style="background-image: url(/assets/sky.jpg)"></div>
-    <div style="background-image: url(/assets/yukigeshiki.jpg)"></div>
-    <div style="background-image: url(/assets/coffee.jpg)"></div>
-    <div style="background-image: url(/assets/siwagara.jpg)"></div>
+    <div style="background-image: url(<%= asset_path("kouyou.jpg") %>"></div>
+    <div style="background-image: url(<%= asset_path("sky.jpg") %>"></div>
+    <div style="background-image: url(<%= asset_path("yukigeshiki.jpg") %>"></div>
+    <div style="background-image: url(<%= asset_path("coffee.jpg") %>"></div>
+    <div style="background-image: url(<%= asset_path("siwagara.jpg") %>"></div>
   </div>
 </div>
 
 <main>
 
   <div class="main-message-box text-center">
-    <img src="/assets/message_logo.png" alt="logo" width="800" height="100" >
+    <!--<img src="/assets/message_logo.png" alt="logo" width="800" height="100" >-->
+    <%= image_tag '/message_logo.png', :size =>'800x100' %>
   </div>
 
   <div class="top-description">
