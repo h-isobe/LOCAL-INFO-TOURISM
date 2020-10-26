@@ -86,7 +86,7 @@ body {
 .wrapper{
   min-height: 100vh;
   position: relative;
-  padding-bottom: 120px;
+  padding-bottom: 150px;
   box-sizing: border-box;
   background-color: #ECEFF1;
 }
@@ -360,7 +360,6 @@ h4 {
 
 /*トップページ*/
 .main-visual {
-  
   height: 636px;
   background-size: cover;
   background-position: center;
@@ -453,29 +452,6 @@ main {
   padding: 30px 0 10px 0;
   background-color: white;
 }
-.main-message {
-  position: relative;
-  color: #158b2b;
-  font-size: 50px;
-  padding: 10px 0;
-  text-align: center;
-  margin: 1.5em 0;
-}
-.main-message:before {
-  content: "";
-  position: absolute;
-  top: -35px;
-  left: 50%;
-  width: 350px;
-  height: 130px;
-  border-radius: 50%;
-  border: 5px solid #a6ddb0;
-  border-left-color: transparent;
-  border-right-color: transparent;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-
 
 /*アバウトページ*/
 .about-box {
