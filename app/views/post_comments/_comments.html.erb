@@ -13,6 +13,7 @@
     <%= post_comment.comment %><br>
   </div>
   <div class="comment-created text-right">
+    <i class="far fa-calendar-alt"></i>
     <%= l post_comment.created_at %>  
   </div>
   <% if post_comment.user == current_user %>

@@ -189,7 +189,7 @@
             <i class="far fa-calendar-alt"></i>
             <%= l @post.created_at %>
           </span>
-          
+          <hr>
           <span class="comment_<%= @post.id %>">
             <%= render 'post_comments/comments', post: @post %>
           </span>

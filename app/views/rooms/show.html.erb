@@ -11,7 +11,7 @@
 
     <% @entries.each do |e| %>
       <div class="user-image">
-      <%= attachment_image_tag e.user, :profile_image, :fill, 180, 180, format: 'jpg', fallback: "no_image.jpg" %>
+        <%= attachment_image_tag e.user, :profile_image, :fill, 180, 180, format: 'jpg', fallback: "no_image.jpg" %>
       </div>
         <strong>
           <div class="user-name">
@@ -28,10 +28,10 @@
         <div class="message" style="width: 400px;">
           <% @messages.each do |m| %>
             <div class="chat-box">
-              <div class="chat-face">
-                <%= attachment_image_tag m.user, :profile_image, :fill, 100, 60, format: 'jpg', fallback: "no_image.jpg" %>
+              <div class="user-image">
+                <%= attachment_image_tag m.user, :profile_image, :fill, 100, 100, format: 'jpg', fallback: "no_image.jpg" %>
               </div>
-              <div class="chat-name">
+              <div class="chat-name", style="margin: 10px 0;">
                 <%= m.user.name %>
               </div>
               <div class="chat-content">
