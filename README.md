@@ -1,9 +1,8 @@
 # LOCAL INFO TOURISM
 
-<img width="1440" alt="スクリーンショット 2020-10-27 19 44 36" src="https://user-images.githubusercontent.com/66994603/97309254-1d966c80-18a5-11eb-8aea-a3a37ecf6542.png">
+<img width="1440" alt="スクリーンショット 2020-10-27 22 52 25" src="https://user-images.githubusercontent.com/66994603/97311098-58010900-18a7-11eb-8920-1e55be5e1317.png">
+<img width="1144" alt="スクリーンショット 2020-10-27 22 51 52" src="https://user-images.githubusercontent.com/66994603/97311136-63543480-18a7-11eb-89c6-ad6c88039908.png">
 
-
-<img width="1136" alt="スクリーンショット 2020-10-27 22 41 48" src="https://user-images.githubusercontent.com/66994603/97309668-aca38480-18a5-11eb-9aa4-f76cf062abb4.png">
 
 ## サイト概要
 観光客と地元民をつなぐ交流系拡散型SNSです。 
