@@ -1,7 +1,7 @@
 <%= form_with model: form, local: true do |f| %>
   <div class="field row">
     <%= f.label :タイトル %>
-    <%= f.text_field :title, class: "form-control", placeholder:"タイトル" %>
+    <%= f.text_field :title, class: "form-control", placeholder:"20文字以内で入力" %>
   </div>
   <div class="field row">
     <%= f.label :prefecture, '都道府県' %><br>
@@ -18,7 +18,7 @@
   </div>
   <div class="field row">
     <%= f.label :投稿内容 %>
-    <%= f.text_area :body, class: "form-control", placeholder:"投稿内容" %>
+    <%= f.text_area :body, class: "form-control", placeholder:"#(半角)でハッシュタグ投稿" %>
   </div>
   <div class="field row">
     <%= f.label :画像選択 %>(複数可能)

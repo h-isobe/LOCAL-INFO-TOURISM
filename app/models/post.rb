@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   has_many :hashtags, through: :post_hashtags, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 20 }
   validates :prefecture, presence: true
   validates :body, length: { in: 1..500 }
 
