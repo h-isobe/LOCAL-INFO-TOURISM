@@ -1,5 +1,9 @@
 # LOCAL INFO TOURISM
 
+<img width="1440" alt="スクリーンショット 2020-10-27 19 44 36" src="https://user-images.githubusercontent.com/66994603/97309254-1d966c80-18a5-11eb-8aea-a3a37ecf6542.png">
+
+<img width="1136" alt="スクリーンショット 2020-10-27 22 41 48" src="https://user-images.githubusercontent.com/66994603/97309668-aca38480-18a5-11eb-9aa4-f76cf062abb4.png">
+
 ## サイト概要
 観光客と地元民をつなぐ交流系拡散型SNSです。 
 具体的には、①観光先や休日のお出かけ先の感想をユーザーがつぶやき、ユーザーがコメントやチャットを通じて交流。行ってみたいと思える投稿に対して、行ってみたいリストを作成することができます。
