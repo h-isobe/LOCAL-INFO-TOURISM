@@ -58,14 +58,6 @@
             <% end %>
           <% end %>
         </div>
-          
-        <div class="post-image">
-		      <% if post.post_images.present? %>
-            <% post.post_images.each do |image| %>
-              <%= attachment_image_tag image, :image, :fill, 348, 300 %>
-            <% end %>
-          <% end %>
-        </div>
         
         <span class="favorite-count">
           <span class="favorite_<%= post.id %>">

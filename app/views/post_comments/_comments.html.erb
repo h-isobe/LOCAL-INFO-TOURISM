@@ -12,7 +12,9 @@
   <div class="post-text">
     <%= post_comment.comment %><br>
   </div>
+  <div class="comment-created text-right">
     <%= l post_comment.created_at %>  
+  </div>
   <% if post_comment.user == current_user %>
     <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger pull-right" %>
   <% end %>
