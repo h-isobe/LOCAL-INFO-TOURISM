@@ -13,20 +13,24 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-        <div class="field", style="padding-top: 50px;">
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "ユーザー名", :size=>"60" %>
+        <div class="field", style="padding-top: 50px; color: #888888;">
+          <%= f.label :ユーザー名 %><br/>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", :size=>"60" %>
         </div>
 
-        <div class="field">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", :size=>"60" %>
+        <div class="field", style="color: #888888;">
+          <%= f.label :メールアドレス %><br/>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"60" %>
         </div>
 
-        <div class="field">
-          <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード(6文字以上)", :size=>"60" %>
+        <div class="field", style="color: #888888;">
+          <%= f.label :パスワード %>(6文字以上)<br/>
+          <%= f.password_field :password, autocomplete: "new-password", :size=>"60" %>
         </div>
 
-        <div class="field">
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード(確認用)", :size=>"60" %>
+        <div class="field", style="color: #888888;">
+          <%= f.label :パスワード %>(確認用)<br/>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", :size=>"60" %>
         </div>
 
         <div class="actions">
