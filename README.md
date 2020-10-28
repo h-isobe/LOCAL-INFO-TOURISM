@@ -1,10 +1,9 @@
 # LOCAL INFO TOURISM
 
-<img width="1440" alt="スクリーンショット 2020-10-27 22 52 25" src="https://user-images.githubusercontent.com/66994603/97311098-58010900-18a7-11eb-8920-1e55be5e1317.png">
+<img width="1428" alt="スクリーンショット 2020-10-28 19 05 46" src="https://user-images.githubusercontent.com/66994603/97422115-b6ce8d00-1950-11eb-9064-e3c9c056b40c.png">
 
 ## About一部
-<img width="1144" alt="スクリーンショット 2020-10-27 22 51 52" src="https://user-images.githubusercontent.com/66994603/97311136-63543480-18a7-11eb-89c6-ad6c88039908.png">
-
+<img width="1144" alt="スクリーンショット 2020-10-27 22 51 52" src="https://user-images.githubusercontent.com/66994603/97422130-bcc46e00-1950-11eb-8acd-81b3d71a9d97.png">
 
 ## サイト概要
 観光客と地元民をつなぐ交流系拡散型SNSです。 
@@ -29,11 +28,10 @@
 旅行前に現地の気温や服装情報を知れる。
 
 ## 設計書
-
-### テーブル定義書
+・テーブル定義書
 https://docs.google.com/spreadsheets/d/1udO2j3EVxrVC0segeNB72rgxe1ewgzv-wIXeHnF3vDw/edit#gid=0
 
-### ER図
+・ER図
 https://app.diagrams.net/#G1W2aivpbXNXdHJXUnBTzylQ9xMoAgQBq7
 
 ### 機能一覧
