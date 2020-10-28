@@ -71,7 +71,6 @@ class PostsController < ApplicationController
   def hashtag
     @hashtag = Hashtag.find_by(hashname: params[:hashname])
     @posts = @hashtag.posts.page(params[:page]).reverse_order
-    @hashtags = Hashtag.all
   end
 
   def category

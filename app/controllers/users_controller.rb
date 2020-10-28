@@ -4,7 +4,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.page(params[:page]).reverse_order
-    #@user = @users.where(id: current_user.id)
     @all_ranks = Post.find(Bookmark.group(:post_id).order('count(post_id) desc').limit(5).pluck(:post_id))
     @categories = Category.all
   end
