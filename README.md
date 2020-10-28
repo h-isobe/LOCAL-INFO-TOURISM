@@ -30,9 +30,11 @@
 
 ## 設計書
 ・テーブル定義書
+
 https://docs.google.com/spreadsheets/d/1udO2j3EVxrVC0segeNB72rgxe1ewgzv-wIXeHnF3vDw/edit#gid=0
 
 ・ER図
+
 https://app.diagrams.net/#G1W2aivpbXNXdHJXUnBTzylQ9xMoAgQBq7
 
 ### 機能一覧
