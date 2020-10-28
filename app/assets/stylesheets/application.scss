@@ -221,7 +221,7 @@ h4 {
 }
 
 /*投稿一覧*/
-.box1 {
+.main-box {
   padding: 1em 1em;
   margin: 2em 0;
   color: black;
@@ -273,12 +273,12 @@ h4 {
 }
 
 /*ランキング*/
-.box2 {
+.sub-box {
   margin: 2em 0;
   background: #FFF;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
 }
-.box2 .box-title {
+.sub-box .box-title {
   font-size: 1.2em;
   background: #EEEEEE;
   padding: 4px;
