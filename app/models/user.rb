@@ -23,8 +23,6 @@ class User < ApplicationRecord
   validates :name, length: { in: 2..20 }
   validates :introduction, length: { maximum: 200 }
 
-  #scope search_by_name, ->(name) { where(name: name) }
-
   def follow(user_id)
     follower.create(followed_id: user_id)
   end
