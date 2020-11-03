@@ -10,7 +10,7 @@
           <table style="border:none;">
             <tr>
               <td class="user-image">
-                <%= attachment_image_tag @user, :profile_image, format: 'jpg', fallback: "no_image.jpg" %>
+                <%= attachment_image_tag @user, :profile_image, :fill, 330, 330, format: 'jpg', fallback: "no_image.jpg" %>
               </td>
             </tr>
             <tr>
