@@ -12,7 +12,6 @@ class Post < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   validates :title, presence: true, length: { maximum: 20 }
-  validates :prefecture, presence: true
   validates :body, length: { in: 1..500 }
 
   #scope :hokkaido, -> { where(prefecture: 1) }
