@@ -9,7 +9,6 @@ RSpec.describe Category, type: :model do
     end
     context "categoryが有効である場合" do
       it "空でないとき" do
-        @category
         expect(@category).to be_valid
       end
     end

@@ -7,7 +7,6 @@ RSpec.describe User, type: :model do
     end
     context "ユーザー情報が有効である場合" do
       it "すべて正しく入力されている" do
-        @user
         expect(@user).to be_valid
       end  
     end

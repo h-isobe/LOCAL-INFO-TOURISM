@@ -9,7 +9,6 @@ RSpec.describe Hashtag, type: :model do
     end
     context "hashnameが有効である場合" do
       it "空でないとき" do
-        @hashtag
         expect(@hashtag).to be_valid
       end
     end

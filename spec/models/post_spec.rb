@@ -8,7 +8,6 @@ RSpec.describe Post, type: :model do
     end
     context "投稿が有効である場合" do 
       it "すべて正しく入力されている" do
-        @post
         expect(@post).to be_valid
       end
     end

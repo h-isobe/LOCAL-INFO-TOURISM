@@ -13,7 +13,6 @@ RSpec.describe PostComment, type: :model do
     end
     context "コメントが有効である場合" do
       it "すべて正しく入力されている" do
-        @comment
         expect(@comment).to be_valid
       end
     end
