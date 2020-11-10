@@ -19,4 +19,17 @@ RSpec.describe Hashtag, type: :model do
       end
     end
   end
+
+  describe "アソシエーションのテスト" do
+    context "Postモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(Hashtag.reflect_on_association(:posts).macro).to eq :has_many
+      end
+    end
+    context "PostHashtagモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(Hashtag.reflect_on_association(:post_hashtags).macro).to eq :has_many
+      end
+    end
+  end
 end

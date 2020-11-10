@@ -25,4 +25,42 @@ RSpec.describe User, type: :model do
       end
     end
   end
+  
+  describe "アソシエーションのテスト" do
+    context "Postモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(User.reflect_on_association(:posts).macro).to eq :has_many
+      end
+    end
+    context "PostCommentモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(User.reflect_on_association(:post_comments).macro).to eq :has_many
+      end
+    end
+    context "Favoriteモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(User.reflect_on_association(:favorites).macro).to eq :has_many
+      end
+    end
+    context "Bookmarkモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(User.reflect_on_association(:bookmarks).macro).to eq :has_many
+      end
+    end
+    context "Messageモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(User.reflect_on_association(:messages).macro).to eq :has_many
+      end
+    end
+    context "Entryモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(User.reflect_on_association(:entries).macro).to eq :has_many
+      end
+    end
+    context "Relationshipモデルとの関係" do
+      it "1:Nとなっている" do
+        expect(User.reflect_on_association(:relationships).macro).to eq :has_many
+      end
+    end
+  end
 end
