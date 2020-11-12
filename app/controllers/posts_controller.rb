@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, {only: [:edit]}
   impressionist :actions=> [:show]
 
 
@@ -50,6 +49,11 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if @post.user == current_user
+      render :edit
+    else
+      redirect_to posts_path
+    end
   end
 
   def update
@@ -97,13 +101,13 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :prefecture, :body, category_ids: [], post_images_images: [], hashtag_ids: [])
   end
 
-  def ensure_correct_user
-    @post = Post.find(params[:id])
-    if @post.user.id != current_user.id
-      redirect_to user_path(current_user.id)
-    else
-      render :edit
-    end
-  end
+  # def ensure_correct_user
+  #   @post = Post.find(params[:id])
+  #   if @post.user.id != current_user.id
+  #     redirect_to user_path(current_user.id)
+  #   else
+  #     render :edit
+  #   end
+  # end
 
 end
