@@ -43,4 +43,3 @@ https://docs.google.com/spreadsheets/d/1orUrvptz4BvKzSH355lNwC7lc3AQsw6z8QyNCFCO
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - 仮想環境：Vagrant,VirtualBox
-
