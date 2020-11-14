@@ -5,7 +5,9 @@ describe "ヘッダーのテスト" do
   before do
     visit root_path
   end
+
   describe "表示の確認" do
+
     context "ログイン前" do
       it "Aboutリンクが表示され、リンク先が正しい" do
         expect(page).to have_link "About", href: "/home/about"
@@ -28,6 +30,7 @@ describe "ヘッダーのテスト" do
         expect(current_path).to eq(posts_path)
       end
     end
+
     context "ログイン後" do
       before do
         visit new_user_session_path
@@ -70,5 +73,6 @@ describe "ヘッダーのテスト" do
         visit "posts/new"
       end
     end
+    
   end 
 end

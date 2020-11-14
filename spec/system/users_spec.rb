@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe "ユーザー認証のテスト" do
+
   describe "ユーザー新規登録" do
     before do
       visit new_user_registration_path
@@ -46,6 +47,7 @@ describe "ユーザー認証のテスト" do
       end
     end
   end
+
 end
 
 describe "ユーザーログイン後のテスト" do
@@ -60,9 +62,11 @@ describe "ユーザーログイン後のテスト" do
   end
 
   describe "マイページ遷移後のテスト" do
+
     before do
       visit user_path(user)
     end
+
     describe "サイドバーのテスト" do
       context "表示の確認" do
         it "プロフィール画像が表示される" do
@@ -165,5 +169,6 @@ describe "ユーザーログイン後のテスト" do
         end
       end  
     end
+    
   end
 end
