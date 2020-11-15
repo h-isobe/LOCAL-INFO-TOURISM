@@ -147,7 +147,7 @@ describe "ユーザーログイン後のテスト" do
         end
         it "ハッシュタグにハッシュタグ投稿のリンクが表示される" do
           post.hashtags.each do |hashtag|
-          expect(page).to have_link hashtag.hashname, href: hashtag_path(post,hashname: hashtag.hashname)
+            expect(page).to have_link hashtag.hashname, href: hashtag_path(post,hashname: hashtag.hashname)
           end
         end
       end
