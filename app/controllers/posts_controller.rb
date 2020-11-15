@@ -101,13 +101,4 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :prefecture, :body, category_ids: [], post_images_images: [], hashtag_ids: [])
   end
 
-  # def ensure_correct_user
-  #   @post = Post.find(params[:id])
-  #   if @post.user.id != current_user.id
-  #     redirect_to user_path(current_user.id)
-  #   else
-  #     render :edit
-  #   end
-  # end
-
 end
