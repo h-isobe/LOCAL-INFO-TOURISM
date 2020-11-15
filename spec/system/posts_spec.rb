@@ -36,7 +36,7 @@ describe "投稿のテスト" do
       end
     end
 
-    context "投稿一覧のテスト 表示の確認" do
+    context "投稿一覧 自分、他人共通表示の確認" do
       it "投稿者が表示されること" do
         expect(page).to have_content(user.name)
         expect(page).to have_content(user2.name)
@@ -53,8 +53,8 @@ describe "投稿のテスト" do
       end
       it "カテゴリーが表示されること" do
         post.categories.each do |category|
-        expect(page).to have_content(post.category)
-        expect(page).to have_content(post2.category)
+          expect(page).to have_content(post.category)
+          expect(page).to have_content(post2.category)
         end
       end
       it "本文が表示されること" do
@@ -82,32 +82,53 @@ describe "投稿のテスト" do
         expect(page).to have_link post.post_comments.count, href: post_path(post.id)
       end
     end
+    
   end
 
   context "投稿詳細 自分、他人の共通表示の確認" do
+
     before do
       visit post_path(post)
     end
-    it "投稿者の画像が表示されている" do
+
+    it "投稿者の画像が表示されていること" do
       expect(page).to have_content(post.user.profile_image) 
     end
-    it "投稿画像が表示されている" do
+    it "投稿画像が表示されていること" do
       expect(page).to have_css(".post-image") 
     end
-    it "投稿のユーザー名が表示されている" do
+    it "投稿のユーザー名が表示されていること" do
       expect(page).to have_content(post.user.name) 
     end
-    it "投稿のタイトルが表示されている" do
+    it "投稿のタイトルが表示されていること" do
       expect(page).to have_content(post.title) 
     end
-    it "投稿の本文が表示されている" do
+    it "投稿の本文が表示されていること" do
       expect(page).to have_content(post.body) 
     end
+    it "投稿のハッシュタグが表示され、リンク先が正しいこと" do
+      post.hashtags.each do |hashtag|
+        expect(page).to have_link(hashtag.hashname), href: hashtag_path(post,hashname: hashtag.hashname)
+      end
+    end
+    it "投稿のいいね数が表示されていること" do
+      expect(page).to have_content(post.favorites.count)
+    end
+    it "投稿の行ってみたい数が表示されていること" do
+      expect(page).to have_content(post.bookmarks.count)
+    end
+    it "投稿のコメント数が表示されていること" do
+      expect(page).to have_content(post.post_comments.count)
+    end
+    
   end
 
   context "投稿詳細 自分の表示の確認" do
     before do
       visit post_path(post)
+    end
+    it "投稿の閲覧数が表示されていること" do
+      expect(page).to have_content(post.impressionist_count)
     end
     it "編集リンクが表示されている" do
       expect(page).to have_link "編集", href: edit_post_path(post)
@@ -120,6 +141,10 @@ describe "投稿のテスト" do
   context "投稿詳細 他人の表示の確認" do
     before do
       visit post_path(post2)
+    end
+    it "投稿の閲覧数が表示されないこと" do
+      visit post_path(post)
+      expect(page).to have_content(post2.impressionist_count)
     end
     it "編集リンクが表示されない" do
       expect(page).to have_no_link "編集", href: edit_post_path(post2)
@@ -145,7 +170,7 @@ describe "投稿のテスト" do
       it "カテゴリー選択欄が表示される" do
         categories = Category.all
         categories.each do |category|
-        expect(page).to have_field('category.name')
+          expect(page).to have_field('category.name')
         end
       end
       it "投稿内容フォームが表示される" do
@@ -210,9 +235,8 @@ describe "投稿のテスト" do
       it "カテゴリー選択欄が表示されている" do
         categories = Category.all
         categories.each do |category|
-        expect(page).to have_field('category.name')
+          expect(page).to have_field('category.name')
         end
-        #expect(page).to have_field "post[category_ids]"
       end
       it "投稿内容欄に投稿内容が入力されている" do
         expect(page).to have_field "post[body]", with: post.body
@@ -250,5 +274,3 @@ describe "投稿のテスト" do
 
   end
 end
-
-  
