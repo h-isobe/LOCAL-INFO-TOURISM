@@ -196,7 +196,7 @@
             <%= render 'post_comments/comments', post: @post %>
           </span>
 
-          <div class="text-right" style="margin-top: 30px;">
+          <div class="text-right" style="margin-top: 100px;">
             <% if @post.user_id == current_user.id %>
               <%= link_to "編集", edit_post_path(@post), class: "btn btn-primary" %>
               <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger" %>
