@@ -24,9 +24,9 @@
 ### 　　Route53
 ### 　　CloudWatch
 ### ・RSpec
-###    単体テスト(model)
-###    機能テスト(request)
-###    画面テスト(system)
+###　　 単体テスト(model)
+###　　 機能テスト(request)
+###　　 画面テスト(system)
 
 ## 設計書
 ・テーブル定義書
