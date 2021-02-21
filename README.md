@@ -18,11 +18,11 @@
 ### ・Nginx
 ### ・Puma
 ### ・AWS
-　### VPC
-　### EC2
-　### RDS
-　### Route53
-　### CloudWatch
+### 　　VPC
+### 　　EC2
+### 　　RDS
+### 　　Route53
+### 　　CloudWatch
 ### ・RSpec
 
 ## 設計書
