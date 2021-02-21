@@ -34,6 +34,10 @@ https://docs.google.com/spreadsheets/d/1udO2j3EVxrVC0segeNB72rgxe1ewgzv-wIXeHnF3
 
 https://app.diagrams.net/#G1W2aivpbXNXdHJXUnBTzylQ9xMoAgQBq7
 
+・AWS
+<img width="767" alt="スクリーンショット 2021-02-21 11 14 34" src="https://user-images.githubusercontent.com/66994603/108613532-4cc58080-7436-11eb-9912-8bab31c53386.png">
+
+
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1orUrvptz4BvKzSH355lNwC7lc3AQsw6z8QyNCFCO8pk/edit#gid=1548433831
 
